@@ -2,7 +2,7 @@
 <html lang="es" xml:lang="es">
 
 <head>
-    <title>Validacions T-Mobilitat 16/11/2021</title>
+    <title>Validacions T-Mobilitat</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -13,8 +13,8 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet-0.7.2/leaflet.ie.css" /><![endif]-->
-
+    
+    <!--Sidebar-->
     <link rel="stylesheet" href="leaflet-sidebar_dark.css" />
 
     <!-- Mapbox GL -->
@@ -25,12 +25,10 @@
     <!-- nearest point -->
     <script src="https://unpkg.com/leaflet-knn@0.1.0/leaflet-knn.js"></script>
 
-
     <!--multiselect-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 
     <!--Locate Control-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,7 +48,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
     <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
 
-
+    <!--Estils-->
     <style>
         body {
             padding: 0;
@@ -205,7 +203,7 @@
         .slidecontainer {
             width: 20em;
             position: absolute;
-            width: 25%;
+            width: 40%;
             bottom: 0;
             right: 0;
             padding: 10px;
@@ -245,6 +243,11 @@
             background: #04AA6D;
             cursor: pointer;
         }
+
+        #mapid>div.leaflet-control-container>div.leaflet-bottom.leaflet-right>div {
+            background: none !important;
+            color: white !important;
+        }
     </style>
 
 
@@ -257,6 +260,8 @@
         <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
         <p style="color:white">Dia de la setmana: <span id="demo" style="color:white"></span></p>
     </div>
+
+    <!--Sidebar-->
 
     <div id="sidebar" class="sidebar collapsed">
         <!-- Categories -->
@@ -280,7 +285,6 @@
 
         <!-- Tab panes -->
         <div class="sidebar-content">
-
 
             <div class="sidebar-pane" id="profile">
                 <h1 class="sidebar-header" style="text-align: center;">Cerca<span class="sidebar-close"><i
@@ -362,17 +366,20 @@
                     <a class="btn" id="fosc" href="#" role="button">Fosc</a>
                 </div>
             </div>
-
-
         </div>
     </div>
 
+    <!--Mapa-->
 
     <div id="mapid" class="sidebar-map"> </div>
 
     <script>
+
+        //declarem variables globals
+
         var mymap;
         var selectedDia = 0;
+        var selectedOperador;
         var dilluns = $.ajax({
             url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_dilluns.geojson",
             dataType: "json",
@@ -463,17 +470,17 @@
             }).addTo(mymap);
             sidebar.open('messages');
 
-
             var Topo = L.mapboxGL({
                 style: 'mapbox://styles/marcrb3/cjsu9je764ne51fn719pub5lu',
                 accessToken: 'pk.eyJ1IjoibWFyY3JiMyIsImEiOiJjanJqanZvMXowYzdnNDRsbGN4N3JyMGhuIn0.im2TOkqyqEpCXhN4LWoZuA',
                 attribution: 'Developed by Marc Roca Ballesteros ©'
             }).addTo(mymap);
 
-
             var basemap = {
                 'Topogràfic': Topo
             };
+
+            //controls del mapa
 
             var kxIncidents, kyIncidents, kyCorones, kyAMB, kyBus;
             var capes = L.control.layers(basemap, null, { collapsed: false });
@@ -481,7 +488,6 @@
             capes._container.remove();
             L.control.scale().addTo(mymap);
             grup = L.layerGroup(kxIncidents, kyIncidents, Topo, kyAMB, kyBus);
-            L.control.locate({ position: 'topleft', flyTo: "true", initialZoomLevel: "13" }).addTo(mymap);
             var control = L.Control.geocoder({ placeholder: "Cerca..." });
 
             document.getElementById('profile').appendChild(
@@ -489,11 +495,12 @@
             );
 
             //slider
-            
+
             var slider = document.getElementById("myRange");
             var output = document.getElementById("demo");
             output.innerHTML = '<strong>Selecciona dia</strong>';
 
+            //ClearLayers
 
             L.Map.include({
                 'clearLayers': function () {
@@ -504,8 +511,6 @@
             });
 
             //Carreguem les capes al iniciar el mapa
-
-           
 
             kyDilluns = L.geoJSON(dilluns.responseJSON);
 
@@ -525,12 +530,11 @@
 
             kyBus = L.geoJSON(val_bus.responseJSON);
 
-
-
             //Obrim la secció d'informació de la sidebar 
 
             var sidebarDiv = document.getElementById('sidebar');
 
+            // Funció per tancar la sidebar
 
             toggleSidebar = function () {
                 if (hasClass(sidebarDiv, 'collapsed')) {
@@ -544,7 +548,6 @@
                 return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
             }
 
-
             //Netejem el mapa per poder alternar entre capes
 
             function neteja() {
@@ -552,329 +555,662 @@
                 Topo.addTo(mymap);
             }
 
-            
-          
-            //Filtratge per operador
+            //Filtratge per operador TMB
 
             drawTMB = function () {
-                
+                selectedOperador = 'TMB';
                 neteja();
-                
-
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
 
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 sidebar.close();
-                 
-
             }
 
-
             drawTMBDilluns = function () {
-                
+                selectedOperador = 'TMB';
                 neteja();
-                
-
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 kyDilluns = L.geoJSON(dilluns.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
-                        
-                       
-                            return L.circleMarker(latlng, {
-                                radius: getRadiusFMB(feature.properties.val),
-                                fillColor: "white",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.5
-
-                            });
-                       
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFMB(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
-
                 }).addTo(mymap);
                 sidebar.close();
-                 
-
             }
-            drawTMBDissabte = function () {
-                
 
-                
+            drawTMBDissabte = function () {
+                selectedOperador = 'TMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 kyDissabte = L.geoJSON(dissabte.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
-                        
-                       
-                            return L.circleMarker(latlng, {
-                                radius: getRadiusFMB(feature.properties.val),
-                                fillColor: "white",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.5
-
-                            });
-                       
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFMB(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
-
                 }).addTo(mymap);
                 sidebar.close();
-                 
-
             }
-            drawTMBDiumenge = function () {
-                
 
-                
+            drawTMBDiumenge = function () {
+                selectedOperador = 'TMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 kyDiumenge = L.geoJSON(diumenge.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
-                        
-                       
-                            return L.circleMarker(latlng, {
-                                radius: getRadiusFMB(feature.properties.val),
-                                fillColor: "white",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.5
-
-                            });
-                       
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFMB(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
-
                 }).addTo(mymap);
                 sidebar.close();
-                 
-
             }
+
             drawTMBDimarts = function () {
-                
-
-                
-
+                selectedOperador = 'TMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 kyDimarts = L.geoJSON(dimarts.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
-                        
-                       
-                            return L.circleMarker(latlng, {
-                                radius: getRadiusFMB(feature.properties.val),
-                                fillColor: "white",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.5
-
-                            });
-                       
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFMB(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
-
                 }).addTo(mymap);
                 sidebar.close();
-                 
-
             }
+
             drawTMBDimecres = function () {
-                
-
-               
-
+                selectedOperador = 'TMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 kyDimecres = L.geoJSON(dimecres.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
-                        
-                       
-                            return L.circleMarker(latlng, {
-                                radius: getRadiusFMB(feature.properties.val),
-                                fillColor: "white",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.5
-
-                            });
-                       
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFMB(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
-
                 }).addTo(mymap);
                 sidebar.close();
-                 
-
             }
+
             drawTMBDijous = function () {
-                
-
-                
-
+                selectedOperador = 'TMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 kyDijous = L.geoJSON(dijous.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
-                        
-                       
-                            return L.circleMarker(latlng, {
-                                radius: getRadiusFMB(feature.properties.val),
-                                fillColor: "white",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.5
-
-                            });
-                       
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFMB(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
-
                 }).addTo(mymap);
                 sidebar.close();
-                 
-
             }
+
             drawTMBDivendres = function () {
-                
-
-            
-
+                selectedOperador = 'TMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
                 }).addTo(mymap);
-
                 kyDivendres = L.geoJSON(divendres.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
-                        
-                       
-                            return L.circleMarker(latlng, {
-                                radius: getRadiusFMB(feature.properties.val),
-                                fillColor: "white",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.5
-
-                            });
-                       
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFMB(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
-
                         return (feature.properties.operador == "FMB");
-
                     }
-
                 }).addTo(mymap);
                 sidebar.close();
-                 
+            }
 
+            //Filtratge per operador FGC
+
+            drawFGC = function () {
+                selectedOperador = 'FGC';
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDilluns = function () {
+                selectedOperador = 'FGC';
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDilluns = L.geoJSON(dilluns.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFGC(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDissabte = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDissabte = L.geoJSON(dissabte.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFGC(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDiumenge = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDiumenge = L.geoJSON(diumenge.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFGC(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDimarts = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDimarts = L.geoJSON(dimarts.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFGC(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDimecres = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDimecres = L.geoJSON(dimecres.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFGC(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDijous = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDijous = L.geoJSON(dijous.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFGC(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDivendres = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDivendres = L.geoJSON(divendres.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusFGC(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            //Filtratge per operador ROD
+
+            drawROD = function () {
+                selectedOperador = 'ROD';
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDilluns = function () {
+                selectedOperador = 'ROD';
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDilluns = L.geoJSON(dilluns.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusROD(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDissabte = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDissabte = L.geoJSON(dissabte.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusROD(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDiumenge = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDiumenge = L.geoJSON(diumenge.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusROD(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDimarts = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDimarts = L.geoJSON(dimarts.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusROD(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDimecres = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDimecres = L.geoJSON(dimecres.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusROD(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDijous = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDijous = L.geoJSON(dijous.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusROD(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDivendres = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDivendres = L.geoJSON(divendres.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadiusROD(feature.properties.val),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
             }
 
 
@@ -883,53 +1219,143 @@
             slider.addEventListener("change", function () {
                 selectedDia = this.value;
                 console.log(selectedDia);
-                if(selectedDia == 0){
+                if (selectedDia == 0) {
                     output.innerHTML = '<strong>Selecciona dia</strong>'
                     neteja();
-                    drawTMB();
+                    if (selectedOperador == 'TMB') {
+                        drawTMB();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGC();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawROD();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
 
+                    }
                 }
 
                 if (selectedDia == 1) {
                     output.innerHTML = 'Dilluns';
                     neteja();
-                    drawTMBDilluns();
+                    if (selectedOperador == 'TMB') {
+                        drawTMBDilluns();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDilluns();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDilluns();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
 
                 }
                 else if (selectedDia == 2) {
-                    output.innerHTML = 'Dimarts'; 
+                    output.innerHTML = 'Dimarts';
                     neteja();
-                    drawTMBDimarts(); 
+                    if (selectedOperador == 'TMB') {
+                        drawTMBDimarts();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDimarts();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDimarts();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
 
-                }                                                  
+                    }
+                }
                 else if (selectedDia == 3) {
                     output.innerHTML = 'Dimecres';
                     neteja();
-                    drawTMBDimecres(); 
+                    if (selectedOperador == 'TMB') {
+                        drawTMBDimecres();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDimecres();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDimecres();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
 
+                    }
                 }
                 else if (selectedDia == 4) {
                     output.innerHTML = 'Dijous';
                     neteja();
-                    drawTMBDijous(); 
+                    if (selectedOperador == 'TMB') {
+                        drawTMBDijous();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDijous();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDijous();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
 
+                    }
                 }
                 else if (selectedDia == 5) {
                     output.innerHTML = 'Divendres';
                     neteja();
-                    drawTMBDivendres(); 
+                    if (selectedOperador == 'TMB') {
+                        drawTMBDivendres();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDivendres();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDivendres();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
                 }
                 else if (selectedDia == 6) {
                     output.innerHTML = 'Dissabte';
                     neteja();
-                    drawTMBDissabte(); 
+                    if (selectedOperador == 'TMB') {
+                        drawTMBDissabte();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDissabte();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDissabte();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
 
+                    }
                 }
                 else if (selectedDia == 7) {
                     output.innerHTML = 'Diumenge';
                     neteja();
-                    drawTMBDiumenge(); 
+                    if (selectedOperador == 'TMB') {
+                        drawTMBDiumenge();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDiumenge();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDiumenge();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
 
+                    }
                 }
             })
 
@@ -988,6 +1414,8 @@
                                                 '#ffffff';
             }
 
+            //Rangs de valors per la tematització
+
             function getRadiusFMB(d) {
                 return d > 500 ? '18' :
                     d > 243 ? '16' :
@@ -1013,7 +1441,6 @@
                                                 d > 1 ? '4' :
                                                     '2';
             }
-
 
             function getRadiusFGC(d) {
                 return d > 200 ? '18' :
@@ -1143,6 +1570,7 @@
                                     d > 35 ? '0.5' :
                                         '0';
             }
+
             //Estil
 
             function style(feature) {
@@ -1155,6 +1583,7 @@
 
                 };
             }
+
             function styleTMB(feature) {
                 return {
                     weight: getWeightTMB(feature.properties.val),
@@ -1217,6 +1646,7 @@
 
                 };
             }
+
             function style_line_FGC(feature) {
                 return {
                     weight: 2.5,
@@ -1227,6 +1657,7 @@
 
                 };
             }
+
             function style_line_ROD(feature) {
                 return {
                     weight: 2.5,
@@ -1240,6 +1671,7 @@
 
 
             //ressaltem el contorn dels poligons al fer hover
+
             function highlightFeature(e) {
                 var layer = e.target;
 
@@ -1270,7 +1702,6 @@
 
             //restablim el contorn al fer mouseout
 
-
             function resetHighlight(e) {
                 var layer = e.target;
 
@@ -1292,6 +1723,8 @@
                 layer.bringToBack();
             }
 
+            //zoom als elements del mapa al clicar
+
             function zoomToFeature(e) {
                 mymap.flyToBounds(e.target.getBounds());
             }
@@ -1301,7 +1734,7 @@
                 mymap.flyTo(e.latlng, 16);
             }
 
-            //Omplim el contingut de la sidebar al clicar sobre qualsevol dels barris
+            //Tooltips amb informació de validacions al fer mouseover 
 
             function onEachFeature(feature, layer) {
 
