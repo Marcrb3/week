@@ -447,16 +447,64 @@
                 alert(xhr.statusText)
             }
         })
-        var val_bus = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/val/main/dades/novembre/val_Bus_1611_41.geojson",
+        var val_bus_dilluns = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1111_41.geojson",
             dataType: "json",
-            success: console.log("Validacions bus carregades correctament."),
+            success: console.log("Validacions bus dilluns carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dimarts = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1211_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dimarts carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dimecres = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1311_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dimecres carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dijous = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1411_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dijous carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_divendres = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1511_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus divendres carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dissabte = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1611_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dissabte carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_diumenge = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1711_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus diumenge carregades correctament."),
             error: function (xhr) {
                 alert(xhr.statusText)
             }
         })
 
-        $.when(linies, dilluns, dimarts, dimecres, dijous, divendres, dissabte, diumenge, val_bus).done(function () {
+        $.when(linies, dilluns, dimarts, dimecres, dijous, divendres, dissabte, diumenge, val_bus_dilluns, val_bus_dimarts, val_bus_dimecres, val_bus_dijous, val_bus_divendres, val_bus_dissabte, val_bus_diumenge).done(function () {
 
             mymap = L.map('mapid', {
                 minZoom: 9,
@@ -531,7 +579,20 @@
 
             kyAMB = L.geoJSON(linies.responseJSON);
 
-            kyBus = L.geoJSON(val_bus.responseJSON);
+            kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON);
+
+            kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON);
+
+            kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON);
+
+            kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON);
+
+            kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON);
+
+            kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON);
+
+            kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON);
+
 
             //Obrim la secció d'informació de la sidebar 
 
@@ -558,10 +619,11 @@
                 Topo.addTo(mymap);
             }
 
-            //Filtratge per operador TMB
+            //Filtratge per operador FMB
 
             drawTMB = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
+                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
@@ -575,7 +637,7 @@
             }
 
             drawTMBDilluns = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
@@ -605,7 +667,7 @@
             }
 
             drawTMBDissabte = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
@@ -634,7 +696,7 @@
             }
 
             drawTMBDiumenge = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
@@ -663,7 +725,7 @@
             }
 
             drawTMBDimarts = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
@@ -692,7 +754,7 @@
             }
 
             drawTMBDimecres = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
@@ -721,7 +783,7 @@
             }
 
             drawTMBDijous = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
@@ -750,7 +812,7 @@
             }
 
             drawTMBDivendres = function () {
-                selectedOperador = 'TMB';
+                selectedOperador = 'FMB';
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
@@ -782,6 +844,7 @@
 
             drawFGC = function () {
                 selectedOperador = 'FGC';
+                mymap.setView([41.385243705090105, 2.1402139383833516], 10.5);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FGC,
@@ -1001,6 +1064,7 @@
 
             drawROD = function () {
                 selectedOperador = 'ROD';
+                mymap.setView([41.385243705090105, 2.1402139383833516], 10);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_ROD,
@@ -1216,7 +1280,542 @@
                 sidebar.close();
             }
 
+            //Filtratge per operador TB
 
+            drawTB = function (){
+                selectedOperador = 'TB';
+                neteja();
+                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawTBDilluns = function (){
+                selectedOperador = 'TB';
+                
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTBDimarts = function (){
+                selectedOperador = 'TB';
+                
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+            
+            drawTBDimecres = function (){
+                selectedOperador = 'TB';
+                
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTBDijous = function (){
+                selectedOperador = 'TB';
+                
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTBDivendres = function (){
+                selectedOperador = 'TB';
+                
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+          
+            drawTBDissabte = function (){
+                selectedOperador = 'TB';
+                
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTBDiumenge = function (){
+                selectedOperador = 'TB';
+                
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+          
+            //Filtratge per operador TRAM
+
+            drawTRAM = function (){
+                selectedOperador = 'TRAM';
+                neteja();
+                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRA,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+         
+            drawTRAMDilluns = function (){
+                selectedOperador = 'TRAM';
+                
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTRAMDimarts = function (){
+                selectedOperador = 'TRAM';
+                
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+            
+            drawTRAMDimecres = function (){
+                selectedOperador = 'TRAM';
+                
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTRAMDijous = function (){
+                selectedOperador = 'TRAM';
+                
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTRAMDivendres = function (){
+                selectedOperador = 'TRAM';
+                
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+          
+            drawTRAMDissabte = function (){
+                selectedOperador = 'TRAM';
+                
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTRAMDiumenge = function (){
+                selectedOperador = 'TRAM';
+                
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+              //Filtratge per operador TUSGSAL
+
+            drawTUSGSAL = function (){
+                selectedOperador = 'TUSGSAL';
+                neteja();
+                mymap.setView([41.43764679984083, 2.2089849270448174], 12.5);
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTU,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawTUSGSALDilluns = function (){
+                selectedOperador = 'TUSGSAL';
+                
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTUSGSALDimarts = function (){
+                selectedOperador = 'TUSGSAL';
+                
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+            
+            drawTUSGSALDimecres = function (){
+                selectedOperador = 'TUSGSAL';
+                
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTUSGSALDijous = function (){
+                selectedOperador = 'TUSGSAL';
+                
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTUSGSALDivendres = function (){
+                selectedOperador = 'TUSGSAL';
+                
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+          
+            drawTUSGSALDissabte = function (){
+                selectedOperador = 'TUSGSAL';
+                
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawTUSGSALDiumenge = function (){
+                selectedOperador = 'TUSGSAL';
+                
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+        
+             //Filtratge per operador BAIXBUS
+
+             drawNITBUS = function (){
+                selectedOperador = 'NITBUS';
+                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                neteja();
+               
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNTB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawNITBUSDilluns = function (){
+                selectedOperador = 'NITBUS';
+                
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawNITBUSDimarts = function (){
+                selectedOperador = 'NITBUS';
+                
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+            
+            drawNITBUSDimecres = function (){
+                selectedOperador = 'NITBUS';
+                
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawNITBUSDijous = function (){
+                selectedOperador = 'NITBUS';
+                
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawNITBUSDivendres = function (){
+                selectedOperador = 'NITBUS';
+                
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+          
+            drawNITBUSDissabte = function (){
+                selectedOperador = 'NITBUS';
+                
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawNITBUSDiumenge = function (){
+                selectedOperador = 'NITBUS';
+                
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+              //Filtratge per operador BAIXBUS
+
+              drawBAIXBUS = function (){
+                selectedOperador = 'BAIXBUS';
+                mymap.setView([41.34566652848349, 2.0632387923613758], 12);
+                neteja();
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBXB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawBAIXBUSDilluns = function (){
+                selectedOperador = 'BAIXBUS';
+                
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawBAIXBUSDimarts = function (){
+                selectedOperador = 'BAIXBUS';
+                
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+            
+            drawBAIXBUSDimecres = function (){
+                selectedOperador = 'BAIXBUS';
+                
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawBAIXBUSDijous = function (){
+                selectedOperador = 'BAIXBUS';
+                
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawBAIXBUSDivendres = function (){
+                selectedOperador = 'BAIXBUS';
+                
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+          
+            drawBAIXBUSDissabte = function (){
+                selectedOperador = 'BAIXBUS';
+                
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+           
+            drawBAIXBUSDiumenge = function (){
+                selectedOperador = 'BAIXBUS';
+                
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+            
             //Filtrem els dies de la setmana a l'slider
 
             slider.addEventListener("change", function () {
@@ -1225,7 +1824,7 @@
                 if (selectedDia == 0) {
                     output.innerHTML = '<strong>Selecciona dia</strong>'
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMB();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1234,16 +1833,31 @@
                     else if (selectedOperador == 'ROD') {
                         drawROD();
                     }
+                    else if (selectedOperador == 'TB') {
+                        drawTB();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAM();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSAL();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUS();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUS();
+                    }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
 
                     }
                 }
 
-                if (selectedDia == 1) {
+                else if (selectedDia == 1) {
                     output.innerHTML = 'Dilluns';
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMBDilluns();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1251,6 +1865,21 @@
                     }
                     else if (selectedOperador == 'ROD') {
                         drawRODDilluns();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDilluns();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDilluns();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDilluns();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDilluns();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDilluns();
                     }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
@@ -1261,7 +1890,7 @@
                 else if (selectedDia == 2) {
                     output.innerHTML = 'Dimarts';
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMBDimarts();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1269,6 +1898,21 @@
                     }
                     else if (selectedOperador == 'ROD') {
                         drawRODDimarts();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDimarts();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDimarts();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDimarts();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDimarts();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDimarts();
                     }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
@@ -1278,7 +1922,7 @@
                 else if (selectedDia == 3) {
                     output.innerHTML = 'Dimecres';
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMBDimecres();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1286,6 +1930,21 @@
                     }
                     else if (selectedOperador == 'ROD') {
                         drawRODDimecres();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDimecres();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDimecres();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDimecres();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDimecres();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDimecres();
                     }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
@@ -1295,7 +1954,7 @@
                 else if (selectedDia == 4) {
                     output.innerHTML = 'Dijous';
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMBDijous();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1303,6 +1962,21 @@
                     }
                     else if (selectedOperador == 'ROD') {
                         drawRODDijous();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDijous();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDijous();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDijous();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDijous();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDijous();
                     }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
@@ -1312,7 +1986,7 @@
                 else if (selectedDia == 5) {
                     output.innerHTML = 'Divendres';
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMBDivendres();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1320,6 +1994,21 @@
                     }
                     else if (selectedOperador == 'ROD') {
                         drawRODDivendres();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDivendres();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDivendres();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDivendres();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDivendres();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDivendres();
                     }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
@@ -1329,7 +2018,7 @@
                 else if (selectedDia == 6) {
                     output.innerHTML = 'Dissabte';
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMBDissabte();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1337,6 +2026,21 @@
                     }
                     else if (selectedOperador == 'ROD') {
                         drawRODDissabte();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDissabte();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDissabte();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDissabte();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDissabte();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDissabte();
                     }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
@@ -1346,7 +2050,7 @@
                 else if (selectedDia == 7) {
                     output.innerHTML = 'Diumenge';
                     neteja();
-                    if (selectedOperador == 'TMB') {
+                    if (selectedOperador == 'FMB') {
                         drawTMBDiumenge();
                     }
                     else if (selectedOperador == 'FGC') {
@@ -1354,6 +2058,21 @@
                     }
                     else if (selectedOperador == 'ROD') {
                         drawRODDiumenge();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDiumenge();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDiumenge();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDiumenge();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDiumenge();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDiumenge();
                     }
                     else {
                         return alert('Selecciona una operadora per veure la informació');
@@ -1586,7 +2305,16 @@
 
                 };
             }
-
+          
+            function styleTB(feature) {
+                return {
+                    weight: 2,
+                    opacity: 1,
+                    color: 'red',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
             function styleTMB(feature) {
                 return {
                     weight: getWeightTMB(feature.properties.val),
@@ -1608,11 +2336,29 @@
                     fillOpacity: 1,
                 };
             }
+            function styleTU(feature) {
+                return {
+                    weight: 2,
+                    opacity: 1,
+                    color: '#FFCC00',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
 
             function styleNB(feature) {
                 return {
                     weight: getWeightNB(feature.properties.val),
                     opacity: getOpacityNB(feature.properties.val),
+                    color: '#3366CC',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+            function styleNTB(feature) {
+                return {
+                    weight: 2,
+                    opacity: 1,
                     color: '#3366CC',
                     dashArray: '',
                     fillOpacity: 1,
@@ -1628,11 +2374,29 @@
                     fillOpacity: 1,
                 };
             }
+            function styleBXB(feature) {
+                return {
+                    weight: 2,
+                    opacity: 1,
+                    color: '#FFCC00',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
 
             function styleTRAM(feature) {
                 return {
                     weight: getWeightTRAM(feature.properties.val),
                     opacity: getOpacityTRAM(feature.properties.val),
+                    color: 'rgb(4, 143, 108)',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+            function styleTRA(feature) {
+                return {
+                    weight: 2,
+                    opacity: 1,
                     color: 'rgb(4, 143, 108)',
                     dashArray: '',
                     fillOpacity: 1,
