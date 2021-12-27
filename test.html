@@ -274,7 +274,7 @@
         <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
         <div id="controls">
             <button id="play">play</button>
-            <button id="pause">pause</button>
+            <button id="pause">stop</button>
 
 
         </div>
@@ -294,8 +294,7 @@
                 <li><a href="#profile" role="tab"><i class="fa fa-search" style="color: white;"></i></a></li>
 
 
-                <li><a href="#settings" role="tab" target="_blank"><i class="fa fa-gear" style="color: white;"></i></a>
-                </li>
+                
             </ul>
 
             <ul role="tablist">
@@ -376,17 +375,7 @@
 
             </div>
 
-            <div class="sidebar-pane" id="settings">
-                <h1 class="sidebar-header" style="text-align: center;">Configuració<span class="sidebar-close"><i
-                            class="fa fa-times"></i></span>
-                </h1>
-                <p style="margin-top: 1em; font-size: 1.2em; color: white;"><strong>Selecciona el tema del
-                        visor:</strong></p>
-                <div class="tema">
-                    <a class="btn" id="Clar" href="16112021.html" role="button">Clar</a>
-                    <a class="btn" id="fosc" href="#" role="button">Fosc</a>
-                </div>
-            </div>
+            
         </div>
     </div>
 
@@ -692,7 +681,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTMBDissabte = function () {
@@ -721,7 +710,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTMBDiumenge = function () {
@@ -750,7 +739,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTMBDimarts = function () {
@@ -779,7 +768,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTMBDimecres = function () {
@@ -808,7 +797,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTMBDijous = function () {
@@ -837,7 +826,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTMBDivendres = function () {
@@ -866,7 +855,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             //Filtratge per operador FGC
@@ -913,7 +902,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawFGCDissabte = function () {
@@ -942,7 +931,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawFGCDiumenge = function () {
@@ -971,7 +960,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawFGCDimarts = function () {
@@ -1000,7 +989,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawFGCDimecres = function () {
@@ -1029,7 +1018,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawFGCDijous = function () {
@@ -1058,7 +1047,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawFGCDivendres = function () {
@@ -1087,7 +1076,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             //Filtratge per operador ROD
@@ -1134,7 +1123,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawRODDissabte = function () {
@@ -1163,7 +1152,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawRODDiumenge = function () {
@@ -1192,7 +1181,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawRODDimarts = function () {
@@ -1221,7 +1210,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawRODDimecres = function () {
@@ -1250,7 +1239,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawRODDijous = function () {
@@ -1279,7 +1268,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawRODDivendres = function () {
@@ -1308,7 +1297,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             //Filtratge per operador TB
@@ -1338,7 +1327,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTBDimarts = function () {
@@ -1351,7 +1340,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTBDimecres = function () {
@@ -1364,7 +1353,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTBDijous = function () {
@@ -1377,7 +1366,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTBDivendres = function () {
@@ -1390,7 +1379,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTBDissabte = function () {
@@ -1403,7 +1392,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTBDiumenge = function () {
@@ -1416,7 +1405,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             //Filtratge per operador TRAM
@@ -1446,7 +1435,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTRAMDimarts = function () {
@@ -1459,7 +1448,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTRAMDimecres = function () {
@@ -1472,7 +1461,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTRAMDijous = function () {
@@ -1485,7 +1474,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTRAMDivendres = function () {
@@ -1498,7 +1487,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTRAMDissabte = function () {
@@ -1511,7 +1500,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTRAMDiumenge = function () {
@@ -1524,7 +1513,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             //Filtratge per operador TUSGSAL
@@ -1554,7 +1543,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTUSGSALDimarts = function () {
@@ -1567,7 +1556,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+               
             }
 
             drawTUSGSALDimecres = function () {
@@ -1580,7 +1569,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTUSGSALDijous = function () {
@@ -1593,7 +1582,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTUSGSALDivendres = function () {
@@ -1606,7 +1595,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTUSGSALDissabte = function () {
@@ -1619,7 +1608,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTUSGSALDiumenge = function () {
@@ -1632,7 +1621,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             //Filtratge per operador BAIXBUS
@@ -1663,7 +1652,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawNITBUSDimarts = function () {
@@ -1676,7 +1665,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawNITBUSDimecres = function () {
@@ -1689,7 +1678,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawNITBUSDijous = function () {
@@ -1702,7 +1691,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawNITBUSDivendres = function () {
@@ -1715,7 +1704,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawNITBUSDissabte = function () {
@@ -1728,7 +1717,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawNITBUSDiumenge = function () {
@@ -1741,7 +1730,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             //Filtratge per operador BAIXBUS
@@ -1771,7 +1760,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawBAIXBUSDimarts = function () {
@@ -1784,7 +1773,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawBAIXBUSDimecres = function () {
@@ -1797,7 +1786,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawBAIXBUSDijous = function () {
@@ -1810,7 +1799,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawBAIXBUSDivendres = function () {
@@ -1823,7 +1812,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawBAIXBUSDissabte = function () {
@@ -1836,7 +1825,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawBAIXBUSDiumenge = function () {
@@ -1849,7 +1838,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
 
