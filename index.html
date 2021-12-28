@@ -296,7 +296,7 @@
         </div>
         <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
 
-        
+
         <p style="color:white; ">Dia de la setmana: <span id="demo" style="color:rgb(254, 255, 185)"></span></p>
     </div>
 
@@ -650,7 +650,11 @@
             function resetSlider() {
                 barra.value = 0;
                 output.innerHTML = '<strong>Selecciona dia</strong>';
+                playing = 0;
             }
+
+
+
 
 
 
@@ -659,7 +663,7 @@
             drawTMB = function () {
                 resetSlider();
                 selectedOperador = 'FMB';
-             //   mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                //   mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
@@ -882,7 +886,7 @@
             drawFGC = function () {
                 resetSlider();
                 selectedOperador = 'FGC';
-              //  mymap.setView([41.385243705090105, 2.1402139383833516], 10.5);
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 10.5);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FGC,
@@ -1103,7 +1107,7 @@
             drawROD = function () {
                 resetSlider();
                 selectedOperador = 'ROD';
-              //  mymap.setView([41.385243705090105, 2.1402139383833516], 10);
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 10);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_ROD,
@@ -1325,7 +1329,7 @@
                 resetSlider();
                 selectedOperador = 'TB';
                 neteja();
-              //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTB,
@@ -1433,7 +1437,7 @@
                 resetSlider();
                 selectedOperador = 'TRAM';
                 neteja();
-              //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTRA,
@@ -1541,7 +1545,7 @@
                 resetSlider();
                 selectedOperador = 'TUSGSAL';
                 neteja();
-               // mymap.setView([41.43764679984083, 2.2089849270448174], 12.5);
+                // mymap.setView([41.43764679984083, 2.2089849270448174], 12.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTU,
@@ -1648,7 +1652,7 @@
             drawNITBUS = function () {
                 resetSlider();
                 selectedOperador = 'NITBUS';
-               // mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                // mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 neteja();
 
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
@@ -1757,7 +1761,7 @@
             drawBAIXBUS = function () {
                 resetSlider();
                 selectedOperador = 'BAIXBUS';
-               // mymap.setView([41.34566652848349, 2.0632387923613758], 12);
+                // mymap.setView([41.34566652848349, 2.0632387923613758], 12);
                 neteja();
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -1865,304 +1869,312 @@
 
             var myInterval;
             var counter = 0;
+            var playing = 0;
+
             $('#play').on('click', function () {
+                if (playing == 0) {
+                    playing++;
+                    myInterval = setInterval(function () {
 
-                myInterval = setInterval(function () {
+                        barra.value++;
 
-                     barra.value++;
-
-                    if (counter >= 7) {
-                        barra.value = 1;
-                        counter = 0;
-                    }
-                   
-                    counter++;
-                    console.log(barra.value);
-
-                    if (barra.value == 0) {
-                        output.innerHTML = '<strong>Selecciona dia</strong>'
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMB();
-                        }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGC();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawROD();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTB();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAM();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSAL();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUS();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUS();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
+                        if (counter >= 7) {
+                            barra.value = 1;
                             counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
-
-                        }
-                    }
-
-                    else if (barra.value == 1) {
-                        output.innerHTML = 'Dilluns';
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMBDilluns();
-                        }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGCDilluns();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawRODDilluns();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTBDilluns();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAMDilluns();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSALDilluns();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUSDilluns();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUSDilluns();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
-                            counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
-
                         }
 
-                    }
-                    else if (barra.value == 2) {
-                        output.innerHTML = 'Dimarts';
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMBDimarts();
+                        counter++;
+                        console.log(barra.value);
+
+                        if (barra.value == 0) {
+                            output.innerHTML = '<strong>Selecciona dia</strong>'
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMB();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGC();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawROD();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTB();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAM();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSAL();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUS();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUS();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
                         }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGCDimarts();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawRODDimarts();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTBDimarts();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAMDimarts();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSALDimarts();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUSDimarts();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUSDimarts();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
-                            counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
+
+                        else if (barra.value == 1) {
+                            output.innerHTML = 'Dilluns';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDilluns();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDilluns();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDilluns();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDilluns();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDilluns();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDilluns();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDilluns();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDilluns();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
 
                         }
-                    }
-                    else if (barra.value == 3) {
-                        output.innerHTML = 'Dimecres';
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMBDimecres();
-                        }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGCDimecres();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawRODDimecres();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTBDimecres();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAMDimecres();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSALDimecres();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUSDimecres();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUSDimecres();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
-                            counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
+                        else if (barra.value == 2) {
+                            output.innerHTML = 'Dimarts';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDimarts();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDimarts();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDimarts();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDimarts();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDimarts();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDimarts();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDimarts();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDimarts();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
 
+                            }
                         }
-                    }
-                    else if (barra.value == 4) {
-                        output.innerHTML = 'Dijous';
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMBDijous();
-                        }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGCDijous();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawRODDijous();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTBDijous();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAMDijous();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSALDijous();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUSDijous();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUSDijous();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
-                            counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
+                        else if (barra.value == 3) {
+                            output.innerHTML = 'Dimecres';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDimecres();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDimecres();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDimecres();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDimecres();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDimecres();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDimecres();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDimecres();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDimecres();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
 
+                            }
                         }
-                    }
-                    else if (barra.value == 5) {
-                        output.innerHTML = 'Divendres';
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMBDivendres();
-                        }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGCDivendres();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawRODDivendres();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTBDivendres();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAMDivendres();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSALDivendres();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUSDivendres();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUSDivendres();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
-                            counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
+                        else if (barra.value == 4) {
+                            output.innerHTML = 'Dijous';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDijous();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDijous();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDijous();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDijous();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDijous();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDijous();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDijous();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDijous();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
 
+                            }
                         }
-                    }
-                    else if (barra.value == 6) {
-                        output.innerHTML = 'Dissabte';
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMBDissabte();
-                        }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGCDissabte();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawRODDissabte();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTBDissabte();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAMDissabte();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSALDissabte();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUSDissabte();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUSDissabte();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
-                            counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
+                        else if (barra.value == 5) {
+                            output.innerHTML = 'Divendres';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDivendres();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDivendres();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDivendres();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDivendres();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDivendres();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDivendres();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDivendres();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDivendres();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
 
+                            }
                         }
-                    }
-                    else if (barra.value == 7) {
-                        output.innerHTML = 'Diumenge';
-                        neteja();
-                        if (selectedOperador == 'FMB') {
-                            drawTMBDiumenge();
-                        }
-                        else if (selectedOperador == 'FGC') {
-                            drawFGCDiumenge();
-                        }
-                        else if (selectedOperador == 'ROD') {
-                            drawRODDiumenge();
-                        }
-                        else if (selectedOperador == 'TB') {
-                            drawTBDiumenge();
-                        }
-                        else if (selectedOperador == 'TRAM') {
-                            drawTRAMDiumenge();
-                        }
-                        else if (selectedOperador == 'TUSGSAL') {
-                            drawTUSGSALDiumenge();
-                        }
-                        else if (selectedOperador == 'BAIXBUS') {
-                            drawBAIXBUSDiumenge();
-                        }
-                        else if (selectedOperador == 'NITBUS') {
-                            drawNITBUSDiumenge();
-                        }
-                        else {
-                            clearInterval(myInterval);
-                            resetSlider();
-                            counter = 0;
-                            return alert('Selecciona una operadora per veure la informació');
+                        else if (barra.value == 6) {
+                            output.innerHTML = 'Dissabte';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDissabte();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDissabte();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDissabte();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDissabte();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDissabte();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDissabte();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDissabte();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDissabte();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
 
+                            }
                         }
-                    }
+                        else if (barra.value == 7) {
+                            output.innerHTML = 'Diumenge';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDiumenge();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDiumenge();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDiumenge();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDiumenge();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDiumenge();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDiumenge();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDiumenge();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDiumenge();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
 
-                }, 750);
+                            }
+                        }
+
+                    }, 750);
+                }
+                else {
+                    alert("La seqüència ja s'està reproduïnt")
+                }
+
 
             })
 
@@ -2171,6 +2183,9 @@
                 clearInterval(myInterval);
                 resetSlider();
                 counter = 0;
+                playing = 0;
+
+
                 if (selectedOperador == 'FMB') {
                     drawTMB();
                 }
@@ -2241,6 +2256,7 @@
                 }
 
                 else if (barra.value == 1) {
+                    counter = 1;
                     output.innerHTML = 'Dilluns';
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2274,6 +2290,7 @@
 
                 }
                 else if (barra.value == 2) {
+                    counter = 2;
                     output.innerHTML = 'Dimarts';
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2306,6 +2323,7 @@
                     }
                 }
                 else if (barra.value == 3) {
+                    counter = 3;
                     output.innerHTML = 'Dimecres';
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2338,6 +2356,7 @@
                     }
                 }
                 else if (barra.value == 4) {
+                    counter = 4;
                     output.innerHTML = 'Dijous';
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2370,6 +2389,7 @@
                     }
                 }
                 else if (barra.value == 5) {
+                    counter = 5;
                     output.innerHTML = 'Divendres';
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2402,6 +2422,7 @@
                     }
                 }
                 else if (barra.value == 6) {
+                    counter = 6;
                     output.innerHTML = 'Dissabte';
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2434,6 +2455,7 @@
                     }
                 }
                 else if (barra.value == 7) {
+                    counter = 7;
                     output.innerHTML = 'Diumenge';
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2527,159 +2549,193 @@
             //Rangs de valors per la tematització
 
             function getRadiusFMB(d) {
-                return d > 500 ? '18' :
-                    d > 243 ? '16' :
-                        d > 154 ? '14' :
-                            d > 125 ? '12' :
-                                d > 85 ? '10' :
-                                    d > 63 ? '8' :
-                                        d > 49 ? '6' :
-                                            d > 28 ? '4' :
-                                                d > 1 ? '2' :
-                                                    '1';
+                return d > 4500 ? '18' :
+                    d > 2500 ? '16' :
+                        d > 1500 ? '14' :
+                            d > 1000 ? '12' :
+                                d > 500 ? '10' :
+                                    d > 200 ? '8' :
+                                        d > 100 ? '6' :
+                                            d > 50 ? '5' :
+                                                d > 25 ? '4' :
+                                                    d > 10 ? '3' :
+                                                        d > 1 ? '2' :
+                                                            '1';
             }
 
             function getRadiusROD(d) {
-                return d > 200 ? '18' :
-                    d > 150 ? '16' :
-                        d > 100 ? '15' :
-                            d > 75 ? '14' :
-                                d > 50 ? '12' :
-                                    d > 25 ? '10' :
-                                        d > 15 ? '8' :
-                                            d > 10 ? '6' :
-                                                d > 1 ? '4' :
-                                                    '2';
+                return d > 4500 ? '18' :
+                    d > 2500 ? '16' :
+                        d > 1500 ? '14' :
+                            d > 1000 ? '12' :
+                                d > 500 ? '10' :
+                                    d > 200 ? '8' :
+                                        d > 100 ? '6' :
+                                            d > 50 ? '5' :
+                                                d > 25 ? '4' :
+                                                    d > 10 ? '3' :
+                                                        d > 1 ? '2' :
+                                                            '1';
             }
 
             function getRadiusFGC(d) {
-                return d > 200 ? '18' :
-                    d > 150 ? '16' :
-                        d > 100 ? '15' :
-                            d > 75 ? '14' :
-                                d > 50 ? '12' :
-                                    d > 25 ? '10' :
-                                        d > 15 ? '8' :
-                                            d > 10 ? '6' :
-                                                d > 1 ? '4' :
-                                                    '2';
+                return d > 4500 ? '18' :
+                    d > 2500 ? '16' :
+                        d > 1500 ? '14' :
+                            d > 1000 ? '12' :
+                                d > 500 ? '10' :
+                                    d > 200 ? '8' :
+                                        d > 100 ? '6' :
+                                            d > 50 ? '5' :
+                                                d > 25 ? '4' :
+                                                    d > 10 ? '3' :
+                                                        d > 1 ? '2' :
+                                                            '1';
             }
 
             function getOpacityTMB(d) {
-                return d > 384 ? '1' :
-                    d > 330 ? '0.9' :
-                        d > 275 ? '0.8' :
-                            d > 220 ? '0.7' :
-                                d > 165 ? '0.6' :
-                                    d > 111 ? '0.5' :
-                                        d > 56 ? '0.45' :
-                                            d > 1 ? '0.4' :
-                                                '0';
+                return d > 2500 ? '1' :
+                    d > 1500 ? '0.9' :
+                        d > 1000 ? '0.85' :
+                            d > 500 ? '0.8' :
+                                d > 200 ? '0.75' :
+                                    d > 100 ? '0.7' :
+                                        d > 50 ? '0.65' :
+                                            d > 25 ? '0.55' :
+                                                d > 10 ? '0.45' :
+                                                    d > 1 ? '0.35' :
+                                                        '0';
             }
 
             function getWeightTMB(d) {
-                return d > 384 ? '4' :
-                    d > 330 ? '3.5' :
-                        d > 275 ? '3' :
-                            d > 220 ? '2.5' :
-                                d > 165 ? '2' :
-                                    d > 111 ? '1.5' :
-                                        d > 56 ? '1' :
-                                            d > 1 ? '0.5' :
-                                                '0';
+                return d > 2500 ? '6' :
+                    d > 1500 ? '5' :
+                        d > 1000 ? '4' :
+                            d > 500 ? '3' :
+                                d > 200 ? '2.5' :
+                                    d > 100 ? '2' :
+                                        d > 50 ? '1.5' :
+                                            d > 25 ? '1' :
+                                                d > 10 ? '0.5' :
+                                                    d > 1 ? '0.25' :
+                                                        '0';
             }
 
             function getOpacityTUG(d) {
-                return d > 546 ? '1' :
-                    d > 455 ? '0.9' :
-                        d > 384 ? '0.8' :
-                            d > 224 ? '0.7' :
-                                d > 132 ? '0.6' :
-                                    d > 56 ? '0.5' :
-                                        d > 24 ? '0.45' :
-                                            d > 1 ? '0.4' :
-                                                '0';
+                return d > 2500 ? '1' :
+                    d > 1500 ? '0.9' :
+                        d > 1000 ? '0.85' :
+                            d > 500 ? '0.8' :
+                                d > 200 ? '0.75' :
+                                    d > 100 ? '0.7' :
+                                        d > 50 ? '0.65' :
+                                            d > 25 ? '0.55' :
+                                                d > 10 ? '0.45' :
+                                                    d > 1 ? '0.35' :
+                                                        '0';
             }
 
             function getWeightTUG(d) {
-                return d > 546 ? '4' :
-                    d > 455 ? '3.5' :
-                        d > 384 ? '3' :
-                            d > 224 ? '2.5' :
-                                d > 132 ? '2' :
-                                    d > 56 ? '1.5' :
-                                        d > 24 ? '1' :
-                                            d > 1 ? '0.5' :
-                                                '0';
+                return d > 2500 ? '6' :
+                    d > 1500 ? '5' :
+                        d > 1000 ? '4' :
+                            d > 500 ? '3' :
+                                d > 200 ? '2.5' :
+                                    d > 100 ? '2' :
+                                        d > 50 ? '1.5' :
+                                            d > 25 ? '1' :
+                                                d > 10 ? '0.5' :
+                                                    d > 1 ? '0.25' :
+                                                        '0';
             }
 
+
             function getOpacityNB(d) {
-                return d > 48 ? '1' :
-                    d > 40 ? '0.9' :
-                        d > 30 ? '0.8' :
-                            d > 25 ? '0.7' :
-                                d > 20 ? '0.6' :
-                                    d > 14 ? '0.5' :
-                                        d > 8 ? '0.45' :
-                                            d > 1 ? '0.4' :
-                                                '0';
+                return d > 2500 ? '1' :
+                    d > 1500 ? '0.9' :
+                        d > 1000 ? '0.85' :
+                            d > 500 ? '0.8' :
+                                d > 200 ? '0.75' :
+                                    d > 100 ? '0.7' :
+                                        d > 50 ? '0.65' :
+                                            d > 25 ? '0.55' :
+                                                d > 10 ? '0.45' :
+                                                    d > 1 ? '0.35' :
+                                                        '0';
             }
 
             function getWeightNB(d) {
-                return d > 48 ? '4' :
-                    d > 40 ? '3.5' :
-                        d > 30 ? '3' :
-                            d > 25 ? '2.5' :
-                                d > 20 ? '2' :
-                                    d > 14 ? '1.5' :
-                                        d > 8 ? '1' :
-                                            d > 1 ? '0.5' :
-                                                '0';
+                return d > 2500 ? '6' :
+                    d > 1500 ? '5' :
+                        d > 1000 ? '4' :
+                            d > 500 ? '3' :
+                                d > 200 ? '2.5' :
+                                    d > 100 ? '2' :
+                                        d > 50 ? '1.5' :
+                                            d > 25 ? '1' :
+                                                d > 10 ? '0.5' :
+                                                    d > 1 ? '0.25' :
+                                                        '0';
             }
 
+
             function getOpacityBB(d) {
-                return d > 1264 ? '1' :
-                    d > 408 ? '0.9' :
-                        d > 288 ? '0.8' :
-                            d > 198 ? '0.7' :
-                                d > 108 ? '0.6' :
-                                    d > 54 ? '0.5' :
-                                        d > 18 ? '0.45' :
-                                            d > 1 ? '0.4' :
-                                                '0';
+                return d > 2500 ? '1' :
+                    d > 1500 ? '0.9' :
+                        d > 1000 ? '0.85' :
+                            d > 500 ? '0.8' :
+                                d > 200 ? '0.75' :
+                                    d > 100 ? '0.7' :
+                                        d > 50 ? '0.65' :
+                                            d > 25 ? '0.55' :
+                                                d > 10 ? '0.45' :
+                                                    d > 1 ? '0.35' :
+                                                        '0';
             }
 
             function getWeightBB(d) {
-                return d > 1264 ? '4' :
-                    d > 408 ? '3.5' :
-                        d > 288 ? '3' :
-                            d > 198 ? '2.5' :
-                                d > 108 ? '2' :
-                                    d > 54 ? '1.5' :
-                                        d > 18 ? '1' :
-                                            d > 1 ? '0.5' :
-                                                '0';
+                return d > 2500 ? '6' :
+                    d > 1500 ? '5' :
+                        d > 1000 ? '4' :
+                            d > 500 ? '3' :
+                                d > 200 ? '2.5' :
+                                    d > 100 ? '2' :
+                                        d > 50 ? '1.5' :
+                                            d > 25 ? '1' :
+                                                d > 10 ? '0.5' :
+                                                    d > 1 ? '0.25' :
+                                                        '0';
             }
 
+
             function getOpacityTRAM(d) {
-                return d > 300 ? '1' :
-                    d > 275 ? '0.85' :
-                        d > 250 ? '0.7' :
-                            d > 150 ? '0.6' :
-                                d > 75 ? '0.5' :
-                                    d > 35 ? '0.4' :
-                                        '0';
+                return d > 2500 ? '1' :
+                    d > 1500 ? '0.9' :
+                        d > 1000 ? '0.85' :
+                            d > 500 ? '0.8' :
+                                d > 200 ? '0.75' :
+                                    d > 100 ? '0.7' :
+                                        d > 50 ? '0.65' :
+                                            d > 25 ? '0.55' :
+                                                d > 10 ? '0.45' :
+                                                    d > 1 ? '0.35' :
+                                                        '0';
             }
 
             function getWeightTRAM(d) {
-                return d > 300 ? '4' :
-                    d > 275 ? '3.5' :
-                        d > 250 ? '3' :
-                            d > 150 ? '2' :
-                                d > 75 ? '1' :
-                                    d > 35 ? '0.5' :
-                                        '0';
+                return d > 2500 ? '6' :
+                    d > 1500 ? '5' :
+                        d > 1000 ? '4' :
+                            d > 500 ? '3' :
+                                d > 200 ? '2.5' :
+                                    d > 100 ? '2' :
+                                        d > 50 ? '1.5' :
+                                            d > 25 ? '1' :
+                                                d > 10 ? '0.5' :
+                                                    d > 1 ? '0.25' :
+                                                        '0';
             }
+
 
             //Estil
 
