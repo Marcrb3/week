@@ -25,7 +25,7 @@
     <!-- nearest point -->
     <script src="https://unpkg.com/leaflet-knn@0.1.0/leaflet-knn.js"></script>
 
-    <!--multiselect-->
+    <!--bootstrap i jQuery-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -204,13 +204,14 @@
 
         /*Slider*/
         .slidecontainer {
-            width: 20em;
+
             position: absolute;
             width: 40%;
             bottom: 0;
             right: 0;
             padding: 10px;
             z-index: 100000;
+
         }
 
         .slider {
@@ -262,6 +263,23 @@
             padding: 2px;
             margin: 2px;
         }
+
+        i {
+            cursor: pointer;
+            padding-right: 0.5em;
+
+        }
+
+        i:hover,
+        i:after {
+            color: rgb(4, 143, 108) !important;
+        }
+
+        #controls {
+            position: relative;
+            right: 6em;
+            bottom: -1.5em;
+        }
     </style>
 
 
@@ -270,16 +288,16 @@
 <body>
 
     <!--Slider-->
+
     <div class="slidecontainer">
-        <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
         <div id="controls">
-            <button id="play">play</button>
-            <button id="pause">stop</button>
-
-
+            <a><i class="fa fa-play fa-2x" id="play" style="color:white;" title="Reprodueix"></i></a>
+            <a><i class="fa fa-stop fa-2x" id="pause" style="color:white;" title="Atura"></i></a>
         </div>
-        <br>
-        <p style="color:white">Dia de la setmana: <span id="demo" style="color:white"></span></p>
+        <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
+
+        
+        <p style="color:white; ">Dia de la setmana: <span id="demo" style="color:rgb(254, 255, 185)"></span></p>
     </div>
 
     <!--Sidebar-->
@@ -294,7 +312,7 @@
                 <li><a href="#profile" role="tab"><i class="fa fa-search" style="color: white;"></i></a></li>
 
 
-                
+
             </ul>
 
             <ul role="tablist">
@@ -321,8 +339,8 @@
                 <h1 class="sidebar-header" style="margin-bottom: 1em; text-align: center;">Mapa de validacions<span
                         class="sidebar-close"><i class="fa fa-times"></i></span>
                 </h1>
-                <p class="warning"><strong>Títol: T-Usual 5 dies</strong><br><br>
-                    <strong>Dia: 16/11/2021</strong>
+                <p class="warning"><strong>Validacions setmanals (15-21 Novembre)</strong><br><br>
+                    <strong>Títol: T-Usual 5 dies</strong>
                 </p>
                 <div class="card" style="width: 100%;" onclick=drawTMB()>
                     <img class="card-img-top" src="./templates/metro_dark.PNG" alt="">
@@ -375,7 +393,7 @@
 
             </div>
 
-            
+
         </div>
     </div>
 
@@ -635,12 +653,13 @@
             }
 
 
+
             //Filtratge per operador FMB
 
             drawTMB = function () {
                 resetSlider();
                 selectedOperador = 'FMB';
-                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+             //   mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
@@ -681,7 +700,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTMBDissabte = function () {
@@ -710,7 +729,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTMBDiumenge = function () {
@@ -739,7 +758,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTMBDimarts = function () {
@@ -768,7 +787,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTMBDimecres = function () {
@@ -797,7 +816,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTMBDijous = function () {
@@ -826,7 +845,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTMBDivendres = function () {
@@ -855,7 +874,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             //Filtratge per operador FGC
@@ -863,7 +882,7 @@
             drawFGC = function () {
                 resetSlider();
                 selectedOperador = 'FGC';
-                mymap.setView([41.385243705090105, 2.1402139383833516], 10.5);
+              //  mymap.setView([41.385243705090105, 2.1402139383833516], 10.5);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FGC,
@@ -902,7 +921,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawFGCDissabte = function () {
@@ -931,7 +950,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawFGCDiumenge = function () {
@@ -960,7 +979,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawFGCDimarts = function () {
@@ -989,7 +1008,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawFGCDimecres = function () {
@@ -1018,7 +1037,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawFGCDijous = function () {
@@ -1047,7 +1066,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawFGCDivendres = function () {
@@ -1076,7 +1095,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             //Filtratge per operador ROD
@@ -1084,7 +1103,7 @@
             drawROD = function () {
                 resetSlider();
                 selectedOperador = 'ROD';
-                mymap.setView([41.385243705090105, 2.1402139383833516], 10);
+              //  mymap.setView([41.385243705090105, 2.1402139383833516], 10);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_ROD,
@@ -1123,7 +1142,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawRODDissabte = function () {
@@ -1152,7 +1171,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawRODDiumenge = function () {
@@ -1181,7 +1200,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawRODDimarts = function () {
@@ -1210,7 +1229,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawRODDimecres = function () {
@@ -1239,7 +1258,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawRODDijous = function () {
@@ -1268,7 +1287,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawRODDivendres = function () {
@@ -1297,7 +1316,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             //Filtratge per operador TB
@@ -1306,7 +1325,7 @@
                 resetSlider();
                 selectedOperador = 'TB';
                 neteja();
-                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+              //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTB,
@@ -1327,7 +1346,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTBDimarts = function () {
@@ -1340,7 +1359,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTBDimecres = function () {
@@ -1353,7 +1372,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTBDijous = function () {
@@ -1366,7 +1385,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTBDivendres = function () {
@@ -1379,7 +1398,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTBDissabte = function () {
@@ -1392,7 +1411,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTBDiumenge = function () {
@@ -1405,7 +1424,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             //Filtratge per operador TRAM
@@ -1414,7 +1433,7 @@
                 resetSlider();
                 selectedOperador = 'TRAM';
                 neteja();
-                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+              //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTRA,
@@ -1435,7 +1454,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTRAMDimarts = function () {
@@ -1448,7 +1467,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTRAMDimecres = function () {
@@ -1461,7 +1480,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTRAMDijous = function () {
@@ -1474,7 +1493,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTRAMDivendres = function () {
@@ -1487,7 +1506,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTRAMDissabte = function () {
@@ -1500,7 +1519,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTRAMDiumenge = function () {
@@ -1513,7 +1532,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             //Filtratge per operador TUSGSAL
@@ -1522,7 +1541,7 @@
                 resetSlider();
                 selectedOperador = 'TUSGSAL';
                 neteja();
-                mymap.setView([41.43764679984083, 2.2089849270448174], 12.5);
+               // mymap.setView([41.43764679984083, 2.2089849270448174], 12.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTU,
@@ -1543,7 +1562,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTUSGSALDimarts = function () {
@@ -1556,7 +1575,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-               
+
             }
 
             drawTUSGSALDimecres = function () {
@@ -1569,7 +1588,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTUSGSALDijous = function () {
@@ -1582,7 +1601,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTUSGSALDivendres = function () {
@@ -1595,7 +1614,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTUSGSALDissabte = function () {
@@ -1608,7 +1627,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawTUSGSALDiumenge = function () {
@@ -1621,7 +1640,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             //Filtratge per operador BAIXBUS
@@ -1629,7 +1648,7 @@
             drawNITBUS = function () {
                 resetSlider();
                 selectedOperador = 'NITBUS';
-                mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+               // mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
                 neteja();
 
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
@@ -1652,7 +1671,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawNITBUSDimarts = function () {
@@ -1665,7 +1684,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawNITBUSDimecres = function () {
@@ -1678,7 +1697,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawNITBUSDijous = function () {
@@ -1691,7 +1710,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawNITBUSDivendres = function () {
@@ -1704,7 +1723,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawNITBUSDissabte = function () {
@@ -1717,7 +1736,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawNITBUSDiumenge = function () {
@@ -1730,7 +1749,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             //Filtratge per operador BAIXBUS
@@ -1738,7 +1757,7 @@
             drawBAIXBUS = function () {
                 resetSlider();
                 selectedOperador = 'BAIXBUS';
-                mymap.setView([41.34566652848349, 2.0632387923613758], 12);
+               // mymap.setView([41.34566652848349, 2.0632387923613758], 12);
                 neteja();
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -1760,7 +1779,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawBAIXBUSDimarts = function () {
@@ -1773,7 +1792,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawBAIXBUSDimecres = function () {
@@ -1786,7 +1805,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawBAIXBUSDijous = function () {
@@ -1799,7 +1818,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawBAIXBUSDivendres = function () {
@@ -1812,7 +1831,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawBAIXBUSDissabte = function () {
@@ -1825,7 +1844,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
             drawBAIXBUSDiumenge = function () {
@@ -1838,7 +1857,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                
+
             }
 
 
@@ -1850,14 +1869,14 @@
 
                 myInterval = setInterval(function () {
 
-                    barra.value++;
-                    counter++;
+                     barra.value++;
 
-                    if (counter > 7) {
+                    if (counter >= 7) {
                         barra.value = 1;
                         counter = 0;
                     }
-
+                   
+                    counter++;
                     console.log(barra.value);
 
                     if (barra.value == 0) {
@@ -2143,7 +2162,7 @@
                         }
                     }
 
-                }, 1000);
+                }, 750);
 
             })
 
