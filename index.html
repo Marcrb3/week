@@ -2949,35 +2949,55 @@
 
             function onEachFeature(feature, layer) {
 
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-
-                layer.on({
-                    mouseover: highlightFeature,
-                    mouseout: resetHighlight,
-                    click: zoomToFeature2
-                });
+                if (L.Browser.touch){
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                    }
+                else {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                }
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: zoomToFeature2
+                    });
+                
+                
 
             }
 
             function onEachFeature2(feature, layer) {
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>", { sticky: true });
+                if (L.Browser.touch){
                     layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
-                layer.on({
-                    mouseover: highlightFeatureL,
-                    mouseout: resetHighlightL,
-                    click: zoomToFeature
-                });
+                    }
+                else{
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
+                }
+                    layer.on({
+                        mouseover: highlightFeatureL,
+                        mouseout: resetHighlightL,
+                        click: zoomToFeature
+                    });
+                
+               
+
             }
 
             function onEachFeatureBus(feature, layer) {
-
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>", { sticky: true });
+                if (L.Browser.touch){
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                layer.on({
-                    click: zoomToFeature
-                });
-
+                    }
+                else{
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                }
+                   
+                     layer.on({
+                        click: zoomToFeature
+                    });
+               
+               
             }
 
         });
