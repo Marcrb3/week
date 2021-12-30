@@ -145,9 +145,9 @@
 
         .btn-primary {
             width: 100%;
-            background-color: #6c6e6e;
+            background-color: rgba(10, 10, 10, 0.65);
             border: none;
-            font-weight: bold;
+            font-size: 1.3em;
         }
 
         .btn-primary:hover,
@@ -160,11 +160,21 @@
         }
 
         .warning {
-            border: dotted 1px white;
-            text-align: center;
+            text-align: right;
+            font-size: 1.3em;
             padding-bottom: 1em;
             padding-top: 1em;
-            margin-right: 1em;
+            
+            color: white;
+        }
+
+        .warning2 {
+            text-align: right;
+            font-size: 1.3em;
+            padding-bottom: 1em;
+            padding-top: 1em;
+            padding-right: 1em;
+           
             color: white;
         }
 
@@ -182,18 +192,18 @@
 
 
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 3px;
         }
 
         /* Track */
         ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey;
+            box-shadow: inset 0 0 5px black;
             border-radius: 10px;
         }
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: rgb(100, 100, 100);
+            background: white;
             border-radius: 10px;
         }
 
@@ -206,20 +216,21 @@
         .slidecontainer {
 
             position: absolute;
-            width: 40%;
-            bottom: 0;
+            width: 50%;
+            bottom: 1em;
             right: 0;
             padding: 10px;
-            z-index: 100000;
+            z-index: 1990;
 
         }
 
         .slider {
             -webkit-appearance: none;
             width: 100%;
-            height: 15px;
+            height: 3px;
             border-radius: 5px;
-            background: #818181;
+            color: white;
+            background: white;
             outline: none;
             opacity: 0.7;
             -webkit-transition: .2s;
@@ -234,18 +245,18 @@
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 25px;
-            height: 25px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            background: #04AA6D;
+            background: white;
             cursor: pointer;
         }
 
         .slider::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            background: #04AA6D;
+            background: white;
             cursor: pointer;
         }
 
@@ -272,7 +283,7 @@
 
         i:hover,
         i:after {
-            color: rgb(4, 143, 108) !important;
+            color: white !important;
         }
 
         #controls {
@@ -280,6 +291,61 @@
             right: 6em;
             bottom: -1.5em;
         }
+
+        .cap {
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .info {
+            position: absolute;
+            bottom: 1em;
+            right: 0;
+            padding: 10px;
+            z-index: 1990;
+        }
+
+        .ajuda {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            top: 1em;
+            right: 1em;
+            z-index: 1990;
+            position: absolute;
+        }
+        .ajuda:hover{
+            background-color: #025a3a !important;
+        }
+       #infobtn{
+           padding-left: 5px;
+       }
+       #infobtn:hover{
+           color: white !important;
+       }
+       #play:hover,
+       #play:after{
+        color:rgb(4, 143, 108) !important;
+       }
+       #pause:hover,
+       #pause:after{
+        color:rgb(4, 143, 108) !important;
+       }
+       .modal-title{
+           font-size: 1.5em;
+           font-weight: bold;
+       }
+       .modal{
+           z-index: 100000;
+       }
+        
     </style>
 
 
@@ -287,17 +353,43 @@
 
 <body>
 
-    <!--Slider-->
+    <!-- Modal info -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Informació</h5>
+          
+           
+        </div>
+        <div class="modal-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tanca</button>
+            
+          </div>
+      </div>
+    </div>
+  </div>
 
+    <!--Informació-->
+    
+        <button class="ajuda" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-info" id="infobtn"></i></button>
+   
+    <!--Slider-->
+    <div class="info">
+        <p class="warning"> 15/11/21 - 21/11/2021<br>
+            Validacions T-Usual 5 dies
+        </p>
+        <p class="warning2"><span id="demo" style="color:white"></span></p>
+    </div>
     <div class="slidecontainer">
         <div id="controls">
             <a><i class="fa fa-play fa-2x" id="play" style="color:white;" title="Reprodueix"></i></a>
             <a><i class="fa fa-stop fa-2x" id="pause" style="color:white;" title="Atura"></i></a>
         </div>
         <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
-
-
-        <p style="color:white; ">Dia de la setmana: <span id="demo" style="color:rgb(254, 255, 185)"></span></p>
     </div>
 
     <!--Sidebar-->
@@ -306,8 +398,11 @@
         <!-- Categories -->
         <div class="sidebar-tabs">
             <ul role="tablist">
+                <li><a href="#" class="cap"></a></li>
 
-                <li><a href="#messages" role="tab"><i class="fa fa-map" style="color: white;"></i></a></li>
+                <li><a href="#train" role="tab"><i class="fa fa-train" style="color: white;"></i></a></li>
+
+                <li><a href="#messages" role="tab"><i class="fa fa-bus" style="color: white;"></i></a></li>
 
                 <li><a href="#profile" role="tab"><i class="fa fa-search" style="color: white;"></i></a></li>
 
@@ -315,10 +410,6 @@
 
             </ul>
 
-            <ul role="tablist">
-                <li><a href="mailto:marcrb3@gmail.com" role="tab"><i class="fa fa-question"
-                            style="color: white;"></i></a></li>
-            </ul>
         </div>
 
         <!-- Tab panes -->
@@ -328,20 +419,22 @@
                 <h1 class="sidebar-header" style="text-align: center;">Cerca<span class="sidebar-close"><i
                             class="fa fa-times"></i></span>
                 </h1>
-                <p style="margin-top: 1em; font-size: 1.2em; color: white;"><strong>Introdueix una adreça, municipi,
+                <p style="margin: 1em; font-size: 1.2em; color: white;"><strong>Introdueix una adreça, municipi,
                         codi postal o
                         topònim.</strong></p>
 
 
             </div>
 
-            <div class="sidebar-pane" id="messages">
-                <h1 class="sidebar-header" style="margin-bottom: 1em; text-align: center;">Mapa de validacions<span
+            <div class="sidebar-pane" id="train">
+                <h1 class="sidebar-header" style="text-align: center;">Operadors de transport<span
                         class="sidebar-close"><i class="fa fa-times"></i></span>
                 </h1>
-                <p class="warning"><strong>Validacions setmanals (15-21 Novembre)</strong><br><br>
-                    <strong>Títol: T-Usual 5 dies</strong>
-                </p>
+                <h1 class="sidebar-header3" style="top:1em;">Ferroviari
+            </h1>
+            <h1 class="sidebar-header2" style="top:1em;" onclick=openBus()>Viari + TRAM
+            </h1><br>
+
                 <div class="card" style="width: 100%;" onclick=drawTMB()>
                     <img class="card-img-top" src="./templates/metro_dark.PNG" alt="">
                     <div class="card-body">
@@ -360,6 +453,19 @@
                         <a onclick=drawROD() class="btn btn-primary">Rodalies</a>
                     </div>
                 </div>
+
+            </div>
+
+            <div class="sidebar-pane" id="messages">
+                <h1 class="sidebar-header" style="text-align: center;">Operadors de transport<span
+                    class="sidebar-close"><i class="fa fa-times"></i></span>
+            </h1>
+            <h1 class="sidebar-header2" style="top:1em;" onclick=openTrain()>Ferroviari
+            </h1>
+        <h1 class="sidebar-header3" style="top:1em;">Viari + TRAM
+        </h1><br>
+
+
                 <div class="card" style="width: 100%;" onclick=drawTB()>
                     <img class="card-img-top" src="./templates/tb_dark.PNG" alt="">
                     <div class="card-body">
@@ -542,10 +648,22 @@
                 ],
             }).setView([41.385243705090105, 2.1402139383833516], 11.5);
 
+            //sidebar
+
             var sidebar = L.control.sidebar('sidebar', {
                 position: 'left'
             }).addTo(mymap);
-            sidebar.open('messages');
+            sidebar.open('train');
+
+            //obrir seccions
+
+            openTrain = function (){
+                sidebar.open('train');
+            }
+            openBus = function () {
+                sidebar.open('messages');
+            }
+
 
             var Topo = L.mapboxGL({
                 style: 'mapbox://styles/marcrb3/cjsu9je764ne51fn719pub5lu',
@@ -2949,55 +3067,55 @@
 
             function onEachFeature(feature, layer) {
 
-                if (L.Browser.touch){
+                if (L.Browser.touch) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                    }
+                }
                 else {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
                 }
-                    layer.on({
-                        mouseover: highlightFeature,
-                        mouseout: resetHighlight,
-                        click: zoomToFeature2
-                    });
-                
-                
+                layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
+                    click: zoomToFeature2
+                });
+
+
 
             }
 
             function onEachFeature2(feature, layer) {
-                if (L.Browser.touch){
+                if (L.Browser.touch) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
-                    }
-                else{
+                }
+                else {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
                 }
-                    layer.on({
-                        mouseover: highlightFeatureL,
-                        mouseout: resetHighlightL,
-                        click: zoomToFeature
-                    });
-                
-               
+                layer.on({
+                    mouseover: highlightFeatureL,
+                    mouseout: resetHighlightL,
+                    click: zoomToFeature
+                });
+
+
 
             }
 
             function onEachFeatureBus(feature, layer) {
-                if (L.Browser.touch){
+                if (L.Browser.touch) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                    }
-                else{
+                }
+                else {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
                 }
-                   
-                     layer.on({
-                        click: zoomToFeature
-                    });
-               
-               
+
+                layer.on({
+                    click: zoomToFeature
+                });
+
+
             }
 
         });
