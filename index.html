@@ -164,7 +164,7 @@
             font-size: 1.3em;
             padding-bottom: 1em;
             padding-top: 1em;
-            
+
             color: white;
         }
 
@@ -174,7 +174,7 @@
             padding-bottom: 1em;
             padding-top: 1em;
             padding-right: 1em;
-           
+
             color: white;
         }
 
@@ -321,30 +321,63 @@
             z-index: 1990;
             position: absolute;
         }
-        .ajuda:hover{
+
+        .ajuda:hover {
             background-color: #025a3a !important;
         }
-       #infobtn{
-           padding-left: 5px;
-       }
-       #infobtn:hover{
-           color: white !important;
-       }
-       #play:hover,
-       #play:after{
-        color:rgb(4, 143, 108) !important;
-       }
-       #pause:hover,
-       #pause:after{
-        color:rgb(4, 143, 108) !important;
-       }
-       .modal-title{
-           font-size: 1.5em;
-           font-weight: bold;
-       }
-       .modal{
-           z-index: 100000;
-       }
+
+        #infobtn {
+            padding-left: 5px;
+        }
+
+        #infobtn:hover {
+            color: white !important;
+        }
+
+        #play:hover,
+        #play:after {
+            color: rgb(4, 143, 108) !important;
+        }
+
+        #pause:hover,
+        #pause:after {
+            color: rgb(4, 143, 108) !important;
+        }
+
+        .modal-title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .modal {
+            z-index: 100000;
+        }
+
+        .carousel-control.left,
+        .carousel-control.right {
+            background-image: none;
+            color: black;
+        }
+        .carrussel{
+            text-align: center;
+            margin-left: 5em;
+            margin-right: 5em;
+
+        }
+        .contacte{
+            font-size: 1.5em;
+           text-align: center;
+           margin-bottom: 1em;
+           font-weight: bolder;
+        }
+        .fa.fa-envelope.mt-4.fa-2x:hover,
+        .fa.fa-envelope.mt-4.fa-2x:after {
+            color: grey !important;
+        }
+        .fa.fa-phone.mt-4.fa-2x:hover,
+        .fa.fa-phone.mt-4.fa-2x:after {
+            color: grey !important;
+        }
         
     </style>
 
@@ -352,31 +385,82 @@
 </head>
 
 <body>
+    
 
     <!-- Modal info -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Informació</h5>
-          
-           
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center;">Informació i contacte</h5>
+
+                </div>
+                <div class="modal-body">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
+                        data-interval="false">
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <p class="carrussel"> <strong>Què és?</strong> <br><br> Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+
+                            </div>
+                            <div class="item">
+                                <p class="carrussel"> <strong>Com funciona?</strong> <br><br> Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+
+                            </div>
+                            <div class="item">
+                                
+                                <div class="col-md-12 text-center">
+                                    <ul class="list-unstyled mb-0">
+                                        <li ><a href="mailto:marc.roca@socmobilitat.cat"><i class="fa fa-envelope mt-4 fa-2x" style="margin-bottom: 0.3em; color:black"></i></a>
+                                            <p>marc.roca@socmobilitat.cat</p>
+                                        </li>
+                                        <br>
+                                        <li><a href="tel:930017077"><i class="fa fa-phone mt-4 fa-2x" style="margin-bottom: 0.3em; color:black"></i></a>
+                                            <p>+ 34 93 001 70 77</p>
+                                        </li>
+                        
+                                        
+                                    </ul>
+                                </div>                               
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                            data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                            data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tanca</button>
+
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tanca</button>
-            
-          </div>
-      </div>
     </div>
-  </div>
 
     <!--Informació-->
-    
-        <button class="ajuda" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-info" id="infobtn"></i></button>
-   
+
+    <button class="ajuda" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-info"
+            id="infobtn"></i></button>
+
     <!--Slider-->
     <div class="info">
         <p class="warning"> 15/11/21 - 21/11/2021<br>
@@ -431,9 +515,9 @@
                         class="sidebar-close"><i class="fa fa-times"></i></span>
                 </h1>
                 <h1 class="sidebar-header3" style="top:1em;">Ferroviari
-            </h1>
-            <h1 class="sidebar-header2" style="top:1em;" onclick=openBus()>Viari + TRAM
-            </h1><br>
+                </h1>
+                <h1 class="sidebar-header2" style="top:1em;" onclick=openBus()>Viari + TRAM
+                </h1><br>
 
                 <div class="card" style="width: 100%;" onclick=drawTMB()>
                     <img class="card-img-top" src="./templates/metro_dark.PNG" alt="">
@@ -458,12 +542,12 @@
 
             <div class="sidebar-pane" id="messages">
                 <h1 class="sidebar-header" style="text-align: center;">Operadors de transport<span
-                    class="sidebar-close"><i class="fa fa-times"></i></span>
-            </h1>
-            <h1 class="sidebar-header2" style="top:1em;" onclick=openTrain()>Ferroviari
-            </h1>
-        <h1 class="sidebar-header3" style="top:1em;">Viari + TRAM
-        </h1><br>
+                        class="sidebar-close"><i class="fa fa-times"></i></span>
+                </h1>
+                <h1 class="sidebar-header2" style="top:1em;" onclick=openTrain()>Ferroviari
+                </h1>
+                <h1 class="sidebar-header3" style="top:1em;">Viari + TRAM
+                </h1><br>
 
 
                 <div class="card" style="width: 100%;" onclick=drawTB()>
@@ -515,62 +599,15 @@
         var selectedDia = parseInt($('#myRange').val());
         var selectedOperador;
 
-        var dilluns = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_dilluns.geojson",
+        var val7 = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/test7.geojson",
             dataType: "json",
-            success: console.log("Dilluns carregat correctament."),
+            success: console.log("Ferroviari carregat correctament."),
             error: function (xhr) {
                 alert(xhr.statusText)
             }
         })
-        var dimarts = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_dimarts.geojson",
-            dataType: "json",
-            success: console.log("Dimarts carregat correctament."),
-            error: function (xhr) {
-                alert(xhr.statusText)
-            }
-        })
-        var dimecres = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_dimecres.geojson",
-            dataType: "json",
-            success: console.log("Dimecres carregat correctament."),
-            error: function (xhr) {
-                alert(xhr.statusText)
-            }
-        })
-        var dijous = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_dijous.geojson",
-            dataType: "json",
-            success: console.log("Dijous carregat correctament."),
-            error: function (xhr) {
-                alert(xhr.statusText)
-            }
-        })
-        var divendres = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_divendres.geojson",
-            dataType: "json",
-            success: console.log("Divendres carregat correctament."),
-            error: function (xhr) {
-                alert(xhr.statusText)
-            }
-        })
-        var dissabte = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_dissabte.geojson",
-            dataType: "json",
-            success: console.log("Dissabte carregat correctament."),
-            error: function (xhr) {
-                alert(xhr.statusText)
-            }
-        })
-        var diumenge = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_diumenge.geojson",
-            dataType: "json",
-            success: console.log("Diumenge carregat correctament."),
-            error: function (xhr) {
-                alert(xhr.statusText)
-            }
-        })
+
         var linies = $.ajax({
             url: "https://raw.githubusercontent.com/Marcrb3/val/main/dades/ferroviari.geojson",
             dataType: "json",
@@ -636,7 +673,7 @@
             }
         })
 
-        $.when(linies, dilluns, dimarts, dimecres, dijous, divendres, dissabte, diumenge, val_bus_dilluns, val_bus_dimarts, val_bus_dimecres, val_bus_dijous, val_bus_divendres, val_bus_dissabte, val_bus_diumenge).done(function () {
+        $.when(linies, val7, val_bus_dilluns, val_bus_dimarts, val_bus_dimecres, val_bus_dijous, val_bus_divendres, val_bus_dissabte, val_bus_diumenge).done(function () {
 
             mymap = L.map('mapid', {
                 minZoom: 9,
@@ -657,7 +694,7 @@
 
             //obrir seccions
 
-            openTrain = function (){
+            openTrain = function () {
                 sidebar.open('train');
             }
             openBus = function () {
@@ -707,19 +744,7 @@
 
             //Carreguem les capes al iniciar el mapa
 
-            kyDilluns = L.geoJSON(dilluns.responseJSON);
-
-            kyDimarts = L.geoJSON(dimarts.responseJSON);
-
-            kyDimecres = L.geoJSON(dimecres.responseJSON);
-
-            kyDijous = L.geoJSON(dijous.responseJSON);
-
-            kyDivendres = L.geoJSON(divendres.responseJSON);
-
-            kyDissabte = L.geoJSON(dissabte.responseJSON);
-
-            kyDiumenge = L.geoJSON(diumenge.responseJSON);
+            kyVal7 = L.geoJSON(val7.responseJSON);
 
             kyAMB = L.geoJSON(linies.responseJSON);
 
@@ -772,10 +797,6 @@
             }
 
 
-
-
-
-
             //Filtratge per operador FMB
 
             drawTMB = function () {
@@ -805,12 +826,12 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                kyDilluns = L.geoJSON(dilluns.responseJSON, {
+                kyDilluns = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFMB(feature.properties.val),
+                            radius: getRadius(feature.properties.v010122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -834,12 +855,12 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                kyDissabte = L.geoJSON(dissabte.responseJSON, {
+                kyDissabte = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFMB(feature.properties.val),
+                            radius: getRadius(feature.properties.v060122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -863,12 +884,12 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                kyDiumenge = L.geoJSON(diumenge.responseJSON, {
+                kyDiumenge = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFMB(feature.properties.val),
+                            radius: getRadius(feature.properties.v070122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -892,12 +913,12 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                kyDimarts = L.geoJSON(dimarts.responseJSON, {
+                kyDimarts = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFMB(feature.properties.val),
+                            radius: getRadius(feature.properties.v020122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -921,12 +942,12 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                kyDimecres = L.geoJSON(dimecres.responseJSON, {
+                kyDimecres = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFMB(feature.properties.val),
+                            radius: getRadius(feature.properties.v030122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -950,12 +971,12 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                kyDijous = L.geoJSON(dijous.responseJSON, {
+                kyDijous = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFMB(feature.properties.val),
+                            radius: getRadius(feature.properties.v040122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -979,12 +1000,12 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                kyDivendres = L.geoJSON(divendres.responseJSON, {
+                kyDivendres = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFMB(feature.properties.val),
+                            radius: getRadius(feature.properties.v050122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1026,12 +1047,12 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                kyDilluns = L.geoJSON(dilluns.responseJSON, {
+                kyDilluns = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFGC(feature.properties.val),
+                            radius: getRadius(feature.properties.v010122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1055,12 +1076,12 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                kyDissabte = L.geoJSON(dissabte.responseJSON, {
+                kyDissabte = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFGC(feature.properties.val),
+                            radius: getRadius(feature.properties.v060122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1084,12 +1105,12 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                kyDiumenge = L.geoJSON(diumenge.responseJSON, {
+                kyDiumenge = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFGC(feature.properties.val),
+                            radius: getRadius(feature.properties.v070122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1113,12 +1134,12 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                kyDimarts = L.geoJSON(dimarts.responseJSON, {
+                kyDimarts = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFGC(feature.properties.val),
+                            radius: getRadius(feature.properties.v020122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1142,12 +1163,12 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                kyDimecres = L.geoJSON(dimecres.responseJSON, {
+                kyDimecres = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFGC(feature.properties.val),
+                            radius: getRadius(feature.properties.v030122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1171,12 +1192,12 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                kyDijous = L.geoJSON(dijous.responseJSON, {
+                kyDijous = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFGC(feature.properties.val),
+                            radius: getRadius(feature.properties.v040122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1200,12 +1221,12 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                kyDivendres = L.geoJSON(divendres.responseJSON, {
+                kyDivendres = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusFGC(feature.properties.val),
+                            radius: getRadius(feature.properties.v050122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1247,12 +1268,12 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                kyDilluns = L.geoJSON(dilluns.responseJSON, {
+                kyDilluns = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusROD(feature.properties.val),
+                            radius: getRadius(feature.properties.v010122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1276,12 +1297,12 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                kyDissabte = L.geoJSON(dissabte.responseJSON, {
+                kyDissabte = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusROD(feature.properties.val),
+                            radius: getRadius(feature.properties.v060122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1305,12 +1326,12 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                kyDiumenge = L.geoJSON(diumenge.responseJSON, {
+                kyDiumenge = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusROD(feature.properties.val),
+                            radius: getRadius(feature.properties.v070122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1334,12 +1355,12 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                kyDimarts = L.geoJSON(dimarts.responseJSON, {
+                kyDimarts = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusROD(feature.properties.val),
+                            radius: getRadius(feature.properties.v020122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1363,12 +1384,12 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                kyDimecres = L.geoJSON(dimecres.responseJSON, {
+                kyDimecres = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusROD(feature.properties.val),
+                            radius: getRadius(feature.properties.v030122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1392,12 +1413,12 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                kyDijous = L.geoJSON(dijous.responseJSON, {
+                kyDijous = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusROD(feature.properties.val),
+                            radius: getRadius(feature.properties.v040122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -1421,12 +1442,12 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                kyDivendres = L.geoJSON(divendres.responseJSON, {
+                kyDivendres = L.geoJSON(val7.responseJSON, {
                     onEachFeature: onEachFeature,
                     style: style,
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: getRadiusROD(feature.properties.val),
+                            radius: getRadius(feature.properties.v050122),
                             fillColor: "white",
                             color: "#000",
                             weight: 1,
@@ -2666,7 +2687,7 @@
 
             //Rangs de valors per la tematització
 
-            function getRadiusFMB(d) {
+            function getRadius(d) {
                 return d > 4500 ? '18' :
                     d > 2500 ? '16' :
                         d > 1500 ? '14' :
@@ -2681,37 +2702,8 @@
                                                             '1';
             }
 
-            function getRadiusROD(d) {
-                return d > 4500 ? '18' :
-                    d > 2500 ? '16' :
-                        d > 1500 ? '14' :
-                            d > 1000 ? '12' :
-                                d > 500 ? '10' :
-                                    d > 200 ? '8' :
-                                        d > 100 ? '6' :
-                                            d > 50 ? '5' :
-                                                d > 25 ? '4' :
-                                                    d > 10 ? '3' :
-                                                        d > 1 ? '2' :
-                                                            '1';
-            }
 
-            function getRadiusFGC(d) {
-                return d > 4500 ? '18' :
-                    d > 2500 ? '16' :
-                        d > 1500 ? '14' :
-                            d > 1000 ? '12' :
-                                d > 500 ? '10' :
-                                    d > 200 ? '8' :
-                                        d > 100 ? '6' :
-                                            d > 50 ? '5' :
-                                                d > 25 ? '4' :
-                                                    d > 10 ? '3' :
-                                                        d > 1 ? '2' :
-                                                            '1';
-            }
-
-            function getOpacityTMB(d) {
+            function getOpacity(d) {
                 return d > 2500 ? '1' :
                     d > 1500 ? '0.9' :
                         d > 1000 ? '0.85' :
@@ -2725,122 +2717,7 @@
                                                         '0';
             }
 
-            function getWeightTMB(d) {
-                return d > 2500 ? '6' :
-                    d > 1500 ? '5' :
-                        d > 1000 ? '4' :
-                            d > 500 ? '3' :
-                                d > 200 ? '2.5' :
-                                    d > 100 ? '2' :
-                                        d > 50 ? '1.5' :
-                                            d > 25 ? '1' :
-                                                d > 10 ? '0.5' :
-                                                    d > 1 ? '0.25' :
-                                                        '0';
-            }
-
-            function getOpacityTUG(d) {
-                return d > 2500 ? '1' :
-                    d > 1500 ? '0.9' :
-                        d > 1000 ? '0.85' :
-                            d > 500 ? '0.8' :
-                                d > 200 ? '0.75' :
-                                    d > 100 ? '0.7' :
-                                        d > 50 ? '0.65' :
-                                            d > 25 ? '0.55' :
-                                                d > 10 ? '0.45' :
-                                                    d > 1 ? '0.35' :
-                                                        '0';
-            }
-
-            function getWeightTUG(d) {
-                return d > 2500 ? '6' :
-                    d > 1500 ? '5' :
-                        d > 1000 ? '4' :
-                            d > 500 ? '3' :
-                                d > 200 ? '2.5' :
-                                    d > 100 ? '2' :
-                                        d > 50 ? '1.5' :
-                                            d > 25 ? '1' :
-                                                d > 10 ? '0.5' :
-                                                    d > 1 ? '0.25' :
-                                                        '0';
-            }
-
-
-            function getOpacityNB(d) {
-                return d > 2500 ? '1' :
-                    d > 1500 ? '0.9' :
-                        d > 1000 ? '0.85' :
-                            d > 500 ? '0.8' :
-                                d > 200 ? '0.75' :
-                                    d > 100 ? '0.7' :
-                                        d > 50 ? '0.65' :
-                                            d > 25 ? '0.55' :
-                                                d > 10 ? '0.45' :
-                                                    d > 1 ? '0.35' :
-                                                        '0';
-            }
-
-            function getWeightNB(d) {
-                return d > 2500 ? '6' :
-                    d > 1500 ? '5' :
-                        d > 1000 ? '4' :
-                            d > 500 ? '3' :
-                                d > 200 ? '2.5' :
-                                    d > 100 ? '2' :
-                                        d > 50 ? '1.5' :
-                                            d > 25 ? '1' :
-                                                d > 10 ? '0.5' :
-                                                    d > 1 ? '0.25' :
-                                                        '0';
-            }
-
-
-            function getOpacityBB(d) {
-                return d > 2500 ? '1' :
-                    d > 1500 ? '0.9' :
-                        d > 1000 ? '0.85' :
-                            d > 500 ? '0.8' :
-                                d > 200 ? '0.75' :
-                                    d > 100 ? '0.7' :
-                                        d > 50 ? '0.65' :
-                                            d > 25 ? '0.55' :
-                                                d > 10 ? '0.45' :
-                                                    d > 1 ? '0.35' :
-                                                        '0';
-            }
-
-            function getWeightBB(d) {
-                return d > 2500 ? '6' :
-                    d > 1500 ? '5' :
-                        d > 1000 ? '4' :
-                            d > 500 ? '3' :
-                                d > 200 ? '2.5' :
-                                    d > 100 ? '2' :
-                                        d > 50 ? '1.5' :
-                                            d > 25 ? '1' :
-                                                d > 10 ? '0.5' :
-                                                    d > 1 ? '0.25' :
-                                                        '0';
-            }
-
-
-            function getOpacityTRAM(d) {
-                return d > 2500 ? '1' :
-                    d > 1500 ? '0.9' :
-                        d > 1000 ? '0.85' :
-                            d > 500 ? '0.8' :
-                                d > 200 ? '0.75' :
-                                    d > 100 ? '0.7' :
-                                        d > 50 ? '0.65' :
-                                            d > 25 ? '0.55' :
-                                                d > 10 ? '0.45' :
-                                                    d > 1 ? '0.35' :
-                                                        '0';
-            }
-
-            function getWeightTRAM(d) {
+            function getWeight(d) {
                 return d > 2500 ? '6' :
                     d > 1500 ? '5' :
                         d > 1000 ? '4' :
@@ -2879,8 +2756,8 @@
             }
             function styleTMB(feature) {
                 return {
-                    weight: getWeightTMB(feature.properties.val),
-                    opacity: getOpacityTMB(feature.properties.val),
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
                     color: 'red',
                     dashArray: '',
                     fillOpacity: 1,
@@ -2891,8 +2768,8 @@
 
             function styleTUG(feature) {
                 return {
-                    weight: getWeightTUG(feature.properties.val),
-                    opacity: getOpacityTUG(feature.properties.val),
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
                     color: '#FFCC00',
                     dashArray: '',
                     fillOpacity: 1,
@@ -2910,8 +2787,8 @@
 
             function styleNB(feature) {
                 return {
-                    weight: getWeightNB(feature.properties.val),
-                    opacity: getOpacityNB(feature.properties.val),
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
                     color: '#3366CC',
                     dashArray: '',
                     fillOpacity: 1,
@@ -2929,8 +2806,8 @@
 
             function styleBB(feature) {
                 return {
-                    weight: getWeightBB(feature.properties.val),
-                    opacity: getOpacityBB(feature.properties.val),
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
                     color: '#FFCC00',
                     dashArray: '',
                     fillOpacity: 1,
@@ -2948,8 +2825,8 @@
 
             function styleTRAM(feature) {
                 return {
-                    weight: getWeightTRAM(feature.properties.val),
-                    opacity: getOpacityTRAM(feature.properties.val),
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
                     color: 'rgb(4, 143, 108)',
                     dashArray: '',
                     fillOpacity: 1,
@@ -3067,13 +2944,31 @@
 
             function onEachFeature(feature, layer) {
 
-                if (L.Browser.touch) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                if (barra.value == 0) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "</h5>");
                 }
-                else {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                else if (barra.value == 1) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v010122 + "</h5>");
                 }
+                else if (barra.value == 2) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v020122 + "</h5>");
+                }
+                else if (barra.value == 3) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v030122 + "</h5>");
+                }
+                else if (barra.value == 4) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v040122 + "</h5>");
+                }
+                else if (barra.value == 5) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v050122 + "</h5>");
+                }
+                else if (barra.value == 6) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v060122 + "</h5>");
+                }
+                else if (barra.value == 7) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v070122 + "</h5>");
+                }
+
                 layer.on({
                     mouseover: highlightFeature,
                     mouseout: resetHighlight,
