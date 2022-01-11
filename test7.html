@@ -1,0 +1,3079 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+
+<head>
+    <title>Validacions T-Mobilitat</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="leaflet-sidebar_dark.js"></script>
+    <!-- <script src="https://raw.github.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.min.js"></script> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!--Sidebar-->
+    <link rel="stylesheet" href="leaflet-sidebar_dark.css" />
+
+    <!-- Mapbox GL -->
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css" rel='stylesheet' />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
+    <script src="https://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
+
+    <!-- nearest point -->
+    <script src="https://unpkg.com/leaflet-knn@0.1.0/leaflet-knn.js"></script>
+
+    <!--bootstrap i jQuery-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!--Locate Control-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"
+        charset="utf-8"></script>
+
+    <!--Geocoder -->
+    <script src="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.js"></script>
+    <link rel="stylesheet"
+        href="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <!-- Easy Button -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+
+    <!--Estils-->
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        html,
+        body,
+        #mapid {
+            height: 100%;
+            font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+        }
+
+        #container {
+            width: 100%;
+        }
+
+        .leaflet-control-layers-toggle:after {
+
+            color: rgb(26, 24, 24);
+            font-weight: bold;
+            font-size: 14px;
+            padding-right: 50px;
+        }
+
+        .leaflet-control-layers-toggle {
+            width: auto;
+            background-position: 10px 50%;
+            text-decoration: none;
+            line-height: 36px;
+            padding-right: 50px;
+        }
+
+        .leaflet-control-container .leaflet-routing-container-hide {
+            display: none;
+        }
+
+        .barra,
+        .btn-group {
+            z-index: 10000;
+        }
+
+        .barra {
+            background: white;
+            border-radius: 5px;
+
+            z-index: 10000;
+            position: relative;
+        }
+
+
+        #Clar {
+            background-color: rgb(236, 234, 234);
+            color: rgb(22, 22, 22);
+            font-weight: bolder;
+            width: 80%;
+            position: absolute;
+            z-index: 10000;
+            text-align: center;
+            margin-top: 1em;
+            margin-left: 2em;
+        }
+
+        #Clar:hover,
+        #Clar:after {
+            background-color: rgb(156, 156, 156);
+            color: rgb(255, 255, 255);
+        }
+
+
+
+        #fosc {
+            background-color: rgb(82, 82, 82);
+            color: rgb(255, 255, 255);
+            font-weight: bolder;
+            width: 80%;
+            position: absolute;
+            z-index: 10000;
+            text-align: center;
+            margin-top: 4em;
+            margin-left: 2em;
+        }
+
+        #fosc:hover,
+        #fosc:after {
+            background-color: rgb(44, 44, 44);
+            color: rgb(255, 255, 255);
+        }
+
+        .card-img-top {
+            width: 100%;
+        }
+
+        .btn-primary {
+            
+            background-color: rgba(10, 10, 10, 0.65);
+            border: none;
+            font-size: 1.3em;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:after {
+            background-color: rgb(4, 143, 108);
+        }
+
+        .card {
+            margin-bottom: 2em;
+        }
+
+        .warning {
+            text-align: right;
+            font-size: 1.3em;
+            padding-bottom: 1em;
+            padding-top: 1em;
+
+            color: white;
+        }
+
+        .warning2 {
+            text-align: right;
+            font-size: 1.3em;
+            padding-bottom: 1em;
+            padding-top: 1em;
+            padding-right: 1em;
+
+            color: white;
+        }
+
+        .leaflet-control-zoom-in,
+        .leaflet-control-zoom-out,
+        .leaflet-bar-part.leaflet-bar-part-single {
+            background: black !important;
+            color: white !important;
+        }
+
+        .leaflet-control-scale-line {
+            background: none !important;
+            color: white !important;
+        }
+
+
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px black;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: white;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgb(4, 143, 108);
+        }
+
+        /*Slider*/
+        .slidecontainer {
+
+            position: absolute;
+            width: 50%;
+            bottom: 1em;
+            right: 0;
+            padding: 10px;
+            z-index: 1990;
+
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 3px;
+            border-radius: 5px;
+            color: white;
+            background: white;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+
+        #mapid>div.leaflet-control-container>div.leaflet-bottom.leaflet-right>div {
+            background: none !important;
+            color: white !important;
+        }
+
+        #controls button {
+            width: 80px;
+        }
+
+        #controls input {
+            display: inline;
+            padding: 2px;
+            margin: 2px;
+        }
+
+        i {
+            cursor: pointer;
+            padding-right: 0.5em;
+
+        }
+
+        i:hover,
+        i:after {
+            color: white !important;
+        }
+
+        #controls {
+            position: relative;
+            right: 6em;
+            bottom: -1.5em;
+        }
+
+        .cap {
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .info {
+            position: absolute;
+            bottom: 1em;
+            right: 0;
+            padding: 10px;
+            z-index: 1990;
+        }
+
+        .ajuda {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            top: 1em;
+            right: 1em;
+            z-index: 1990;
+            position: absolute;
+        }
+
+        .ajuda:hover {
+            background-color: #025a3a !important;
+        }
+
+        #infobtn {
+            padding-left: 5px;
+        }
+
+        #infobtn:hover {
+            color: white !important;
+        }
+
+        #play:hover,
+        #play:after {
+            color: rgb(4, 143, 108) !important;
+        }
+
+        #pause:hover,
+        #pause:after {
+            color: rgb(4, 143, 108) !important;
+        }
+
+        .modal-title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .modal {
+            z-index: 100000;
+        }
+
+        .carousel-control.left,
+        .carousel-control.right {
+            background-image: none;
+            color: black;
+        }
+        .carrussel{
+            text-align: center;
+            margin-left: 5em;
+            margin-right: 5em;
+
+        }
+        .contacte{
+            font-size: 1.5em;
+           text-align: center;
+           margin-bottom: 1em;
+           font-weight: bolder;
+        }
+        .col-md-9{
+            margin-left: 5em;
+            margin-right: 5em;
+        }
+        
+    </style>
+
+
+</head>
+
+<body>
+    
+
+    <!-- Modal info -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Informació</h5>
+
+                </div>
+                <div class="modal-body">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
+                        data-interval="false">
+
+
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <p class="carrussel"> <strong>Informació del visor:</strong> <br><br> Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+
+                            </div>
+                            <div class="item">
+                                <p class="carrussel"> <strong>Funcionament del visor:</strong> <br><br> Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+
+                            </div>
+                            <div class="item">
+                                <p class="contacte">Contacte</h2>
+   
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-9">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="name" class="form-control">
+                            <label for="name" class="">Nom</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <label for="email" class="">Correu electrònic</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" class="form-control">
+                            <label for="subject" class="">Tema</label>
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                            <label for="message">Missatge</label>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+
+            </form>
+
+            <div class="text-center">
+                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Envia</a>
+            </div>
+            <div class="status"></div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        
+        <!--Grid column-->
+
+    </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                            data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                            data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tanca</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Informació-->
+
+    <button class="ajuda" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-info"
+            id="infobtn"></i></button>
+
+    <!--Slider-->
+    <div class="info">
+        <p class="warning"> 15/11/21 - 21/11/2021<br>
+            Validacions T-Usual 5 dies
+        </p>
+        <p class="warning2"><span id="demo" style="color:white"></span></p>
+    </div>
+    <div class="slidecontainer">
+        <div id="controls">
+            <a><i class="fa fa-play fa-2x" id="play" style="color:white;" title="Reprodueix"></i></a>
+            <a><i class="fa fa-stop fa-2x" id="pause" style="color:white;" title="Atura"></i></a>
+        </div>
+        <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
+    </div>
+
+    <!--Sidebar-->
+
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Categories -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#" class="cap"></a></li>
+
+                <li><a href="#train" role="tab"><i class="fa fa-train" style="color: white;"></i></a></li>
+
+                <li><a href="#messages" role="tab"><i class="fa fa-bus" style="color: white;"></i></a></li>
+
+                <li><a href="#profile" role="tab"><i class="fa fa-search" style="color: white;"></i></a></li>
+
+
+
+            </ul>
+
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+
+            <div class="sidebar-pane" id="profile">
+                <h1 class="sidebar-header" style="text-align: center;">Cerca<span class="sidebar-close"><i
+                            class="fa fa-times"></i></span>
+                </h1>
+                <p style="margin: 1em; font-size: 1.2em; color: white;"><strong>Introdueix una adreça, municipi,
+                        codi postal o
+                        topònim.</strong></p>
+
+
+            </div>
+
+            <div class="sidebar-pane" id="train">
+                <h1 class="sidebar-header" style="text-align: center;">Operadors de transport<span
+                        class="sidebar-close"><i class="fa fa-times"></i></span>
+                </h1>
+                <h1 class="sidebar-header3" style="top:1em;">Ferroviari
+                </h1>
+                <h1 class="sidebar-header2" style="top:1em;" onclick=openBus()>Viari + TRAM
+                </h1><br>
+
+                <div class="card" style="width: 100%;" onclick=drawTMB()>
+                    <img class="card-img-top" src="./templates/metro_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawTMB() class="btn btn-primary">Metro TMB</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 100%;" onclick=drawFGC()>
+                    <img class="card-img-top" src="./templates/fgc_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawFGC() class="btn btn-primary">FGC</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 100%;" onclick=drawROD()>
+                    <img class="card-img-top" src="./templates/rod_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawROD() class="btn btn-primary">Rodalies</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="sidebar-pane" id="messages">
+                <h1 class="sidebar-header" style="text-align: center;">Operadors de transport<span
+                        class="sidebar-close"><i class="fa fa-times"></i></span>
+                </h1>
+                <h1 class="sidebar-header2" style="top:1em;" onclick=openTrain()>Ferroviari
+                </h1>
+                <h1 class="sidebar-header3" style="top:1em;">Viari + TRAM
+                </h1><br>
+
+
+                <div class="card" style="width: 100%;" onclick=drawTB()>
+                    <img class="card-img-top" src="./templates/tb_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawTB() class="btn btn-primary">Bus TMB</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 100%;" onclick=drawTRAM()>
+                    <img class="card-img-top" src="./templates/TRAM_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawTRAM() class="btn btn-primary">TRAM</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 100%;" onclick=drawTUSGSAL()>
+                    <img class="card-img-top" src="./templates/tusgsal_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawTUSGSAL() class="btn btn-primary">TUSGSAL</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 100%;" onclick=drawBAIXBUS()>
+                    <img class="card-img-top" src="./templates/baixbus_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawBAIXBUS() class="btn btn-primary">Baixbus</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 100%;" onclick=drawNITBUS()>
+                    <img class="card-img-top" src="./templates/nitbus_dark.PNG" alt="">
+                    <div class="card-body">
+                        <a onclick=drawNITBUS() class="btn btn-primary">Nitbus</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--Mapa-->
+
+    <div id="mapid" class="sidebar-map"> </div>
+
+    <script>
+
+        //declarem variables globals
+
+        var mymap;
+        var selectedDia = parseInt($('#myRange').val());
+        var selectedOperador;
+
+        var val7 = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/test7.geojson",
+            dataType: "json",
+            success: console.log("Ferroviari carregat correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+
+        var linies = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/val/main/dades/ferroviari.geojson",
+            dataType: "json",
+            success: console.log("Linies carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dilluns = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1111_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dilluns carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dimarts = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1211_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dimarts carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dimecres = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1311_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dimecres carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dijous = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1411_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dijous carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_divendres = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1511_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus divendres carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_dissabte = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1611_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus dissabte carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+        var val_bus_diumenge = $.ajax({
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/val_Bus_1711_41.geojson",
+            dataType: "json",
+            success: console.log("Validacions bus diumenge carregades correctament."),
+            error: function (xhr) {
+                alert(xhr.statusText)
+            }
+        })
+
+        $.when(linies, val7, val_bus_dilluns, val_bus_dimarts, val_bus_dimecres, val_bus_dijous, val_bus_divendres, val_bus_dissabte, val_bus_diumenge).done(function () {
+
+            mymap = L.map('mapid', {
+                minZoom: 9,
+                maxBounds: [
+                    //sud-oest
+                    [40.33825, -1.0391],
+                    //nord-est
+                    [42.88239, 5.06357]
+                ],
+            }).setView([41.385243705090105, 2.1402139383833516], 11.5);
+
+            //sidebar
+
+            var sidebar = L.control.sidebar('sidebar', {
+                position: 'left'
+            }).addTo(mymap);
+            sidebar.open('train');
+
+            //obrir seccions
+
+            openTrain = function () {
+                sidebar.open('train');
+            }
+            openBus = function () {
+                sidebar.open('messages');
+            }
+
+
+            var Topo = L.mapboxGL({
+                style: 'mapbox://styles/marcrb3/cjsu9je764ne51fn719pub5lu',
+                accessToken: 'pk.eyJ1IjoibWFyY3JiMyIsImEiOiJjanJqanZvMXowYzdnNDRsbGN4N3JyMGhuIn0.im2TOkqyqEpCXhN4LWoZuA',
+                attribution: 'Developed by Marc Roca Ballesteros ©'
+            }).addTo(mymap);
+
+            var basemap = {
+                'Topogràfic': Topo
+            };
+
+            //controls del mapa
+
+            var kxIncidents, kyIncidents, kyCorones, kyAMB, kyBus;
+            var capes = L.control.layers(basemap, null, { collapsed: false });
+            capes.addTo(mymap);
+            capes._container.remove();
+            L.control.scale().addTo(mymap);
+            grup = L.layerGroup(kxIncidents, kyIncidents, Topo, kyAMB, kyBus);
+            var control = L.Control.geocoder({ placeholder: "Cerca..." });
+
+            document.getElementById('profile').appendChild(
+                control.onAdd(mymap)
+            );
+
+            //slider
+
+            var barra = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = '<strong>Selecciona dia</strong>';
+
+            //ClearLayers
+
+            L.Map.include({
+                'clearLayers': function () {
+                    this.eachLayer(function (layer) {
+                        this.removeLayer(layer);
+                    }, this);
+                }
+            });
+
+            //Carreguem les capes al iniciar el mapa
+
+            kyVal7 = L.geoJSON(val7.responseJSON);
+
+            kyAMB = L.geoJSON(linies.responseJSON);
+
+            kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON);
+
+            kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON);
+
+            kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON);
+
+            kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON);
+
+            kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON);
+
+            kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON);
+
+            kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON);
+
+
+            //Obrim la secció d'informació de la sidebar 
+
+            var sidebarDiv = document.getElementById('sidebar');
+
+            // Funció per tancar la sidebar
+
+            toggleSidebar = function () {
+                if (hasClass(sidebarDiv, 'collapsed')) {
+                    sidebar.open('home');
+
+                }
+                else { sidebar.open('home') };
+            }
+
+            function hasClass(element, cls) {
+                return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+            }
+
+            //Netejem el mapa per poder alternar entre capes
+
+            function neteja() {
+                mymap.clearLayers();
+                Topo.addTo(mymap);
+            }
+
+            //reiniciem slider al carregar nova operadora 
+
+            function resetSlider() {
+                barra.value = 0;
+                output.innerHTML = '<strong>Selecciona dia</strong>';
+                playing = 0;
+            }
+
+
+            //Filtratge per operador FMB
+
+            drawTMB = function () {
+                resetSlider();
+                selectedOperador = 'FMB';
+                //   mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+
+            }
+
+            drawTMBDilluns = function () {
+                selectedOperador = 'FMB';
+
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                kyDilluns = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v010122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTMBDissabte = function () {
+                selectedOperador = 'FMB';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                kyDissabte = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v060122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTMBDiumenge = function () {
+                selectedOperador = 'FMB';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                kyDiumenge = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v070122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTMBDimarts = function () {
+                selectedOperador = 'FMB';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                kyDimarts = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v020122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTMBDimecres = function () {
+                selectedOperador = 'FMB';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                kyDimecres = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v030122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTMBDijous = function () {
+                selectedOperador = 'FMB';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                kyDijous = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v040122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTMBDivendres = function () {
+                selectedOperador = 'FMB';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                kyDivendres = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v050122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            //Filtratge per operador FGC
+
+            drawFGC = function () {
+                resetSlider();
+                selectedOperador = 'FGC';
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 10.5);
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawFGCDilluns = function () {
+                selectedOperador = 'FGC';
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDilluns = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v010122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawFGCDissabte = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDissabte = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v060122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawFGCDiumenge = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDiumenge = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v070122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawFGCDimarts = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDimarts = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v020122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawFGCDimecres = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDimecres = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v030122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawFGCDijous = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDijous = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v040122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawFGCDivendres = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                kyDivendres = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v050122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            //Filtratge per operador ROD
+
+            drawROD = function () {
+                resetSlider();
+                selectedOperador = 'ROD';
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 10);
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawRODDilluns = function () {
+                selectedOperador = 'ROD';
+                neteja();
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDilluns = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v010122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawRODDissabte = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDissabte = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v060122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawRODDiumenge = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDiumenge = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v070122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawRODDimarts = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDimarts = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v020122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawRODDimecres = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDimecres = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v030122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawRODDijous = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDijous = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v040122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawRODDivendres = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                kyDivendres = L.geoJSON(val7.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v050122),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            //Filtratge per operador TB
+
+            drawTB = function () {
+                resetSlider();
+                selectedOperador = 'TB';
+                neteja();
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawTBDilluns = function () {
+                selectedOperador = 'TB';
+
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTBDimarts = function () {
+                selectedOperador = 'TB';
+
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTBDimecres = function () {
+                selectedOperador = 'TB';
+
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTBDijous = function () {
+                selectedOperador = 'TB';
+
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTBDivendres = function () {
+                selectedOperador = 'TB';
+
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTBDissabte = function () {
+                selectedOperador = 'TB';
+
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTBDiumenge = function () {
+                selectedOperador = 'TB';
+
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTMB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            //Filtratge per operador TRAM
+
+            drawTRAM = function () {
+                resetSlider();
+                selectedOperador = 'TRAM';
+                neteja();
+                //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRA,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawTRAMDilluns = function () {
+                selectedOperador = 'TRAM';
+
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTRAMDimarts = function () {
+                selectedOperador = 'TRAM';
+
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTRAMDimecres = function () {
+                selectedOperador = 'TRAM';
+
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTRAMDijous = function () {
+                selectedOperador = 'TRAM';
+
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTRAMDivendres = function () {
+                selectedOperador = 'TRAM';
+
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTRAMDissabte = function () {
+                selectedOperador = 'TRAM';
+
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTRAMDiumenge = function () {
+                selectedOperador = 'TRAM';
+
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTRAM,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            //Filtratge per operador TUSGSAL
+
+            drawTUSGSAL = function () {
+                resetSlider();
+                selectedOperador = 'TUSGSAL';
+                neteja();
+                // mymap.setView([41.43764679984083, 2.2089849270448174], 12.5);
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTU,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawTUSGSALDilluns = function () {
+                selectedOperador = 'TUSGSAL';
+
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTUSGSALDimarts = function () {
+                selectedOperador = 'TUSGSAL';
+
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTUSGSALDimecres = function () {
+                selectedOperador = 'TUSGSAL';
+
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTUSGSALDijous = function () {
+                selectedOperador = 'TUSGSAL';
+
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTUSGSALDivendres = function () {
+                selectedOperador = 'TUSGSAL';
+
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTUSGSALDissabte = function () {
+                selectedOperador = 'TUSGSAL';
+
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawTUSGSALDiumenge = function () {
+                selectedOperador = 'TUSGSAL';
+
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleTUG,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            //Filtratge per operador BAIXBUS
+
+            drawNITBUS = function () {
+                resetSlider();
+                selectedOperador = 'NITBUS';
+                // mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                neteja();
+
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNTB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawNITBUSDilluns = function () {
+                selectedOperador = 'NITBUS';
+
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawNITBUSDimarts = function () {
+                selectedOperador = 'NITBUS';
+
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawNITBUSDimecres = function () {
+                selectedOperador = 'NITBUS';
+
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawNITBUSDijous = function () {
+                selectedOperador = 'NITBUS';
+
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawNITBUSDivendres = function () {
+                selectedOperador = 'NITBUS';
+
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawNITBUSDissabte = function () {
+                selectedOperador = 'NITBUS';
+
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawNITBUSDiumenge = function () {
+                selectedOperador = 'NITBUS';
+
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleNB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            //Filtratge per operador BAIXBUS
+
+            drawBAIXBUS = function () {
+                resetSlider();
+                selectedOperador = 'BAIXBUS';
+                // mymap.setView([41.34566652848349, 2.0632387923613758], 12);
+                neteja();
+                kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBXB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+                sidebar.close();
+            }
+
+            drawBAIXBUSDilluns = function () {
+                selectedOperador = 'BAIXBUS';
+
+                kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawBAIXBUSDimarts = function () {
+                selectedOperador = 'BAIXBUS';
+
+                kyBusDimarts = L.geoJSON(val_bus_dimarts.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawBAIXBUSDimecres = function () {
+                selectedOperador = 'BAIXBUS';
+
+                kyBusDimecres = L.geoJSON(val_bus_dimecres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawBAIXBUSDijous = function () {
+                selectedOperador = 'BAIXBUS';
+
+                kyBusDijous = L.geoJSON(val_bus_dijous.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawBAIXBUSDivendres = function () {
+                selectedOperador = 'BAIXBUS';
+
+                kyBusDivendres = L.geoJSON(val_bus_divendres.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawBAIXBUSDissabte = function () {
+                selectedOperador = 'BAIXBUS';
+
+                kyBusDissabte = L.geoJSON(val_bus_dissabte.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+            drawBAIXBUSDiumenge = function () {
+                selectedOperador = 'BAIXBUS';
+
+                kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: styleBB,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+
+            }
+
+
+            //animem slider al fer play
+
+            var myInterval;
+            var counter = 0;
+            var playing = 0;
+
+            $('#play').on('click', function () {
+                if (playing == 0) {
+                    playing++;
+                    myInterval = setInterval(function () {
+
+                        barra.value++;
+
+                        if (counter >= 7) {
+                            barra.value = 1;
+                            counter = 0;
+                        }
+
+                        counter++;
+                        console.log(barra.value);
+
+                        if (barra.value == 0) {
+                            output.innerHTML = '<strong>Selecciona dia</strong>'
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMB();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGC();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawROD();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTB();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAM();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSAL();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUS();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUS();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+                        }
+
+                        else if (barra.value == 1) {
+                            output.innerHTML = 'Dilluns';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDilluns();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDilluns();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDilluns();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDilluns();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDilluns();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDilluns();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDilluns();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDilluns();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+
+                        }
+                        else if (barra.value == 2) {
+                            output.innerHTML = 'Dimarts';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDimarts();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDimarts();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDimarts();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDimarts();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDimarts();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDimarts();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDimarts();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDimarts();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+                        }
+                        else if (barra.value == 3) {
+                            output.innerHTML = 'Dimecres';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDimecres();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDimecres();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDimecres();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDimecres();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDimecres();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDimecres();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDimecres();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDimecres();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+                        }
+                        else if (barra.value == 4) {
+                            output.innerHTML = 'Dijous';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDijous();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDijous();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDijous();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDijous();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDijous();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDijous();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDijous();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDijous();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+                        }
+                        else if (barra.value == 5) {
+                            output.innerHTML = 'Divendres';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDivendres();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDivendres();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDivendres();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDivendres();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDivendres();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDivendres();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDivendres();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDivendres();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+                        }
+                        else if (barra.value == 6) {
+                            output.innerHTML = 'Dissabte';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDissabte();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDissabte();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDissabte();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDissabte();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDissabte();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDissabte();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDissabte();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDissabte();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+                        }
+                        else if (barra.value == 7) {
+                            output.innerHTML = 'Diumenge';
+                            neteja();
+                            if (selectedOperador == 'FMB') {
+                                drawTMBDiumenge();
+                            }
+                            else if (selectedOperador == 'FGC') {
+                                drawFGCDiumenge();
+                            }
+                            else if (selectedOperador == 'ROD') {
+                                drawRODDiumenge();
+                            }
+                            else if (selectedOperador == 'TB') {
+                                drawTBDiumenge();
+                            }
+                            else if (selectedOperador == 'TRAM') {
+                                drawTRAMDiumenge();
+                            }
+                            else if (selectedOperador == 'TUSGSAL') {
+                                drawTUSGSALDiumenge();
+                            }
+                            else if (selectedOperador == 'BAIXBUS') {
+                                drawBAIXBUSDiumenge();
+                            }
+                            else if (selectedOperador == 'NITBUS') {
+                                drawNITBUSDiumenge();
+                            }
+                            else {
+                                clearInterval(myInterval);
+                                resetSlider();
+                                counter = 0;
+                                return alert('Selecciona una operadora per veure la informació');
+
+                            }
+                        }
+
+                    }, 750);
+                }
+                else {
+                    alert("La seqüència ja s'està reproduïnt")
+                }
+
+
+            })
+
+            $('#pause').on('click', function () {
+
+                clearInterval(myInterval);
+                resetSlider();
+                counter = 0;
+                playing = 0;
+
+
+                if (selectedOperador == 'FMB') {
+                    drawTMB();
+                }
+                else if (selectedOperador == 'FGC') {
+                    drawFGC();
+                }
+                else if (selectedOperador == 'ROD') {
+                    drawROD();
+                }
+                else if (selectedOperador == 'TB') {
+                    drawTB();
+                }
+                else if (selectedOperador == 'TRAM') {
+                    drawTRAM();
+                }
+                else if (selectedOperador == 'TUSGSAL') {
+                    drawTUSGSAL();
+                }
+                else if (selectedOperador == 'BAIXBUS') {
+                    drawBAIXBUS();
+                }
+                else if (selectedOperador == 'NITBUS') {
+                    drawNITBUS();
+                }
+                else {
+                    return alert('Selecciona una operadora per veure la informació');
+
+                }
+            })
+
+            //Filtrem els dies de la setmana a l'slider
+
+
+            $('#myRange').on('change', function () {
+
+
+                if (barra.value == 0) {
+                    output.innerHTML = '<strong>Selecciona dia</strong>'
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMB();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGC();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawROD();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTB();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAM();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSAL();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUS();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUS();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+                }
+
+                else if (barra.value == 1) {
+                    counter = 1;
+                    output.innerHTML = 'Dilluns';
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMBDilluns();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDilluns();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDilluns();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDilluns();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDilluns();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDilluns();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDilluns();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDilluns();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+
+                }
+                else if (barra.value == 2) {
+                    counter = 2;
+                    output.innerHTML = 'Dimarts';
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMBDimarts();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDimarts();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDimarts();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDimarts();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDimarts();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDimarts();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDimarts();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDimarts();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+                }
+                else if (barra.value == 3) {
+                    counter = 3;
+                    output.innerHTML = 'Dimecres';
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMBDimecres();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDimecres();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDimecres();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDimecres();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDimecres();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDimecres();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDimecres();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDimecres();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+                }
+                else if (barra.value == 4) {
+                    counter = 4;
+                    output.innerHTML = 'Dijous';
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMBDijous();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDijous();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDijous();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDijous();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDijous();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDijous();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDijous();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDijous();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+                }
+                else if (barra.value == 5) {
+                    counter = 5;
+                    output.innerHTML = 'Divendres';
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMBDivendres();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDivendres();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDivendres();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDivendres();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDivendres();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDivendres();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDivendres();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDivendres();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+                }
+                else if (barra.value == 6) {
+                    counter = 6;
+                    output.innerHTML = 'Dissabte';
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMBDissabte();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDissabte();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDissabte();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDissabte();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDissabte();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDissabte();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDissabte();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDissabte();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+                }
+                else if (barra.value == 7) {
+                    counter = 7;
+                    output.innerHTML = 'Diumenge';
+                    neteja();
+                    if (selectedOperador == 'FMB') {
+                        drawTMBDiumenge();
+                    }
+                    else if (selectedOperador == 'FGC') {
+                        drawFGCDiumenge();
+                    }
+                    else if (selectedOperador == 'ROD') {
+                        drawRODDiumenge();
+                    }
+                    else if (selectedOperador == 'TB') {
+                        drawTBDiumenge();
+                    }
+                    else if (selectedOperador == 'TRAM') {
+                        drawTRAMDiumenge();
+                    }
+                    else if (selectedOperador == 'TUSGSAL') {
+                        drawTUSGSALDiumenge();
+                    }
+                    else if (selectedOperador == 'BAIXBUS') {
+                        drawBAIXBUSDiumenge();
+                    }
+                    else if (selectedOperador == 'NITBUS') {
+                        drawNITBUSDiumenge();
+                    }
+                    else {
+                        return alert('Selecciona una operadora per veure la informació');
+
+                    }
+                }
+            })
+
+
+
+            //Paletes de colors
+
+            function getColorFMB(d) {
+                return d == 'L11' ? '#89B94C' :
+                    d == 'L10S' ? '#00A6D6' :
+                        d == 'L10N' ? '#00A6D6' :
+                            d == 'L9N' ? '#FB712B' :
+                                d == 'L9S' ? '#FB712B' :
+                                    d == 'L5' ? '#005A97' :
+                                        d == 'L4' ? '#F7A30E' :
+                                            d == 'L3' ? '#1EB53A' :
+                                                d == 'L2' ? '#93248F' :
+                                                    d == 'L1' ? '#CE1126' :
+                                                        '#ffffff';
+            }
+
+            function getColorFGC(d) {
+                return d == 'MM' ? '#000000' :
+                    d == 'R50' ? '#00738a' :
+                        d == 'FV' ? '#0A57A3' :
+                            d == 'R5' ? '#3dbfc3' :
+                                d == 'R53' ? '#3dbfc3' :
+                                    d == 'S8' ? '#49C0DE' :
+                                        d == 'S3' ? '#4F868E' :
+                                            d == 'ES' ? '#5A5858' :
+                                                d == 'R60' ? '#5b5b5b' :
+                                                    d == 'S5' ? '#5B8FCB' :
+                                                        d == 'S5S' ? '#5B8FCB' :
+                                                            d == 'L6' ? '#797FBC' :
+                                                                d == 'S2' ? '#88BB0B' :
+                                                                    d == 'S7' ? '#9B2743' :
+                                                                        d == 'S4' ? '#A78600' :
+                                                                            d == 'L7' ? '#B2600B' :
+                                                                                d == 'L12' ? '#b2aed3' :
+                                                                                    d == 'R6' ? '#b3b3b3' :
+                                                                                        d == 'R63' ? '#b3b3b3' :
+                                                                                            d == 'S9' ? '#DF4661' :
+                                                                                                d == 'L8' ? '#E274AA' :
+                                                                                                    d == 'S6' ? '#E40046' :
+                                                                                                        d == 'S1' ? '#EF7900' :
+                                                                                                            '#ffffff';
+            }
+
+            function getColorROD(d) {
+                return d == 'R8' ? '#88006a' :
+                    d == 'R7' ? '#b57bba' :
+                        d == 'R4' ? '#f6a30d' :
+                            d == 'R3' ? '#ea412b' :
+                                d == 'R2S' ? '#136524' :
+                                    d == 'R2N' ? '#d0de00' :
+                                        d == 'R2' ? '#26a741' :
+                                            d == 'R1' ? '#7dbcec' :
+                                                '#ffffff';
+            }
+
+            //Rangs de valors per la tematització
+
+            function getRadius(d) {
+                return d > 4500 ? '18' :
+                    d > 2500 ? '16' :
+                        d > 1500 ? '14' :
+                            d > 1000 ? '12' :
+                                d > 500 ? '10' :
+                                    d > 200 ? '8' :
+                                        d > 100 ? '6' :
+                                            d > 50 ? '5' :
+                                                d > 25 ? '4' :
+                                                    d > 10 ? '3' :
+                                                        d > 1 ? '2' :
+                                                            '1';
+            }
+
+
+            function getOpacity(d) {
+                return d > 2500 ? '1' :
+                    d > 1500 ? '0.9' :
+                        d > 1000 ? '0.85' :
+                            d > 500 ? '0.8' :
+                                d > 200 ? '0.75' :
+                                    d > 100 ? '0.7' :
+                                        d > 50 ? '0.65' :
+                                            d > 25 ? '0.55' :
+                                                d > 10 ? '0.45' :
+                                                    d > 1 ? '0.35' :
+                                                        '0';
+            }
+
+            function getWeight(d) {
+                return d > 2500 ? '6' :
+                    d > 1500 ? '5' :
+                        d > 1000 ? '4' :
+                            d > 500 ? '3' :
+                                d > 200 ? '2.5' :
+                                    d > 100 ? '2' :
+                                        d > 50 ? '1.5' :
+                                            d > 25 ? '1' :
+                                                d > 10 ? '0.5' :
+                                                    d > 1 ? '0.25' :
+                                                        '0';
+            }
+
+
+            //Estil
+
+            function style(feature) {
+                return {
+                    weight: 1,
+                    color: 'white',
+                    dashArray: '',
+                    fillOpacity: 0
+
+
+                };
+            }
+
+            function styleTB(feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'red',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+            function styleTMB(feature) {
+                return {
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
+                    color: 'red',
+                    dashArray: '',
+                    fillOpacity: 1,
+
+
+                };
+            }
+
+            function styleTUG(feature) {
+                return {
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
+                    color: '#FFCC00',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+            function styleTU(feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: '#FFCC00',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+
+            function styleNB(feature) {
+                return {
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
+                    color: '#3366CC',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+            function styleNTB(feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: '#3366CC',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+
+            function styleBB(feature) {
+                return {
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
+                    color: '#FFCC00',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+            function styleBXB(feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: '#FFCC00',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+
+            function styleTRAM(feature) {
+                return {
+                    weight: getWeight(feature.properties.val),
+                    opacity: getOpacity(feature.properties.val),
+                    color: 'rgb(4, 143, 108)',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+            function styleTRA(feature) {
+                return {
+                    weight: 1,
+                    opacity: 1,
+                    color: 'rgb(4, 143, 108)',
+                    dashArray: '',
+                    fillOpacity: 1,
+                };
+            }
+
+            function style_line_FMB(feature) {
+                return {
+                    weight: 2.5,
+                    opacity: 1,
+                    color: getColorFMB(feature.properties.routes_rou),
+                    dashArray: '',
+                    fillOpacity: 1,
+
+                };
+            }
+
+            function style_line_FGC(feature) {
+                return {
+                    weight: 2.5,
+                    opacity: 1,
+                    color: getColorFGC(feature.properties.routes_rou),
+                    dashArray: '',
+                    fillOpacity: 1,
+
+                };
+            }
+
+            function style_line_ROD(feature) {
+                return {
+                    weight: 2.5,
+                    opacity: 1,
+                    color: getColorROD(feature.properties.routes_rou),
+                    dashArray: '',
+                    fillOpacity: 1,
+
+                };
+            }
+
+
+            //ressaltem el contorn dels poligons al fer hover
+
+            function highlightFeature(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 3,
+                    color: 'white',
+                    dashArray: '',
+                    fillOpacity: 0
+                });
+
+                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                    layer.bringToFront();
+                }
+            }
+
+            function highlightFeatureL(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 5,
+
+                });
+
+                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                    layer.bringToFront();
+                }
+            }
+
+            //restablim el contorn al fer mouseout
+
+            function resetHighlight(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 1,
+                    color: 'white',
+                    dashArray: '',
+                    fillOpacity: 0
+                });
+            }
+
+            function resetHighlightL(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 2.5,
+
+                });
+                layer.bringToBack();
+            }
+
+            //zoom als elements del mapa al clicar
+
+            function zoomToFeature(e) {
+                mymap.flyToBounds(e.target.getBounds());
+            }
+
+            function zoomToFeature2(e) {
+
+                mymap.flyTo(e.latlng, 16);
+            }
+
+            //Tooltips amb informació de validacions al fer mouseover 
+
+            function onEachFeature(feature, layer) {
+
+                if (barra.value == 0) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "</h5>");
+                }
+                else if (barra.value == 1) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v010122 + "</h5>");
+                }
+                else if (barra.value == 2) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v020122 + "</h5>");
+                }
+                else if (barra.value == 3) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v030122 + "</h5>");
+                }
+                else if (barra.value == 4) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v040122 + "</h5>");
+                }
+                else if (barra.value == 5) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v050122 + "</h5>");
+                }
+                else if (barra.value == 6) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v060122 + "</h5>");
+                }
+                else if (barra.value == 7) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v070122 + "</h5>");
+                }
+
+                layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
+                    click: zoomToFeature2
+                });
+
+
+
+            }
+
+            function onEachFeature2(feature, layer) {
+                if (L.Browser.touch) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
+                }
+                else {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
+                }
+                layer.on({
+                    mouseover: highlightFeatureL,
+                    mouseout: resetHighlightL,
+                    click: zoomToFeature
+                });
+
+
+
+            }
+
+            function onEachFeatureBus(feature, layer) {
+                if (L.Browser.touch) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                }
+                else {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
+                }
+
+                layer.on({
+                    click: zoomToFeature
+                });
+
+
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
