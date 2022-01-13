@@ -161,7 +161,7 @@
 
         .warning {
             text-align: right;
-            font-size: 1.3em;
+            font-size: 1.6em;
             padding-bottom: 1em;
             padding-top: 1em;
 
@@ -802,7 +802,7 @@
             drawTMB = function () {
                 resetSlider();
                 selectedOperador = 'FMB';
-                //   mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                   mymap.flyTo([41.385243705090105, 2.1402139383833516], 12);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
@@ -811,7 +811,7 @@
                         return (feature.properties.operador == "FMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
 
             }
 
@@ -1025,7 +1025,7 @@
             drawFGC = function () {
                 resetSlider();
                 selectedOperador = 'FGC';
-                //  mymap.setView([41.385243705090105, 2.1402139383833516], 10.5);
+                  mymap.flyTo([41.415243705090105, 2.0002139383833516], 10.5);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FGC,
@@ -1034,7 +1034,7 @@
                         return (feature.properties.operador == "FGC");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawFGCDilluns = function () {
@@ -1246,7 +1246,7 @@
             drawROD = function () {
                 resetSlider();
                 selectedOperador = 'ROD';
-                //  mymap.setView([41.385243705090105, 2.1402139383833516], 10);
+                  mymap.flyTo([41.385243705090105, 2.1402139383833516], 11);
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_ROD,
@@ -1255,7 +1255,7 @@
                         return (feature.properties.operador == "ROD");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+               
             }
 
             drawRODDilluns = function () {
@@ -1468,7 +1468,7 @@
                 resetSlider();
                 selectedOperador = 'TB';
                 neteja();
-                //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                  mymap.flyTo([41.385243705090105, 2.1402139383833516], 12);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTB,
@@ -1476,7 +1476,7 @@
                         return (feature.properties.operador == "TMB");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTBDilluns = function () {
@@ -1576,7 +1576,7 @@
                 resetSlider();
                 selectedOperador = 'TRAM';
                 neteja();
-                //  mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                  mymap.flyTo([41.385243705090105, 2.1402139383833516], 11.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTRA,
@@ -1584,7 +1584,7 @@
                         return (feature.properties.operador == "TRAM");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTRAMDilluns = function () {
@@ -1684,7 +1684,7 @@
                 resetSlider();
                 selectedOperador = 'TUSGSAL';
                 neteja();
-                // mymap.setView([41.43764679984083, 2.2089849270448174], 12.5);
+                 mymap.flyTo([41.43764679984083, 2.2089849270448174], 12.5);
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTU,
@@ -1692,7 +1692,7 @@
                         return (feature.properties.operador == "TUSGSAL");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawTUSGSALDilluns = function () {
@@ -1791,7 +1791,7 @@
             drawNITBUS = function () {
                 resetSlider();
                 selectedOperador = 'NITBUS';
-                // mymap.setView([41.385243705090105, 2.1402139383833516], 11.5);
+                 mymap.flyTo([41.385243705090105, 2.1402139383833516], 11.5);
                 neteja();
 
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
@@ -1801,7 +1801,7 @@
                         return (feature.properties.operador == "NITBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawNITBUSDilluns = function () {
@@ -1900,7 +1900,7 @@
             drawBAIXBUS = function () {
                 resetSlider();
                 selectedOperador = 'BAIXBUS';
-                // mymap.setView([41.34566652848349, 2.0632387923613758], 12);
+                 mymap.flyTo([41.34566652848349, 2.0632387923613758], 12);
                 neteja();
                 kyBus = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -1909,7 +1909,7 @@
                         return (feature.properties.operador == "BAIXBUS");
                     }
                 }).addTo(mymap);
-                sidebar.close();
+                
             }
 
             drawBAIXBUSDilluns = function () {
@@ -2362,6 +2362,7 @@
 
 
                 if (barra.value == 0) {
+                    counter = 0;
                     output.innerHTML = '<strong>Selecciona dia</strong>'
                     neteja();
                     if (selectedOperador == 'FMB') {
@@ -2945,28 +2946,36 @@
             function onEachFeature(feature, layer) {
 
                 if (barra.value == 0) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "</h5>");
                 }
                 else if (barra.value == 1) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v010122 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v010122 + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v010122 + "</h5>");
                 }
                 else if (barra.value == 2) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v020122 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v020122 + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v020122 + "</h5>");
                 }
                 else if (barra.value == 3) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v030122 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v030122 + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v030122 + "</h5>");
                 }
                 else if (barra.value == 4) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v040122 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v040122 + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v040122 + "</h5>");
                 }
                 else if (barra.value == 5) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v050122 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v050122 + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v050122 + "</h5>");
                 }
                 else if (barra.value == 6) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v060122 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v060122 + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v060122 + "</h5>");
                 }
                 else if (barra.value == 7) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v070122 + "</h5>");
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v070122 + "</h5>");
+                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v070122 + "</h5>");
                 }
 
                 layer.on({
@@ -2980,13 +2989,10 @@
             }
 
             function onEachFeature2(feature, layer) {
-                if (L.Browser.touch) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
-                }
-                else {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
-                    layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>");
-                }
+               
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>", { sticky: true });
+                
                 layer.on({
                     mouseover: highlightFeatureL,
                     mouseout: resetHighlightL,
@@ -2998,13 +3004,10 @@
             }
 
             function onEachFeatureBus(feature, layer) {
-                if (L.Browser.touch) {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                }
-                else {
-                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>");
-                }
+                
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.val + "</h5>", { sticky: true } );
+                
 
                 layer.on({
                     click: zoomToFeature
