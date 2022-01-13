@@ -473,7 +473,7 @@
             <a><i class="fa fa-play fa-2x" id="play" style="color:white;" title="Reprodueix"></i></a>
             <a><i class="fa fa-stop fa-2x" id="pause" style="color:white;" title="Atura"></i></a>
         </div>
-        <input type="range" min="0" max="7" value="0" step='1' class="slider" id="myRange"><br>
+        <input type="range" min="1" max="7" value="1" step='1' class="slider" id="myRange"><br>
     </div>
 
     <!--Sidebar-->
@@ -519,22 +519,22 @@
                 <h1 class="sidebar-header2" style="top:1em;" onclick=openBus()>Viari + TRAM
                 </h1><br>
 
-                <div class="card" style="width: 100%;" onclick=drawTMB()>
+                <div class="card" style="width: 100%;" onclick=drawTMBDilluns()>
                     <img class="card-img-top" src="./templates/metro_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawTMB() class="btn btn-primary">Metro TMB</a>
+                        <a onclick=drawTMBDilluns() class="btn btn-primary">Metro TMB</a>
                     </div>
                 </div>
-                <div class="card" style="width: 100%;" onclick=drawFGC()>
+                <div class="card" style="width: 100%;" onclick=drawFGCDilluns()>
                     <img class="card-img-top" src="./templates/fgc_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawFGC() class="btn btn-primary">FGC</a>
+                        <a onclick=drawFGCDilluns() class="btn btn-primary">FGC</a>
                     </div>
                 </div>
-                <div class="card" style="width: 100%;" onclick=drawROD()>
+                <div class="card" style="width: 100%;" onclick=drawRODDilluns()>
                     <img class="card-img-top" src="./templates/rod_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawROD() class="btn btn-primary">Rodalies</a>
+                        <a onclick=drawRODDilluns() class="btn btn-primary">Rodalies</a>
                     </div>
                 </div>
 
@@ -550,34 +550,34 @@
                 </h1><br>
 
 
-                <div class="card" style="width: 100%;" onclick=drawTB()>
+                <div class="card" style="width: 100%;" onclick=drawTBDilluns()>
                     <img class="card-img-top" src="./templates/tb_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawTB() class="btn btn-primary">Bus TMB</a>
+                        <a onclick=drawTBDilluns() class="btn btn-primary">Bus TMB</a>
                     </div>
                 </div>
-                <div class="card" style="width: 100%;" onclick=drawTRAM()>
+                <div class="card" style="width: 100%;" onclick=drawTRAMDilluns()>
                     <img class="card-img-top" src="./templates/TRAM_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawTRAM() class="btn btn-primary">TRAM</a>
+                        <a onclick=drawTRAMDilluns() class="btn btn-primary">TRAM</a>
                     </div>
                 </div>
-                <div class="card" style="width: 100%;" onclick=drawTUSGSAL()>
+                <div class="card" style="width: 100%;" onclick=drawTUSGSALDilluns()>
                     <img class="card-img-top" src="./templates/tusgsal_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawTUSGSAL() class="btn btn-primary">TUSGSAL</a>
+                        <a onclick=drawTUSGSALDilluns() class="btn btn-primary">TUSGSAL</a>
                     </div>
                 </div>
-                <div class="card" style="width: 100%;" onclick=drawBAIXBUS()>
+                <div class="card" style="width: 100%;" onclick=drawBAIXBUSDilluns()>
                     <img class="card-img-top" src="./templates/baixbus_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawBAIXBUS() class="btn btn-primary">Baixbus</a>
+                        <a onclick=drawBAIXBUSDilluns() class="btn btn-primary">Baixbus</a>
                     </div>
                 </div>
-                <div class="card" style="width: 100%;" onclick=drawNITBUS()>
+                <div class="card" style="width: 100%;" onclick=drawNITBUSDilluns()>
                     <img class="card-img-top" src="./templates/nitbus_dark.PNG" alt="">
                     <div class="card-body">
-                        <a onclick=drawNITBUS() class="btn btn-primary">Nitbus</a>
+                        <a onclick=drawNITBUSDilluns() class="btn btn-primary">Nitbus</a>
                     </div>
                 </div>
 
@@ -730,7 +730,7 @@
 
             var barra = document.getElementById("myRange");
             var output = document.getElementById("demo");
-            output.innerHTML = '<strong>Selecciona dia</strong>';
+            output.innerHTML = 'Dilluns';
 
             //ClearLayers
 
@@ -762,6 +762,8 @@
 
             kyBusDiumenge = L.geoJSON(val_bus_diumenge.responseJSON);
 
+            
+
 
             //Obrim la secció d'informació de la sidebar 
 
@@ -791,8 +793,8 @@
             //reiniciem slider al carregar nova operadora 
 
             function resetSlider() {
-                barra.value = 0;
-                output.innerHTML = '<strong>Selecciona dia</strong>';
+                barra.value = 1;
+                output.innerHTML = 'Dilluns';
                 playing = 0;
             }
 
@@ -1481,7 +1483,7 @@
 
             drawTBDilluns = function () {
                 selectedOperador = 'TB';
-
+                neteja();
                 kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTMB,
@@ -1589,7 +1591,7 @@
 
             drawTRAMDilluns = function () {
                 selectedOperador = 'TRAM';
-
+                neteja();
                 kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTRAM,
@@ -1697,7 +1699,7 @@
 
             drawTUSGSALDilluns = function () {
                 selectedOperador = 'TUSGSAL';
-
+                neteja();
                 kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleTUG,
@@ -1806,7 +1808,7 @@
 
             drawNITBUSDilluns = function () {
                 selectedOperador = 'NITBUS';
-
+                neteja();
                 kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleNB,
@@ -1914,7 +1916,7 @@
 
             drawBAIXBUSDilluns = function () {
                 selectedOperador = 'BAIXBUS';
-
+                neteja();
                 kyBusDilluns = L.geoJSON(val_bus_dilluns.responseJSON, {
                     onEachFeature: onEachFeatureBus,
                     style: styleBB,
@@ -2007,7 +2009,7 @@
             //animem slider al fer play
 
             var myInterval;
-            var counter = 0;
+            var counter = 1;
             var playing = 0;
 
             $('#play').on('click', function () {
@@ -2019,49 +2021,15 @@
 
                         if (counter >= 7) {
                             barra.value = 1;
-                            counter = 0;
+                            counter = 1;
                         }
 
                         counter++;
                         console.log(barra.value);
 
-                        if (barra.value == 0) {
-                            output.innerHTML = '<strong>Selecciona dia</strong>'
-                            neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 0;
-                                return alert('Selecciona una operadora per veure la informació');
+                       
 
-                            }
-                        }
-
-                        else if (barra.value == 1) {
+                         if (barra.value == 1) {
                             output.innerHTML = 'Dilluns';
                             neteja();
                             if (selectedOperador == 'FMB') {
@@ -2091,7 +2059,7 @@
                             else {
                                 clearInterval(myInterval);
                                 resetSlider();
-                                counter = 0;
+                                counter = 1;
                                 return alert('Selecciona una operadora per veure la informació');
 
                             }
@@ -2127,7 +2095,7 @@
                             else {
                                 clearInterval(myInterval);
                                 resetSlider();
-                                counter = 0;
+                                counter = 1;
                                 return alert('Selecciona una operadora per veure la informació');
 
                             }
@@ -2162,7 +2130,7 @@
                             else {
                                 clearInterval(myInterval);
                                 resetSlider();
-                                counter = 0;
+                                counter = 1;
                                 return alert('Selecciona una operadora per veure la informació');
 
                             }
@@ -2197,7 +2165,7 @@
                             else {
                                 clearInterval(myInterval);
                                 resetSlider();
-                                counter = 0;
+                                counter = 1;
                                 return alert('Selecciona una operadora per veure la informació');
 
                             }
@@ -2232,7 +2200,7 @@
                             else {
                                 clearInterval(myInterval);
                                 resetSlider();
-                                counter = 0;
+                                counter = 1;
                                 return alert('Selecciona una operadora per veure la informació');
 
                             }
@@ -2267,7 +2235,7 @@
                             else {
                                 clearInterval(myInterval);
                                 resetSlider();
-                                counter = 0;
+                                counter = 1;
                                 return alert('Selecciona una operadora per veure la informació');
 
                             }
@@ -2302,7 +2270,7 @@
                             else {
                                 clearInterval(myInterval);
                                 resetSlider();
-                                counter = 0;
+                                counter = 1;
                                 return alert('Selecciona una operadora per veure la informació');
 
                             }
@@ -2321,33 +2289,33 @@
 
                 clearInterval(myInterval);
                 resetSlider();
-                counter = 0;
+                counter = 1;
                 playing = 0;
 
 
                 if (selectedOperador == 'FMB') {
-                    drawTMB();
+                    drawTMBDilluns();
                 }
                 else if (selectedOperador == 'FGC') {
-                    drawFGC();
+                    drawFGCDilluns();
                 }
                 else if (selectedOperador == 'ROD') {
-                    drawROD();
+                    drawRODDilluns();
                 }
                 else if (selectedOperador == 'TB') {
-                    drawTB();
+                    drawTBDilluns();
                 }
                 else if (selectedOperador == 'TRAM') {
-                    drawTRAM();
+                    drawTRAMDilluns();
                 }
                 else if (selectedOperador == 'TUSGSAL') {
-                    drawTUSGSAL();
+                    drawTUSGSALDilluns();
                 }
                 else if (selectedOperador == 'BAIXBUS') {
-                    drawBAIXBUS();
+                    drawBAIXBUSDilluns();
                 }
                 else if (selectedOperador == 'NITBUS') {
-                    drawNITBUS();
+                    drawNITBUSDilluns();
                 }
                 else {
                     return alert('Selecciona una operadora per veure la informació');
@@ -2361,41 +2329,7 @@
             $('#myRange').on('change', function () {
 
 
-                if (barra.value == 0) {
-                    counter = 0;
-                    output.innerHTML = '<strong>Selecciona dia</strong>'
-                    neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS();
-                    }
-                    else {
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
-                }
-
-                else if (barra.value == 1) {
+                 if (barra.value == 1) {
                     counter = 1;
                     output.innerHTML = 'Dilluns';
                     neteja();
@@ -2945,11 +2879,8 @@
 
             function onEachFeature(feature, layer) {
 
-                if (barra.value == 0) {
-                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "</h5>");
-                        layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "</h5>");
-                }
-                else if (barra.value == 1) {
+               
+                if (barra.value == 1) {
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v010122 + "</h5>");
                         layer.bindPopup("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v010122 + "</h5>");
                 }
@@ -3015,7 +2946,8 @@
 
 
             }
-
+            drawTMBDilluns();
+          
         });
     </script>
 
