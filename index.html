@@ -163,9 +163,9 @@
         .warning {
             text-align: right;
             font-size: 1.6em;
-            padding-bottom: 1em;
-            padding-top: 1em;
-
+            margin-bottom: 1em;
+            margin-top: 1em;
+            
             color: white;
         }
 
@@ -175,7 +175,7 @@
             padding-bottom: 1em;
             padding-top: 1em;
             padding-right: 1em;
-
+           
             color: white;
         }
 
@@ -215,7 +215,7 @@
 
         /*Slider*/
         .slidecontainer {
-
+           
             position: absolute;
             width: 50%;
             bottom: 1em;
@@ -290,7 +290,7 @@
         #controls {
             position: relative;
             right: 6em;
-            bottom: -1.5em;
+            bottom: -1.3em;
         }
 
         .cap {
@@ -344,6 +344,7 @@
         #pause:after {
             color: rgb(4, 143, 108) !important;
         }
+
 
         .modal-title {
             font-size: 1.5em;
@@ -408,6 +409,7 @@
         .fa.fa-phone.mt-4.fa-2x:after {
             color: grey !important;
         }
+        
     </style>
 
 
@@ -505,6 +507,7 @@
             id="infobtn"></i></button>
 
     <!--Slider-->
+    <div class = "opac">
     <div class="info">
         <p class="warning"> Validacions T-Usual<br>
             Gener 2022
@@ -514,11 +517,12 @@
     <div class="slidecontainer">
         <div id="controls">
             <a><i class="fa fa-play fa-2x" id="play" style="color:white;" title="Reprodueix"></i></a>
+            
             <a><i class="fa fa-stop fa-2x" id="pause" style="color:white;" title="Atura"></i></a>
         </div>
         <input type="range" min="1" max="30" value="1" step='1' class="slider" id="myRange"><br>
     </div>
-
+</div>
     <!--Sidebar-->
 
     <div id="sidebar" class="sidebar collapsed">
@@ -652,7 +656,7 @@
         })
 
         var linies = $.ajax({
-            url: "https://raw.githubusercontent.com/Marcrb3/val/main/dades/ferroviari.geojson",
+            url: "https://raw.githubusercontent.com/Marcrb3/week/main/ferroviari.geojson",
             dataType: "json",
             success: console.log("Linies carregades correctament."),
             error: function (xhr) {
@@ -667,8 +671,8 @@
                 alert(xhr.statusText)
             }
         })
-        
-        
+
+
 
         $.when(linies, val30, val30_bus).done(function () {
 
@@ -747,7 +751,7 @@
 
             kyBusDilluns = L.geoJSON(val30_bus.responseJSON);
 
-            
+
 
             //Obrim la secció d'informació de la sidebar 
 
@@ -797,6 +801,7 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
+                
 
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
@@ -3451,7 +3456,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature) {
                         return {
-                            weight: getWeight(feature.properties.v1),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v1),
                             color: 'red',
                             dashArray: '',
@@ -3471,7 +3476,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v2),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v2),
                             color: 'red',
                             dashArray: '',
@@ -3490,7 +3495,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v3),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v3),
                             color: 'red',
                             dashArray: '',
@@ -3509,7 +3514,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v4),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v4),
                             color: 'red',
                             dashArray: '',
@@ -3528,7 +3533,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v5),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v5),
                             color: 'red',
                             dashArray: '',
@@ -3547,7 +3552,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v6),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v6),
                             color: 'red',
                             dashArray: '',
@@ -3566,7 +3571,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v7),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v7),
                             color: 'red',
                             dashArray: '',
@@ -3585,7 +3590,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v8),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v8),
                             color: 'red',
                             dashArray: '',
@@ -3604,7 +3609,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v9),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v9),
                             color: 'red',
                             dashArray: '',
@@ -3623,7 +3628,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v10),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v10),
                             color: 'red',
                             dashArray: '',
@@ -3642,7 +3647,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v11),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v11),
                             color: 'red',
                             dashArray: '',
@@ -3661,7 +3666,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v12),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v12),
                             color: 'red',
                             dashArray: '',
@@ -3680,7 +3685,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v13),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v13),
                             color: 'red',
                             dashArray: '',
@@ -3699,7 +3704,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v14),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v14),
                             color: 'red',
                             dashArray: '',
@@ -3718,7 +3723,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v15),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v15),
                             color: 'red',
                             dashArray: '',
@@ -3737,7 +3742,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v16),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v16),
                             color: 'red',
                             dashArray: '',
@@ -3756,7 +3761,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v17),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v17),
                             color: 'red',
                             dashArray: '',
@@ -3775,7 +3780,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v18),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v18),
                             color: 'red',
                             dashArray: '',
@@ -3794,7 +3799,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v19),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v19),
                             color: 'red',
                             dashArray: '',
@@ -3813,7 +3818,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v20),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v20),
                             color: 'red',
                             dashArray: '',
@@ -3832,7 +3837,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v21),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v21),
                             color: 'red',
                             dashArray: '',
@@ -3851,7 +3856,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v22),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v22),
                             color: 'red',
                             dashArray: '',
@@ -3870,7 +3875,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v23),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v23),
                             color: 'red',
                             dashArray: '',
@@ -3889,7 +3894,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v24),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v24),
                             color: 'red',
                             dashArray: '',
@@ -3908,7 +3913,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v25),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v25),
                             color: 'red',
                             dashArray: '',
@@ -3927,7 +3932,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v26),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v26),
                             color: 'red',
                             dashArray: '',
@@ -3946,7 +3951,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v27),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v27),
                             color: 'red',
                             dashArray: '',
@@ -3965,7 +3970,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v28),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v28),
                             color: 'red',
                             dashArray: '',
@@ -3984,7 +3989,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v29),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v29),
                             color: 'red',
                             dashArray: '',
@@ -4003,7 +4008,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v30),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v30),
                             color: 'red',
                             dashArray: '',
@@ -7400,9 +7405,12 @@
                     alert("La seqüència ja s'està reproduïnt")
                 }
 
+               
 
-            })
 
+            });
+
+          
             $('#pause').on('click', function () {
 
                 clearInterval(myInterval);
@@ -7441,12 +7449,13 @@
                 }
             })
 
+           
+
             //Filtrem els dies de la setmana a l'slider
 
 
             $('#myRange').on('change', function () {
-
-
+                
                 if (barra.value == 1) {
                     output.innerHTML = '01/01/2022';
                     neteja();
@@ -8498,6 +8507,7 @@
 
                     }
                 }
+                
             })
 
             //Paletes de colors
@@ -8578,17 +8588,17 @@
 
             //Opacitat
             function getOpacity(d) {
-                return d > 2500 ? '1' :
-                    d > 1500 ? '0.9' :
-                        d > 1000 ? '0.85' :
-                            d > 500 ? '0.8' :
-                                d > 200 ? '0.75' :
-                                    d > 100 ? '0.7' :
-                                        d > 50 ? '0.65' :
-                                            d > 25 ? '0.55' :
-                                                d > 10 ? '0.45' :
-                                                    d > 1 ? '0.35' :
-                                                        '0';
+                return d > 450 ? '1' :
+                    d > 300 ? '0.9' :
+                        d > 200 ? '0.8' :
+                            d > 100 ? '0.7' :
+                                d > 50 ? '0.6' :
+                                    d > 20 ? '0.5' :
+                                        d > 10 ? '0.4' :
+                                            d > 5 ? '0.3' :
+                                                d > 2 ? '0.25' :
+                                                    d > 1 ? '0.15' :
+                                                        '0.1';
             }
 
             //Amplada de la linia
@@ -8603,7 +8613,7 @@
                                             d > 25 ? '1' :
                                                 d > 10 ? '0.5' :
                                                     d > 1 ? '0.25' :
-                                                        '0';
+                                                        '0.1';
             }
 
             //Estils
@@ -8862,128 +8872,128 @@
 
             function onEachFeatureBus(feature, layer) {
                 if (barra.value == 1) {
-                layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v1 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v1 + "</h5>", { sticky: true });
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v1 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v1 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 2){
+                else if (barra.value == 2) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v2 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v2 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v2 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 3){
+                else if (barra.value == 3) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v3 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v3 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v3 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 4){
+                else if (barra.value == 4) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v4 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v4 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v4 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 5){
+                else if (barra.value == 5) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v5 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v5 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v5 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 6){
+                else if (barra.value == 6) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v6 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v6 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v6 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 7){
+                else if (barra.value == 7) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v7 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v7 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v7 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 8){
+                else if (barra.value == 8) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v8 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v8 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v8 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 9){
+                else if (barra.value == 9) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v9 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v9 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v9 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 10){
+                else if (barra.value == 10) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v10 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v10 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v10 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 11){
+                else if (barra.value == 11) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v11 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v11 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v11 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 12){
+                else if (barra.value == 12) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v12 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v12 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v12 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 13){
+                else if (barra.value == 13) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v13 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v13 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v13 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 14){
+                else if (barra.value == 14) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v14 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v14 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v14 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 15){
+                else if (barra.value == 15) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v15 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v15 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v15 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 16){
+                else if (barra.value == 16) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v16 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v16 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v16 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 17 ){
+                else if (barra.value == 17) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v17 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v17 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v17 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 18){
+                else if (barra.value == 18) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v18 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v18 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v18 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 19){
+                else if (barra.value == 19) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v19 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v19 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v19 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 20){
+                else if (barra.value == 20) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v20 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v20 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v20 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 21){
+                else if (barra.value == 21) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v21 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v21 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v21 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 22){
+                else if (barra.value == 22) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v22 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v22 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v22 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 23){
+                else if (barra.value == 23) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v23 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v23 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v23 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 24){
+                else if (barra.value == 24) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v24 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v24 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v24 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 25){
+                else if (barra.value == 25) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v25 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v25 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v25 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 26){
+                else if (barra.value == 26) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v26 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v26 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v26 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 27){
+                else if (barra.value == 27) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v27 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v27 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v27 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 28){
+                else if (barra.value == 28) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v28 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v28 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v28 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 29){
+                else if (barra.value == 29) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v29 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v29 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v29 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 30){
+                else if (barra.value == 30) {
                     layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v30 + "</h5>", { sticky: true });
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v30 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v30 + "</h5>", { sticky: true });
                 }
-                
-                
-                    layer.on({
+
+
+                layer.on({
                     click: zoomToFeature
                 });
             }
