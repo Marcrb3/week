@@ -4040,12 +4040,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v1),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v1),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4061,12 +4078,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v2),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v2),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4082,12 +4116,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v3),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v3),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4103,12 +4154,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v4),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v4),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4124,12 +4192,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v5),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v5),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4145,12 +4230,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v6),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v6),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4165,12 +4267,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v7),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v7),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4184,12 +4303,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v8),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v8),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4203,12 +4339,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v9),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v9),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4222,12 +4375,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v10),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v10),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4241,12 +4411,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v11),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v11),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4260,12 +4447,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v12),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v12),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4279,12 +4483,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v13),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v13),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4298,12 +4519,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v14),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v14),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4317,12 +4555,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v15),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v15),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4336,12 +4591,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v16),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v16),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4355,12 +4627,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v17),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v17),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4374,12 +4663,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v18),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v18),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4393,12 +4699,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v19),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v19),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4412,12 +4735,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v20),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v20),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4431,12 +4771,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v21),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v21),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4450,12 +4807,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v22),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v22),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4469,12 +4843,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v23),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v23),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4488,12 +4879,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v24),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v24),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4507,12 +4915,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v25),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v25),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4525,12 +4950,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v26),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v26),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4543,12 +4985,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v27),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v27),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4561,12 +5020,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v28),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v28),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4579,12 +5055,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v29),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v29),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4597,12 +5090,29 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v30),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v30),
                             color: 'rgb(4, 143, 108)',
                             dashArray: '',
                             fillOpacity: 1,
                         };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
                     },
                     filter: function (feature, layer) {
                         return (feature.properties.operador == "TRAM");
@@ -4629,7 +5139,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v1),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v1),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4650,7 +5160,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v2),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v2),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4671,7 +5181,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v3),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v3),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4692,7 +5202,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v4),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v4),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4713,7 +5223,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v5),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v5),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4734,7 +5244,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v6),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v6),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4754,7 +5264,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v7),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v7),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4772,7 +5282,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v8),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v8),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4790,7 +5300,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v9),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v9),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4808,7 +5318,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v10),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v10),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4826,7 +5336,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v11),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v11),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4844,7 +5354,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v12),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v12),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4862,7 +5372,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v13),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v13),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4880,7 +5390,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v14),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v14),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4898,7 +5408,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v15),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v15),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4916,7 +5426,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v16),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v16),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4934,7 +5444,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v17),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v17),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4952,7 +5462,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v18),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v18),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4970,7 +5480,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v19),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v19),
                             color: '#FFCC00',
                             dashArray: '',
@@ -4988,7 +5498,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v20),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v20),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5006,7 +5516,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v21),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v21),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5024,7 +5534,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v22),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v22),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5042,7 +5552,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v23),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v23),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5060,7 +5570,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v24),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v24),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5078,7 +5588,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v25),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v25),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5096,7 +5606,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v26),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v26),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5114,7 +5624,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v27),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v27),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5132,7 +5642,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v28),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v28),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5150,7 +5660,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v29),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v29),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5168,7 +5678,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v30),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v30),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5199,9 +5709,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v1),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v1),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5220,9 +5730,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v2),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v2),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5241,9 +5751,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v3),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v3),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5262,9 +5772,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v4),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v4),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5283,9 +5793,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v5),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v5),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5304,9 +5814,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v6),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v6),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5324,9 +5834,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v7),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v7),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5342,9 +5852,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v8),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v8),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5360,9 +5870,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v9),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v9),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5378,9 +5888,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v10),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v10),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5396,9 +5906,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v11),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v11),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5414,9 +5924,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v12),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v12),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5432,9 +5942,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v13),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v13),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5450,9 +5960,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v14),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v14),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5468,9 +5978,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v15),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v15),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5486,9 +5996,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v16),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v16),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5504,9 +6014,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v17),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v17),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5522,9 +6032,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v18),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v18),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5540,9 +6050,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v19),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v19),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5558,9 +6068,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v20),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v20),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5576,9 +6086,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v21),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v21),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5594,9 +6104,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v22),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v22),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5612,9 +6122,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v23),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v23),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5630,9 +6140,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v24),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v24),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5648,9 +6158,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v25),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v25),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5666,9 +6176,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v26),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v26),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5684,9 +6194,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v27),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v27),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5702,9 +6212,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v28),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v28),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5720,9 +6230,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v29),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v29),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5738,9 +6248,9 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v30),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v30),
-                            color: '#3366CC',
+                            color: '#004dca',
                             dashArray: '',
                             fillOpacity: 1,
                         };
@@ -5770,7 +6280,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v1),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v1),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5791,7 +6301,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v2),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v2),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5812,7 +6322,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v3),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v3),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5833,7 +6343,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v4),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v4),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5854,7 +6364,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v5),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v5),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5875,7 +6385,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v6),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v6),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5895,7 +6405,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v7),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v7),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5913,7 +6423,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v8),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v8),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5931,7 +6441,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v9),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v9),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5949,7 +6459,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v10),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v10),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5967,7 +6477,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v11),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v11),
                             color: '#FFCC00',
                             dashArray: '',
@@ -5985,7 +6495,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v12),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v12),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6003,7 +6513,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v13),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v13),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6021,7 +6531,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v14),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v14),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6039,7 +6549,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v15),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v15),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6057,7 +6567,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v16),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v16),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6075,7 +6585,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v17),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v17),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6093,7 +6603,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v18),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v18),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6111,7 +6621,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v19),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v19),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6129,7 +6639,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v20),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v20),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6147,7 +6657,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v21),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v21),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6165,7 +6675,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v22),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v22),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6183,7 +6693,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v23),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v23),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6201,7 +6711,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v24),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v24),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6219,7 +6729,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v25),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v25),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6237,7 +6747,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v26),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v26),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6255,7 +6765,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v27),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v27),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6273,7 +6783,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v28),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v28),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6291,7 +6801,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v29),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v29),
                             color: '#FFCC00',
                             dashArray: '',
@@ -6309,7 +6819,7 @@
                     onEachFeature: onEachFeatureBus,
                     style: function (feature, layer) {
                         return {
-                            weight: getWeight(feature.properties.v30),
+                            weight: 2,
                             opacity: getOpacity(feature.properties.v30),
                             color: '#FFCC00',
                             dashArray: '',
