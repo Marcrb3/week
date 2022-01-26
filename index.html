@@ -165,7 +165,7 @@
             font-size: 1.6em;
             margin-bottom: 1em;
             margin-top: 1em;
-            
+
             color: white;
         }
 
@@ -175,7 +175,7 @@
             padding-bottom: 1em;
             padding-top: 1em;
             padding-right: 1em;
-           
+
             color: white;
         }
 
@@ -215,7 +215,7 @@
 
         /*Slider*/
         .slidecontainer {
-           
+
             position: absolute;
             width: 50%;
             bottom: 1em;
@@ -289,7 +289,7 @@
 
         #controls {
             position: relative;
-            right: 6em;
+            right: 8em;
             bottom: -1.3em;
         }
 
@@ -337,6 +337,16 @@
 
         #play:hover,
         #play:after {
+            color: rgb(4, 143, 108) !important;
+        }
+
+        #forward:hover,
+        #forward:after {
+            color: rgb(4, 143, 108) !important;
+        }
+
+        #backward:hover,
+        #backward:after {
             color: rgb(4, 143, 108) !important;
         }
 
@@ -409,7 +419,6 @@
         .fa.fa-phone.mt-4.fa-2x:after {
             color: grey !important;
         }
-        
     </style>
 
 
@@ -507,22 +516,29 @@
             id="infobtn"></i></button>
 
     <!--Slider-->
-    <div class = "opac">
-    <div class="info">
-        <p class="warning"> Validacions T-Usual<br>
-            Gener 2022
-        </p>
-        <p class="warning2"><span id="demo" style="color:white"></span></p>
-    </div>
-    <div class="slidecontainer">
-        <div id="controls">
-            <a><i class="fa fa-play fa-2x" id="play" style="color:white;" title="Reprodueix"></i></a>
-            
-            <a><i class="fa fa-stop fa-2x" id="pause" style="color:white;" title="Atura"></i></a>
+    <div class="opac">
+        <div class="info">
+            <p class="warning"> Validacions T-Usual<br>
+                Gener 2022
+            </p>
+            <p class="warning2"><span id="demo" style="color:white"></span></p>
         </div>
-        <input type="range" min="1" max="30" value="1" step='1' class="slider" id="myRange"><br>
+        <div class="slidecontainer">
+            <div id="controls">
+
+                <a><i class="fa fa-step-backward fa-2x" id="backward" style="color:white;" title="Dia anterior"></i></a>
+
+                <a><i class="fa fa-play fa-2x" id="play" style="color:white;" title="Reprodueix"></i></a>
+
+                <a><i class="fa fa-step-forward fa-2x" id="forward" style="color:white;" title="Dia següent"></i></a>
+
+
+
+
+            </div>
+            <input type="range" min="1" max="30" value="1" step='1' class="slider" id="myRange"><br>
+        </div>
     </div>
-</div>
     <!--Sidebar-->
 
     <div id="sidebar" class="sidebar collapsed">
@@ -658,7 +674,7 @@
         var linies = $.ajax({
             url: "https://raw.githubusercontent.com/Marcrb3/week/main/ferroviari.geojson",
             dataType: "json",
-            success: console.log("Linies carregades correctament."),
+            success: console.log("Línies carregades correctament."),
             error: function (xhr) {
                 alert(xhr.statusText)
             }
@@ -666,12 +682,11 @@
         var val30_bus = $.ajax({
             url: "https://raw.githubusercontent.com/Marcrb3/week/main/val30_bus.geojson",
             dataType: "json",
-            success: console.log("Validacions bus dilluns carregades correctament."),
+            success: console.log("Viari carregat correctament."),
             error: function (xhr) {
                 alert(xhr.statusText)
             }
         })
-
 
 
         $.when(linies, val30, val30_bus).done(function () {
@@ -702,6 +717,7 @@
                 sidebar.open('messages');
             }
 
+            //mapa base 
 
             var Topo = L.mapboxGL({
                 style: 'mapbox://styles/marcrb3/ckysuwb5e73u214tfpbiuy3l1',
@@ -752,7 +768,6 @@
             kyBusDilluns = L.geoJSON(val30_bus.responseJSON);
 
 
-
             //Obrim la secció d'informació de la sidebar 
 
             var sidebarDiv = document.getElementById('sidebar');
@@ -792,7 +807,6 @@
             drawTMB1 = function () {
                 selectedOperador = 'FMB';
 
-
                 document.getElementById('metro').style.background = "rgb(4, 143, 108)";
                 document.getElementById('fgc').style.background = "none";
                 document.getElementById('rod').style.background = "none";
@@ -801,7 +815,7 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
-                
+
 
                 neteja();
                 kyAMB = L.geoJSON(linies.responseJSON, {
@@ -6839,15 +6853,28 @@
             var counter = 1;
             var playing = 0;
 
+            playPause = function () {
+                document.getElementById('play').classList.remove("fa-play");
+                document.getElementById('play').classList.add("fa-pause");
+
+            }
+
+            pausePlay = function () {
+                document.getElementById('play').classList.remove("fa-pause");
+                document.getElementById('play').classList.add("fa-play");
+
+            }
 
             $('#play').on('click', function () {
+                playPause();
+
                 if (playing == 0) {
                     playing++;
                     myInterval = setInterval(function () {
 
                         barra.value++;
 
-                        if (counter >= 30) {
+                        if (counter > 30) {
                             barra.value = 1;
                             counter = 1;
                         }
@@ -6855,2170 +6882,1488 @@
                         counter++;
                         console.log(barra.value);
 
-
-
                         if (barra.value == 1) {
                             output.innerHTML = '01/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB1();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC1();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD1();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB1();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM1();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL1();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS1();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS1();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
-
+                            if (selectedOperador == 'FMB') { drawTMB1(); }
+                            else if (selectedOperador == 'FGC') { drawFGC1(); }
+                            else if (selectedOperador == 'ROD') { drawROD1(); }
+                            else if (selectedOperador == 'TB') { drawTB1(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM1(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
                         }
                         else if (barra.value == 2) {
                             output.innerHTML = '02/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB2();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC2();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD2();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB2();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM2();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL2();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS2();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS2();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB2(); }
+                            else if (selectedOperador == 'FGC') { drawFGC2(); }
+                            else if (selectedOperador == 'ROD') { drawROD2(); }
+                            else if (selectedOperador == 'TB') { drawTB2(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM2(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
                         }
                         else if (barra.value == 3) {
                             output.innerHTML = '03/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB3();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC3();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD3();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB3();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM3();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL3();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS3();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS3();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB3(); }
+                            else if (selectedOperador == 'FGC') { drawFGC3(); }
+                            else if (selectedOperador == 'ROD') { drawROD3(); }
+                            else if (selectedOperador == 'TB') { drawTB3(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM3(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
                         }
                         else if (barra.value == 4) {
                             output.innerHTML = '04/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB4();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC4();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD4();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB4();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM4();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL4();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS4();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS4();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB4(); }
+                            else if (selectedOperador == 'FGC') { drawFGC4(); }
+                            else if (selectedOperador == 'ROD') { drawROD4(); }
+                            else if (selectedOperador == 'TB') { drawTB4(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM4(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
                         }
                         else if (barra.value == 5) {
                             output.innerHTML = '05/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB5();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC5();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD5();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB5();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM5();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL5();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS5();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS5();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB5(); }
+                            else if (selectedOperador == 'FGC') { drawFGC5(); }
+                            else if (selectedOperador == 'ROD') { drawROD5(); }
+                            else if (selectedOperador == 'TB') { drawTB5(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM5(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
                         }
                         else if (barra.value == 6) {
                             output.innerHTML = '06/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB6();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC6();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD6();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB6();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM6();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL6();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS6();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS6();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB6(); }
+                            else if (selectedOperador == 'FGC') { drawFGC6(); }
+                            else if (selectedOperador == 'ROD') { drawROD6(); }
+                            else if (selectedOperador == 'TB') { drawTB6(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM6(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
                         }
                         else if (barra.value == 7) {
                             output.innerHTML = '07/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB7();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC7();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD7();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB7();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM7();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL7();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS7();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS7();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB7(); }
+                            else if (selectedOperador == 'FGC') { drawFGC7(); }
+                            else if (selectedOperador == 'ROD') { drawROD7(); }
+                            else if (selectedOperador == 'TB') { drawTB7(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM7(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
                         }
                         else if (barra.value == 8) {
                             output.innerHTML = '08/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB8();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC8();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD8();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB8();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM8();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL8();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS8();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS8();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB8(); }
+                            else if (selectedOperador == 'FGC') { drawFGC8(); }
+                            else if (selectedOperador == 'ROD') { drawROD8(); }
+                            else if (selectedOperador == 'TB') { drawTB8(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM8(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
                         }
                         else if (barra.value == 9) {
                             output.innerHTML = '09/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB9();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC9();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD9();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB9();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM9();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL9();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS9();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS9();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB9(); }
+                            else if (selectedOperador == 'FGC') { drawFGC9(); }
+                            else if (selectedOperador == 'ROD') { drawROD9(); }
+                            else if (selectedOperador == 'TB') { drawTB9(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM9(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
                         }
                         else if (barra.value == 10) {
                             output.innerHTML = '10/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB10();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC10();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD10();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB10();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM10();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL10();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS10();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS10();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB10(); }
+                            else if (selectedOperador == 'FGC') { drawFGC10(); }
+                            else if (selectedOperador == 'ROD') { drawROD10(); }
+                            else if (selectedOperador == 'TB') { drawTB10(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM10(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
                         }
                         else if (barra.value == 11) {
                             output.innerHTML = '11/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB11();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC11();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD11();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB11();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM11();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL11();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS11();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS11();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB11(); }
+                            else if (selectedOperador == 'FGC') { drawFGC11(); }
+                            else if (selectedOperador == 'ROD') { drawROD11(); }
+                            else if (selectedOperador == 'TB') { drawTB11(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM11(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
                         }
                         else if (barra.value == 12) {
                             output.innerHTML = '12/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB12();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC12();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD12();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB12();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM12();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL12();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS12();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS12();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB12(); }
+                            else if (selectedOperador == 'FGC') { drawFGC12(); }
+                            else if (selectedOperador == 'ROD') { drawROD12(); }
+                            else if (selectedOperador == 'TB') { drawTB12(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM12(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
                         }
                         else if (barra.value == 13) {
                             output.innerHTML = '13/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB13();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC13();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD7();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB13();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM13();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL13();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS13();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS13();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB13(); }
+                            else if (selectedOperador == 'FGC') { drawFGC13(); }
+                            else if (selectedOperador == 'ROD') { drawROD7(); }
+                            else if (selectedOperador == 'TB') { drawTB13(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM13(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
                         }
                         else if (barra.value == 14) {
                             output.innerHTML = '14/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB14();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC14();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD14();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB14();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM14();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL14();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS14();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS14();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB14(); }
+                            else if (selectedOperador == 'FGC') { drawFGC14(); }
+                            else if (selectedOperador == 'ROD') { drawROD14(); }
+                            else if (selectedOperador == 'TB') { drawTB14(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM14(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
                         }
                         else if (barra.value == 15) {
                             output.innerHTML = '15/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB15();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC15();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD15();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB15();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM15();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL15();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS15();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS15();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB15(); }
+                            else if (selectedOperador == 'FGC') { drawFGC15(); }
+                            else if (selectedOperador == 'ROD') { drawROD15(); }
+                            else if (selectedOperador == 'TB') { drawTB15(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM15(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
                         }
                         else if (barra.value == 16) {
                             output.innerHTML = '16/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB16();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC16();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD16();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB16();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM16();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL16();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS16();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS16();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB16(); }
+                            else if (selectedOperador == 'FGC') { drawFGC16(); }
+                            else if (selectedOperador == 'ROD') { drawROD16(); }
+                            else if (selectedOperador == 'TB') { drawTB16(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM16(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
                         }
                         else if (barra.value == 17) {
                             output.innerHTML = '17/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB17();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC17();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD17();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB17();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM17();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL17();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS17();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS17();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB17(); }
+                            else if (selectedOperador == 'FGC') { drawFGC17(); }
+                            else if (selectedOperador == 'ROD') { drawROD17(); }
+                            else if (selectedOperador == 'TB') { drawTB17(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM17(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
                         }
                         else if (barra.value == 18) {
                             output.innerHTML = '18/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB18();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC18();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD18();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB18();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM18();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL18();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS18();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS18();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB18(); }
+                            else if (selectedOperador == 'FGC') { drawFGC18(); }
+                            else if (selectedOperador == 'ROD') { drawROD18(); }
+                            else if (selectedOperador == 'TB') { drawTB18(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM18(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
                         }
                         else if (barra.value == 19) {
                             output.innerHTML = '19/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB19();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC19();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD19();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB19();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM19();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL19();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS19();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS19();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB19(); }
+                            else if (selectedOperador == 'FGC') { drawFGC19(); }
+                            else if (selectedOperador == 'ROD') { drawROD19(); }
+                            else if (selectedOperador == 'TB') { drawTB19(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM19(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
                         }
                         else if (barra.value == 20) {
                             output.innerHTML = '20/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB20();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC20();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD20();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB20();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM20();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL20();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS20();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS20();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB20(); }
+                            else if (selectedOperador == 'FGC') { drawFGC20(); }
+                            else if (selectedOperador == 'ROD') { drawROD20(); }
+                            else if (selectedOperador == 'TB') { drawTB20(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM20(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
                         }
                         else if (barra.value == 21) {
                             output.innerHTML = '21/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB21();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC21();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD21();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB21();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM21();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL21();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS21();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS21();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB21(); }
+                            else if (selectedOperador == 'FGC') { drawFGC21(); }
+                            else if (selectedOperador == 'ROD') { drawROD21(); }
+                            else if (selectedOperador == 'TB') { drawTB21(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM21(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
                         }
                         else if (barra.value == 22) {
                             output.innerHTML = '22/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB22();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC22();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD22();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB22();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM22();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL22();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS22();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS22();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB22(); }
+                            else if (selectedOperador == 'FGC') { drawFGC22(); }
+                            else if (selectedOperador == 'ROD') { drawROD22(); }
+                            else if (selectedOperador == 'TB') { drawTB22(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM22(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
                         }
                         else if (barra.value == 23) {
                             output.innerHTML = '23/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB23();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC23();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD23();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB23();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM23();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL23();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS23();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS23();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB23(); }
+                            else if (selectedOperador == 'FGC') { drawFGC23(); }
+                            else if (selectedOperador == 'ROD') { drawROD23(); }
+                            else if (selectedOperador == 'TB') { drawTB23(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM23(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
                         }
                         else if (barra.value == 24) {
                             output.innerHTML = '24/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB24();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC24();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD24();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB24();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM24();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL24();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS24();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS24();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB24(); }
+                            else if (selectedOperador == 'FGC') { drawFGC24(); }
+                            else if (selectedOperador == 'ROD') { drawROD24(); }
+                            else if (selectedOperador == 'TB') { drawTB24(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM24(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
                         }
                         else if (barra.value == 25) {
                             output.innerHTML = '25/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB25();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC25();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD25();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB25();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM25();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL25();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS25();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS25();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB25(); }
+                            else if (selectedOperador == 'FGC') { drawFGC25(); }
+                            else if (selectedOperador == 'ROD') { drawROD25(); }
+                            else if (selectedOperador == 'TB') { drawTB25(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM25(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
                         }
                         else if (barra.value == 26) {
                             output.innerHTML = '26/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB26();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC26();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD26();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB26();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM26();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL26();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS26();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS26();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB26(); }
+                            else if (selectedOperador == 'FGC') { drawFGC26(); }
+                            else if (selectedOperador == 'ROD') { drawROD26(); }
+                            else if (selectedOperador == 'TB') { drawTB26(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM26(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
                         }
                         else if (barra.value == 27) {
                             output.innerHTML = '27/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB27();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC27();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD27();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB27();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM27();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL27();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS27();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS27();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB27(); }
+                            else if (selectedOperador == 'FGC') { drawFGC27(); }
+                            else if (selectedOperador == 'ROD') { drawROD27(); }
+                            else if (selectedOperador == 'TB') { drawTB27(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM27(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
                         }
                         else if (barra.value == 28) {
                             output.innerHTML = '28/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB28();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC28();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD28();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB28();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM28();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL28();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS28();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS28();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB28(); }
+                            else if (selectedOperador == 'FGC') { drawFGC28(); }
+                            else if (selectedOperador == 'ROD') { drawROD28(); }
+                            else if (selectedOperador == 'TB') { drawTB28(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM28(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
                         }
                         else if (barra.value == 29) {
                             output.innerHTML = '29/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB29();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC29();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD29();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB29();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM29();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL29();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS29();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS29();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB29(); }
+                            else if (selectedOperador == 'FGC') { drawFGC29(); }
+                            else if (selectedOperador == 'ROD') { drawROD29(); }
+                            else if (selectedOperador == 'TB') { drawTB29(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM29(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
                         }
                         else if (barra.value == 30) {
                             output.innerHTML = '30/01/2022';
                             neteja();
-                            if (selectedOperador == 'FMB') {
-                                drawTMB30();
-                            }
-                            else if (selectedOperador == 'FGC') {
-                                drawFGC30();
-                            }
-                            else if (selectedOperador == 'ROD') {
-                                drawROD30();
-                            }
-                            else if (selectedOperador == 'TB') {
-                                drawTB30();
-                            }
-                            else if (selectedOperador == 'TRAM') {
-                                drawTRAM30();
-                            }
-                            else if (selectedOperador == 'TUSGSAL') {
-                                drawTUSGSAL30();
-                            }
-                            else if (selectedOperador == 'BAIXBUS') {
-                                drawBAIXBUS30();
-                            }
-                            else if (selectedOperador == 'NITBUS') {
-                                drawNITBUS30();
-                            }
-                            else {
-                                clearInterval(myInterval);
-                                resetSlider();
-                                counter = 1;
-                                return alert('Selecciona una operadora per veure la informació');
-
-                            }
+                            if (selectedOperador == 'FMB') { drawTMB30(); }
+                            else if (selectedOperador == 'FGC') { drawFGC30(); }
+                            else if (selectedOperador == 'ROD') { drawROD30(); }
+                            else if (selectedOperador == 'TB') { drawTB30(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM30(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
                         }
 
                     }, 750);
                 }
                 else {
-                    alert("La seqüència ja s'està reproduïnt")
+                    clearInterval(myInterval);
+                    pausePlay();
+                    playing = 0;
                 }
-
-               
-
 
             });
 
-          
-            $('#pause').on('click', function () {
-
-                clearInterval(myInterval);
-                resetSlider();
-                counter = 1;
-                playing = 0;
-
-
-                if (selectedOperador == 'FMB') {
-                    drawTMB1();
-                }
-                else if (selectedOperador == 'FGC') {
-                    drawFGC1();
-                }
-                else if (selectedOperador == 'ROD') {
-                    drawROD1();
-                }
-                else if (selectedOperador == 'TB') {
-                    drawTB1();
-                }
-                else if (selectedOperador == 'TRAM') {
-                    drawTRAM1();
-                }
-                else if (selectedOperador == 'TUSGSAL') {
-                    drawTUSGSAL1();
-                }
-                else if (selectedOperador == 'BAIXBUS') {
-                    drawBAIXBUS1();
-                }
-                else if (selectedOperador == 'NITBUS') {
-                    drawNITBUS1();
-                }
-                else {
-                    return alert('Selecciona una operadora per veure la informació');
-
-                }
-            })
-
-           
 
             //Filtrem els dies de la setmana a l'slider
 
 
             $('#myRange').on('change', function () {
-                
+
                 if (barra.value == 1) {
                     output.innerHTML = '01/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB1();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC1();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD1();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB1();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM1();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL1();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS1();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS1();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
-
+                    if (selectedOperador == 'FMB') { drawTMB1(); }
+                    else if (selectedOperador == 'FGC') { drawFGC1(); }
+                    else if (selectedOperador == 'ROD') { drawROD1(); }
+                    else if (selectedOperador == 'TB') { drawTB1(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
                 }
                 else if (barra.value == 2) {
                     output.innerHTML = '02/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB2();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC2();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD2();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB2();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM2();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL2();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS2();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS2();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB2(); }
+                    else if (selectedOperador == 'FGC') { drawFGC2(); }
+                    else if (selectedOperador == 'ROD') { drawROD2(); }
+                    else if (selectedOperador == 'TB') { drawTB2(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
                 }
                 else if (barra.value == 3) {
                     output.innerHTML = '03/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB3();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC3();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD3();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB3();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM3();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL3();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS3();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS3();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB3(); }
+                    else if (selectedOperador == 'FGC') { drawFGC3(); }
+                    else if (selectedOperador == 'ROD') { drawROD3(); }
+                    else if (selectedOperador == 'TB') { drawTB3(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
                 }
                 else if (barra.value == 4) {
                     output.innerHTML = '04/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB4();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC4();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD4();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB4();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM4();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL4();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS4();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS4();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB4(); }
+                    else if (selectedOperador == 'FGC') { drawFGC4(); }
+                    else if (selectedOperador == 'ROD') { drawROD4(); }
+                    else if (selectedOperador == 'TB') { drawTB4(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
                 }
                 else if (barra.value == 5) {
                     output.innerHTML = '05/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB5();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC5();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD5();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB5();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM5();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL5();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS5();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS5();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB5(); }
+                    else if (selectedOperador == 'FGC') { drawFGC5(); }
+                    else if (selectedOperador == 'ROD') { drawROD5(); }
+                    else if (selectedOperador == 'TB') { drawTB5(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
                 }
                 else if (barra.value == 6) {
                     output.innerHTML = '06/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB6();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC6();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD6();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB6();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM6();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL6();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS6();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS6();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB6(); }
+                    else if (selectedOperador == 'FGC') { drawFGC6(); }
+                    else if (selectedOperador == 'ROD') { drawROD6(); }
+                    else if (selectedOperador == 'TB') { drawTB6(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
                 }
                 else if (barra.value == 7) {
                     output.innerHTML = '07/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB7();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC7();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD7();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB7();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM7();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL7();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS7();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS7();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB7(); }
+                    else if (selectedOperador == 'FGC') { drawFGC7(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB7(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
                 }
                 else if (barra.value == 8) {
                     output.innerHTML = '08/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB8();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC8();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD8();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB8();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM8();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL8();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS8();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS8();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB8(); }
+                    else if (selectedOperador == 'FGC') { drawFGC8(); }
+                    else if (selectedOperador == 'ROD') { drawROD8(); }
+                    else if (selectedOperador == 'TB') { drawTB8(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
                 }
                 else if (barra.value == 9) {
                     output.innerHTML = '09/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB9();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC9();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD9();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB9();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM9();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL9();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS9();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS9();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB9(); }
+                    else if (selectedOperador == 'FGC') { drawFGC9(); }
+                    else if (selectedOperador == 'ROD') { drawROD9(); }
+                    else if (selectedOperador == 'TB') { drawTB9(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
                 }
                 else if (barra.value == 10) {
                     output.innerHTML = '10/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB10();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC10();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD10();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB10();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM10();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL10();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS10();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS10();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB10(); }
+                    else if (selectedOperador == 'FGC') { drawFGC10(); }
+                    else if (selectedOperador == 'ROD') { drawROD10(); }
+                    else if (selectedOperador == 'TB') { drawTB10(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
                 }
                 else if (barra.value == 11) {
                     output.innerHTML = '11/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB11();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC11();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD11();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB11();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM11();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL11();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS11();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS11();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB11(); }
+                    else if (selectedOperador == 'FGC') { drawFGC11(); }
+                    else if (selectedOperador == 'ROD') { drawROD11(); }
+                    else if (selectedOperador == 'TB') { drawTB11(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
                 }
                 else if (barra.value == 12) {
                     output.innerHTML = '12/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB12();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC12();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD12();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB12();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM12();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL12();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS12();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS12();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB12(); }
+                    else if (selectedOperador == 'FGC') { drawFGC12(); }
+                    else if (selectedOperador == 'ROD') { drawROD12(); }
+                    else if (selectedOperador == 'TB') { drawTB12(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
                 }
                 else if (barra.value == 13) {
                     output.innerHTML = '13/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB13();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC13();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD7();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB13();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM13();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL13();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS13();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS13();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB13(); }
+                    else if (selectedOperador == 'FGC') { drawFGC13(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB13(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
                 }
                 else if (barra.value == 14) {
                     output.innerHTML = '14/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB14();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC14();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD14();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB14();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM14();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL14();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS14();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS14();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB14(); }
+                    else if (selectedOperador == 'FGC') { drawFGC14(); }
+                    else if (selectedOperador == 'ROD') { drawROD14(); }
+                    else if (selectedOperador == 'TB') { drawTB14(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
                 }
                 else if (barra.value == 15) {
                     output.innerHTML = '15/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB15();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC15();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD15();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB15();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM15();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL15();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS15();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS15();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB15(); }
+                    else if (selectedOperador == 'FGC') { drawFGC15(); }
+                    else if (selectedOperador == 'ROD') { drawROD15(); }
+                    else if (selectedOperador == 'TB') { drawTB15(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
                 }
                 else if (barra.value == 16) {
                     output.innerHTML = '16/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB16();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC16();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD16();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB16();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM16();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL16();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS16();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS16();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB16(); }
+                    else if (selectedOperador == 'FGC') { drawFGC16(); }
+                    else if (selectedOperador == 'ROD') { drawROD16(); }
+                    else if (selectedOperador == 'TB') { drawTB16(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
                 }
                 else if (barra.value == 17) {
                     output.innerHTML = '17/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB17();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC17();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD17();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB17();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM17();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL17();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS17();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS17();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB17(); }
+                    else if (selectedOperador == 'FGC') { drawFGC17(); }
+                    else if (selectedOperador == 'ROD') { drawROD17(); }
+                    else if (selectedOperador == 'TB') { drawTB17(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
                 }
                 else if (barra.value == 18) {
                     output.innerHTML = '18/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB18();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC18();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD18();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB18();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM18();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL18();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS18();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS18();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB18(); }
+                    else if (selectedOperador == 'FGC') { drawFGC18(); }
+                    else if (selectedOperador == 'ROD') { drawROD18(); }
+                    else if (selectedOperador == 'TB') { drawTB18(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
                 }
                 else if (barra.value == 19) {
                     output.innerHTML = '19/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB19();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC19();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD19();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB19();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM19();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL19();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS19();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS19();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB19(); }
+                    else if (selectedOperador == 'FGC') { drawFGC19(); }
+                    else if (selectedOperador == 'ROD') { drawROD19(); }
+                    else if (selectedOperador == 'TB') { drawTB19(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
                 }
                 else if (barra.value == 20) {
                     output.innerHTML = '20/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB20();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC20();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD20();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB20();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM20();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL20();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS20();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS20();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB20(); }
+                    else if (selectedOperador == 'FGC') { drawFGC20(); }
+                    else if (selectedOperador == 'ROD') { drawROD20(); }
+                    else if (selectedOperador == 'TB') { drawTB20(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
                 }
                 else if (barra.value == 21) {
                     output.innerHTML = '21/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB21();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC21();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD21();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB21();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM21();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL21();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS21();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS21();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB21(); }
+                    else if (selectedOperador == 'FGC') { drawFGC21(); }
+                    else if (selectedOperador == 'ROD') { drawROD21(); }
+                    else if (selectedOperador == 'TB') { drawTB21(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
                 }
                 else if (barra.value == 22) {
                     output.innerHTML = '22/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB22();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC22();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD22();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB22();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM22();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL22();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS22();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS22();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB22(); }
+                    else if (selectedOperador == 'FGC') { drawFGC22(); }
+                    else if (selectedOperador == 'ROD') { drawROD22(); }
+                    else if (selectedOperador == 'TB') { drawTB22(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
                 }
                 else if (barra.value == 23) {
                     output.innerHTML = '23/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB23();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC23();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD23();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB23();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM23();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL23();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS23();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS23();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB23(); }
+                    else if (selectedOperador == 'FGC') { drawFGC23(); }
+                    else if (selectedOperador == 'ROD') { drawROD23(); }
+                    else if (selectedOperador == 'TB') { drawTB23(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
                 }
                 else if (barra.value == 24) {
                     output.innerHTML = '24/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB24();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC24();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD24();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB24();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM24();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL24();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS24();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS24();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB24(); }
+                    else if (selectedOperador == 'FGC') { drawFGC24(); }
+                    else if (selectedOperador == 'ROD') { drawROD24(); }
+                    else if (selectedOperador == 'TB') { drawTB24(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
                 }
                 else if (barra.value == 25) {
                     output.innerHTML = '25/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB25();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC25();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD25();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB25();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM25();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL25();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS25();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS25();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB25(); }
+                    else if (selectedOperador == 'FGC') { drawFGC25(); }
+                    else if (selectedOperador == 'ROD') { drawROD25(); }
+                    else if (selectedOperador == 'TB') { drawTB25(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
                 }
                 else if (barra.value == 26) {
                     output.innerHTML = '26/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB26();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC26();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD26();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB26();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM26();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL26();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS26();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS26();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB26(); }
+                    else if (selectedOperador == 'FGC') { drawFGC26(); }
+                    else if (selectedOperador == 'ROD') { drawROD26(); }
+                    else if (selectedOperador == 'TB') { drawTB26(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
                 }
                 else if (barra.value == 27) {
                     output.innerHTML = '27/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB27();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC27();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD27();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB27();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM27();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL27();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS27();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS27();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB27(); }
+                    else if (selectedOperador == 'FGC') { drawFGC27(); }
+                    else if (selectedOperador == 'ROD') { drawROD27(); }
+                    else if (selectedOperador == 'TB') { drawTB27(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
                 }
                 else if (barra.value == 28) {
                     output.innerHTML = '28/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB28();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC28();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD28();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB28();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM28();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL28();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS28();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS28();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB28(); }
+                    else if (selectedOperador == 'FGC') { drawFGC28(); }
+                    else if (selectedOperador == 'ROD') { drawROD28(); }
+                    else if (selectedOperador == 'TB') { drawTB28(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
                 }
                 else if (barra.value == 29) {
                     output.innerHTML = '29/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB29();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC29();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD29();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB29();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM29();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL29();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS29();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS29();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB29(); }
+                    else if (selectedOperador == 'FGC') { drawFGC29(); }
+                    else if (selectedOperador == 'ROD') { drawROD29(); }
+                    else if (selectedOperador == 'TB') { drawTB29(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
                 }
                 else if (barra.value == 30) {
                     output.innerHTML = '30/01/2022';
                     neteja();
-                    if (selectedOperador == 'FMB') {
-                        drawTMB30();
-                    }
-                    else if (selectedOperador == 'FGC') {
-                        drawFGC30();
-                    }
-                    else if (selectedOperador == 'ROD') {
-                        drawROD30();
-                    }
-                    else if (selectedOperador == 'TB') {
-                        drawTB30();
-                    }
-                    else if (selectedOperador == 'TRAM') {
-                        drawTRAM30();
-                    }
-                    else if (selectedOperador == 'TUSGSAL') {
-                        drawTUSGSAL30();
-                    }
-                    else if (selectedOperador == 'BAIXBUS') {
-                        drawBAIXBUS30();
-                    }
-                    else if (selectedOperador == 'NITBUS') {
-                        drawNITBUS30();
-                    }
-                    else {
-                        clearInterval(myInterval);
-                        resetSlider();
-                        counter = 1;
-                        return alert('Selecciona una operadora per veure la informació');
-
-                    }
+                    if (selectedOperador == 'FMB') { drawTMB30(); }
+                    else if (selectedOperador == 'FGC') { drawFGC30(); }
+                    else if (selectedOperador == 'ROD') { drawROD30(); }
+                    else if (selectedOperador == 'TB') { drawTB30(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
                 }
-                
             })
+
+            $('#forward').on('click', function () {
+                barra.value++;
+                if (counter > 30) {
+                    barra.value = 1;
+                    counter = 1;
+                }
+
+                counter++;
+                console.log(barra.value);
+
+                if (barra.value == 1) {
+                    output.innerHTML = '01/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB1(); }
+                    else if (selectedOperador == 'FGC') { drawFGC1(); }
+                    else if (selectedOperador == 'ROD') { drawROD1(); }
+                    else if (selectedOperador == 'TB') { drawTB1(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                }
+                else if (barra.value == 2) {
+                    output.innerHTML = '02/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB2(); }
+                    else if (selectedOperador == 'FGC') { drawFGC2(); }
+                    else if (selectedOperador == 'ROD') { drawROD2(); }
+                    else if (selectedOperador == 'TB') { drawTB2(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                }
+                else if (barra.value == 3) {
+                    output.innerHTML = '03/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB3(); }
+                    else if (selectedOperador == 'FGC') { drawFGC3(); }
+                    else if (selectedOperador == 'ROD') { drawROD3(); }
+                    else if (selectedOperador == 'TB') { drawTB3(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                }
+                else if (barra.value == 4) {
+                    output.innerHTML = '04/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB4(); }
+                    else if (selectedOperador == 'FGC') { drawFGC4(); }
+                    else if (selectedOperador == 'ROD') { drawROD4(); }
+                    else if (selectedOperador == 'TB') { drawTB4(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                }
+                else if (barra.value == 5) {
+                    output.innerHTML = '05/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB5(); }
+                    else if (selectedOperador == 'FGC') { drawFGC5(); }
+                    else if (selectedOperador == 'ROD') { drawROD5(); }
+                    else if (selectedOperador == 'TB') { drawTB5(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                }
+                else if (barra.value == 6) {
+                    output.innerHTML = '06/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB6(); }
+                    else if (selectedOperador == 'FGC') { drawFGC6(); }
+                    else if (selectedOperador == 'ROD') { drawROD6(); }
+                    else if (selectedOperador == 'TB') { drawTB6(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                }
+                else if (barra.value == 7) {
+                    output.innerHTML = '07/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB7(); }
+                    else if (selectedOperador == 'FGC') { drawFGC7(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB7(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                }
+                else if (barra.value == 8) {
+                    output.innerHTML = '08/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB8(); }
+                    else if (selectedOperador == 'FGC') { drawFGC8(); }
+                    else if (selectedOperador == 'ROD') { drawROD8(); }
+                    else if (selectedOperador == 'TB') { drawTB8(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                }
+                else if (barra.value == 9) {
+                    output.innerHTML = '09/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB9(); }
+                    else if (selectedOperador == 'FGC') { drawFGC9(); }
+                    else if (selectedOperador == 'ROD') { drawROD9(); }
+                    else if (selectedOperador == 'TB') { drawTB9(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                }
+                else if (barra.value == 10) {
+                    output.innerHTML = '10/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB10(); }
+                    else if (selectedOperador == 'FGC') { drawFGC10(); }
+                    else if (selectedOperador == 'ROD') { drawROD10(); }
+                    else if (selectedOperador == 'TB') { drawTB10(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                }
+                else if (barra.value == 11) {
+                    output.innerHTML = '11/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB11(); }
+                    else if (selectedOperador == 'FGC') { drawFGC11(); }
+                    else if (selectedOperador == 'ROD') { drawROD11(); }
+                    else if (selectedOperador == 'TB') { drawTB11(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                }
+                else if (barra.value == 12) {
+                    output.innerHTML = '12/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB12(); }
+                    else if (selectedOperador == 'FGC') { drawFGC12(); }
+                    else if (selectedOperador == 'ROD') { drawROD12(); }
+                    else if (selectedOperador == 'TB') { drawTB12(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                }
+                else if (barra.value == 13) {
+                    output.innerHTML = '13/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB13(); }
+                    else if (selectedOperador == 'FGC') { drawFGC13(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB13(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                }
+                else if (barra.value == 14) {
+                    output.innerHTML = '14/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB14(); }
+                    else if (selectedOperador == 'FGC') { drawFGC14(); }
+                    else if (selectedOperador == 'ROD') { drawROD14(); }
+                    else if (selectedOperador == 'TB') { drawTB14(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                }
+                else if (barra.value == 15) {
+                    output.innerHTML = '15/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB15(); }
+                    else if (selectedOperador == 'FGC') { drawFGC15(); }
+                    else if (selectedOperador == 'ROD') { drawROD15(); }
+                    else if (selectedOperador == 'TB') { drawTB15(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                }
+                else if (barra.value == 16) {
+                    output.innerHTML = '16/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB16(); }
+                    else if (selectedOperador == 'FGC') { drawFGC16(); }
+                    else if (selectedOperador == 'ROD') { drawROD16(); }
+                    else if (selectedOperador == 'TB') { drawTB16(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                }
+                else if (barra.value == 17) {
+                    output.innerHTML = '17/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB17(); }
+                    else if (selectedOperador == 'FGC') { drawFGC17(); }
+                    else if (selectedOperador == 'ROD') { drawROD17(); }
+                    else if (selectedOperador == 'TB') { drawTB17(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                }
+                else if (barra.value == 18) {
+                    output.innerHTML = '18/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB18(); }
+                    else if (selectedOperador == 'FGC') { drawFGC18(); }
+                    else if (selectedOperador == 'ROD') { drawROD18(); }
+                    else if (selectedOperador == 'TB') { drawTB18(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                }
+                else if (barra.value == 19) {
+                    output.innerHTML = '19/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB19(); }
+                    else if (selectedOperador == 'FGC') { drawFGC19(); }
+                    else if (selectedOperador == 'ROD') { drawROD19(); }
+                    else if (selectedOperador == 'TB') { drawTB19(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                }
+                else if (barra.value == 20) {
+                    output.innerHTML = '20/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB20(); }
+                    else if (selectedOperador == 'FGC') { drawFGC20(); }
+                    else if (selectedOperador == 'ROD') { drawROD20(); }
+                    else if (selectedOperador == 'TB') { drawTB20(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                }
+                else if (barra.value == 21) {
+                    output.innerHTML = '21/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB21(); }
+                    else if (selectedOperador == 'FGC') { drawFGC21(); }
+                    else if (selectedOperador == 'ROD') { drawROD21(); }
+                    else if (selectedOperador == 'TB') { drawTB21(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                }
+                else if (barra.value == 22) {
+                    output.innerHTML = '22/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB22(); }
+                    else if (selectedOperador == 'FGC') { drawFGC22(); }
+                    else if (selectedOperador == 'ROD') { drawROD22(); }
+                    else if (selectedOperador == 'TB') { drawTB22(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                }
+                else if (barra.value == 23) {
+                    output.innerHTML = '23/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB23(); }
+                    else if (selectedOperador == 'FGC') { drawFGC23(); }
+                    else if (selectedOperador == 'ROD') { drawROD23(); }
+                    else if (selectedOperador == 'TB') { drawTB23(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                }
+                else if (barra.value == 24) {
+                    output.innerHTML = '24/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB24(); }
+                    else if (selectedOperador == 'FGC') { drawFGC24(); }
+                    else if (selectedOperador == 'ROD') { drawROD24(); }
+                    else if (selectedOperador == 'TB') { drawTB24(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                }
+                else if (barra.value == 25) {
+                    output.innerHTML = '25/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB25(); }
+                    else if (selectedOperador == 'FGC') { drawFGC25(); }
+                    else if (selectedOperador == 'ROD') { drawROD25(); }
+                    else if (selectedOperador == 'TB') { drawTB25(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                }
+                else if (barra.value == 26) {
+                    output.innerHTML = '26/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB26(); }
+                    else if (selectedOperador == 'FGC') { drawFGC26(); }
+                    else if (selectedOperador == 'ROD') { drawROD26(); }
+                    else if (selectedOperador == 'TB') { drawTB26(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                }
+                else if (barra.value == 27) {
+                    output.innerHTML = '27/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB27(); }
+                    else if (selectedOperador == 'FGC') { drawFGC27(); }
+                    else if (selectedOperador == 'ROD') { drawROD27(); }
+                    else if (selectedOperador == 'TB') { drawTB27(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                }
+                else if (barra.value == 28) {
+                    output.innerHTML = '28/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB28(); }
+                    else if (selectedOperador == 'FGC') { drawFGC28(); }
+                    else if (selectedOperador == 'ROD') { drawROD28(); }
+                    else if (selectedOperador == 'TB') { drawTB28(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                }
+                else if (barra.value == 29) {
+                    output.innerHTML = '29/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB29(); }
+                    else if (selectedOperador == 'FGC') { drawFGC29(); }
+                    else if (selectedOperador == 'ROD') { drawROD29(); }
+                    else if (selectedOperador == 'TB') { drawTB29(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                }
+                else if (barra.value == 30) {
+                    output.innerHTML = '30/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB30(); }
+                    else if (selectedOperador == 'FGC') { drawFGC30(); }
+                    else if (selectedOperador == 'ROD') { drawROD30(); }
+                    else if (selectedOperador == 'TB') { drawTB30(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                }
+            });
+
+            $('#backward').on('click', function () {
+                barra.value--;
+                if (counter > 30) {
+                    barra.value = 1;
+                    counter = 1;
+                }
+
+                console.log(barra.value);
+
+                if (barra.value == 1) {
+                    output.innerHTML = '01/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB1(); }
+                    else if (selectedOperador == 'FGC') { drawFGC1(); }
+                    else if (selectedOperador == 'ROD') { drawROD1(); }
+                    else if (selectedOperador == 'TB') { drawTB1(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                }
+                else if (barra.value == 2) {
+                    output.innerHTML = '02/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB2(); }
+                    else if (selectedOperador == 'FGC') { drawFGC2(); }
+                    else if (selectedOperador == 'ROD') { drawROD2(); }
+                    else if (selectedOperador == 'TB') { drawTB2(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                }
+                else if (barra.value == 3) {
+                    output.innerHTML = '03/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB3(); }
+                    else if (selectedOperador == 'FGC') { drawFGC3(); }
+                    else if (selectedOperador == 'ROD') { drawROD3(); }
+                    else if (selectedOperador == 'TB') { drawTB3(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                }
+                else if (barra.value == 4) {
+                    output.innerHTML = '04/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB4(); }
+                    else if (selectedOperador == 'FGC') { drawFGC4(); }
+                    else if (selectedOperador == 'ROD') { drawROD4(); }
+                    else if (selectedOperador == 'TB') { drawTB4(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                }
+                else if (barra.value == 5) {
+                    output.innerHTML = '05/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB5(); }
+                    else if (selectedOperador == 'FGC') { drawFGC5(); }
+                    else if (selectedOperador == 'ROD') { drawROD5(); }
+                    else if (selectedOperador == 'TB') { drawTB5(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                }
+                else if (barra.value == 6) {
+                    output.innerHTML = '06/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB6(); }
+                    else if (selectedOperador == 'FGC') { drawFGC6(); }
+                    else if (selectedOperador == 'ROD') { drawROD6(); }
+                    else if (selectedOperador == 'TB') { drawTB6(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                }
+                else if (barra.value == 7) {
+                    output.innerHTML = '07/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB7(); }
+                    else if (selectedOperador == 'FGC') { drawFGC7(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB7(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                }
+                else if (barra.value == 8) {
+                    output.innerHTML = '08/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB8(); }
+                    else if (selectedOperador == 'FGC') { drawFGC8(); }
+                    else if (selectedOperador == 'ROD') { drawROD8(); }
+                    else if (selectedOperador == 'TB') { drawTB8(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                }
+                else if (barra.value == 9) {
+                    output.innerHTML = '09/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB9(); }
+                    else if (selectedOperador == 'FGC') { drawFGC9(); }
+                    else if (selectedOperador == 'ROD') { drawROD9(); }
+                    else if (selectedOperador == 'TB') { drawTB9(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                }
+                else if (barra.value == 10) {
+                    output.innerHTML = '10/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB10(); }
+                    else if (selectedOperador == 'FGC') { drawFGC10(); }
+                    else if (selectedOperador == 'ROD') { drawROD10(); }
+                    else if (selectedOperador == 'TB') { drawTB10(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                }
+                else if (barra.value == 11) {
+                    output.innerHTML = '11/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB11(); }
+                    else if (selectedOperador == 'FGC') { drawFGC11(); }
+                    else if (selectedOperador == 'ROD') { drawROD11(); }
+                    else if (selectedOperador == 'TB') { drawTB11(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                }
+                else if (barra.value == 12) {
+                    output.innerHTML = '12/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB12(); }
+                    else if (selectedOperador == 'FGC') { drawFGC12(); }
+                    else if (selectedOperador == 'ROD') { drawROD12(); }
+                    else if (selectedOperador == 'TB') { drawTB12(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                }
+                else if (barra.value == 13) {
+                    output.innerHTML = '13/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB13(); }
+                    else if (selectedOperador == 'FGC') { drawFGC13(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB13(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                }
+                else if (barra.value == 14) {
+                    output.innerHTML = '14/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB14(); }
+                    else if (selectedOperador == 'FGC') { drawFGC14(); }
+                    else if (selectedOperador == 'ROD') { drawROD14(); }
+                    else if (selectedOperador == 'TB') { drawTB14(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                }
+                else if (barra.value == 15) {
+                    output.innerHTML = '15/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB15(); }
+                    else if (selectedOperador == 'FGC') { drawFGC15(); }
+                    else if (selectedOperador == 'ROD') { drawROD15(); }
+                    else if (selectedOperador == 'TB') { drawTB15(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                }
+                else if (barra.value == 16) {
+                    output.innerHTML = '16/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB16(); }
+                    else if (selectedOperador == 'FGC') { drawFGC16(); }
+                    else if (selectedOperador == 'ROD') { drawROD16(); }
+                    else if (selectedOperador == 'TB') { drawTB16(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                }
+                else if (barra.value == 17) {
+                    output.innerHTML = '17/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB17(); }
+                    else if (selectedOperador == 'FGC') { drawFGC17(); }
+                    else if (selectedOperador == 'ROD') { drawROD17(); }
+                    else if (selectedOperador == 'TB') { drawTB17(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                }
+                else if (barra.value == 18) {
+                    output.innerHTML = '18/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB18(); }
+                    else if (selectedOperador == 'FGC') { drawFGC18(); }
+                    else if (selectedOperador == 'ROD') { drawROD18(); }
+                    else if (selectedOperador == 'TB') { drawTB18(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                }
+                else if (barra.value == 19) {
+                    output.innerHTML = '19/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB19(); }
+                    else if (selectedOperador == 'FGC') { drawFGC19(); }
+                    else if (selectedOperador == 'ROD') { drawROD19(); }
+                    else if (selectedOperador == 'TB') { drawTB19(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                }
+                else if (barra.value == 20) {
+                    output.innerHTML = '20/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB20(); }
+                    else if (selectedOperador == 'FGC') { drawFGC20(); }
+                    else if (selectedOperador == 'ROD') { drawROD20(); }
+                    else if (selectedOperador == 'TB') { drawTB20(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                }
+                else if (barra.value == 21) {
+                    output.innerHTML = '21/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB21(); }
+                    else if (selectedOperador == 'FGC') { drawFGC21(); }
+                    else if (selectedOperador == 'ROD') { drawROD21(); }
+                    else if (selectedOperador == 'TB') { drawTB21(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                }
+                else if (barra.value == 22) {
+                    output.innerHTML = '22/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB22(); }
+                    else if (selectedOperador == 'FGC') { drawFGC22(); }
+                    else if (selectedOperador == 'ROD') { drawROD22(); }
+                    else if (selectedOperador == 'TB') { drawTB22(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                }
+                else if (barra.value == 23) {
+                    output.innerHTML = '23/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB23(); }
+                    else if (selectedOperador == 'FGC') { drawFGC23(); }
+                    else if (selectedOperador == 'ROD') { drawROD23(); }
+                    else if (selectedOperador == 'TB') { drawTB23(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                }
+                else if (barra.value == 24) {
+                    output.innerHTML = '24/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB24(); }
+                    else if (selectedOperador == 'FGC') { drawFGC24(); }
+                    else if (selectedOperador == 'ROD') { drawROD24(); }
+                    else if (selectedOperador == 'TB') { drawTB24(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                }
+                else if (barra.value == 25) {
+                    output.innerHTML = '25/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB25(); }
+                    else if (selectedOperador == 'FGC') { drawFGC25(); }
+                    else if (selectedOperador == 'ROD') { drawROD25(); }
+                    else if (selectedOperador == 'TB') { drawTB25(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                }
+                else if (barra.value == 26) {
+                    output.innerHTML = '26/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB26(); }
+                    else if (selectedOperador == 'FGC') { drawFGC26(); }
+                    else if (selectedOperador == 'ROD') { drawROD26(); }
+                    else if (selectedOperador == 'TB') { drawTB26(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                }
+                else if (barra.value == 27) {
+                    output.innerHTML = '27/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB27(); }
+                    else if (selectedOperador == 'FGC') { drawFGC27(); }
+                    else if (selectedOperador == 'ROD') { drawROD27(); }
+                    else if (selectedOperador == 'TB') { drawTB27(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                }
+                else if (barra.value == 28) {
+                    output.innerHTML = '28/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB28(); }
+                    else if (selectedOperador == 'FGC') { drawFGC28(); }
+                    else if (selectedOperador == 'ROD') { drawROD28(); }
+                    else if (selectedOperador == 'TB') { drawTB28(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                }
+                else if (barra.value == 29) {
+                    output.innerHTML = '29/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB29(); }
+                    else if (selectedOperador == 'FGC') { drawFGC29(); }
+                    else if (selectedOperador == 'ROD') { drawROD29(); }
+                    else if (selectedOperador == 'TB') { drawTB29(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                }
+                else if (barra.value == 30) {
+                    output.innerHTML = '30/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB30(); }
+                    else if (selectedOperador == 'FGC') { drawFGC30(); }
+                    else if (selectedOperador == 'ROD') { drawROD30(); }
+                    else if (selectedOperador == 'TB') { drawTB30(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                }
+            });
+
 
             //Paletes de colors
 
