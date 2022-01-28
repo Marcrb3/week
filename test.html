@@ -388,9 +388,9 @@
             z-index: 100000;
             top: 0;
             left: 0;
-            background-color: rgba(17, 17, 17, 0.726);
+            background-color: rgba(17, 17, 17, 0.822);
             overflow-x: hidden;
-            transition: 0.5s;
+            transition: 0.75s;
             padding-top: 60px;
         }
 
@@ -422,15 +422,15 @@
             background-color: #111;
             color: white;
             padding: 10px 15px;
-            margin-top: 5px;
-            margin-left: 5px;
+            margin-top: 10px;
+            margin-left: 10px;
             border: none;
             z-index: 100000;
         }
 
         .openbtn:hover {
             background-color: rgb(4, 143, 108);
-            color:white;
+            color: white;
         }
 
         #main {
@@ -443,14 +443,14 @@
         @media screen and (max-height: 450px) {
             .sidebar {
                 padding-top: 15px;
-                
+
             }
 
             .sidebar a {
                 font-size: 18px;
             }
         }
-        
+
 
         .collapsible {
             background-color: black;
@@ -614,66 +614,67 @@
 
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
-        <button class="collapsible active"> <i class="fa fa-train" style="color: white; margin-right: 5px;"></i>Ferroviari</button>
-<div class="content" style="max-height: 762px;">
-            <div class="card" style="width: 100%;" onclick=drawTMB1()>
+        <button class="collapsible active"> <i class="fa fa-train"
+                style="color: white; margin-right: 5px;"></i>Ferroviari</button>
+        <div class="content" style="max-height: 762px;">
+            <div class="card" style="width: 100%;" onclick=drawTMB()>
                 <img class="card-img-top" src="./templates/metro_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawTMB1() class="btn btn-primary" id="metro">Metro TMB</a>
+                    <a onclick=drawTMB() class="btn btn-primary" id="metro">Metro TMB</a>
                 </div>
             </div>
-            <div class="card" style="width: 100%;" onclick=drawFGC1()>
+            <div class="card" style="width: 100%;" onclick=drawFGC()>
                 <img class="card-img-top" src="./templates/fgc_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawFGC1() class="btn btn-primary" id="fgc">FGC</a>
+                    <a onclick=drawFGC() class="btn btn-primary" id="fgc">FGC</a>
                 </div>
             </div>
-            <div class="card" style="width: 100%;" onclick=drawROD1()>
+            <div class="card" style="width: 100%;" onclick=drawROD()>
                 <img class="card-img-top" src="./templates/rod_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawROD1() class="btn btn-primary" id="rod">Rodalies</a>
+                    <a onclick=drawROD() class="btn btn-primary" id="rod">Rodalies</a>
                 </div>
             </div>
 
         </div>
 
         <button class="collapsible"><i class="fa fa-bus" style="color: white; margin-right: 5px;"></i>Viari</button>
-<div class="content">
-            <div class="card" style="width: 100%;" onclick=drawTB1()>
+        <div class="content">
+            <div class="card" style="width: 100%;" onclick=drawTB()>
                 <img class="card-img-top" src="./templates/tb_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawTB1() class="btn btn-primary" id="tmb">Bus TMB</a>
+                    <a onclick=drawTB() class="btn btn-primary" id="tmb">Bus TMB</a>
                 </div>
             </div>
-            <div class="card" style="width: 100%;" onclick=drawTRAM1()>
+            <div class="card" style="width: 100%;" onclick=drawTRAM()>
                 <img class="card-img-top" src="./templates/TRAM_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawTRAM1() class="btn btn-primary" id="tram">TRAM</a>
+                    <a onclick=drawTRAM() class="btn btn-primary" id="tram">TRAM</a>
                 </div>
             </div>
-            <div class="card" style="width: 100%;" onclick=drawTUSGSAL1()>
+            <div class="card" style="width: 100%;" onclick=drawTUSGSAL()>
                 <img class="card-img-top" src="./templates/tusgsal_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawTUSGSAL1() class="btn btn-primary" id="tusgsal">TUSGSAL</a>
+                    <a onclick=drawTUSGSAL() class="btn btn-primary" id="tusgsal">TUSGSAL</a>
                 </div>
             </div>
-            <div class="card" style="width: 100%;" onclick=drawBAIXBUS1()>
+            <div class="card" style="width: 100%;" onclick=drawBAIXBUS()>
                 <img class="card-img-top" src="./templates/baixbus_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawBAIXBUS1() class="btn btn-primary" id="baixbus">Baixbus</a>
+                    <a onclick=drawBAIXBUS() class="btn btn-primary" id="baixbus">Baixbus</a>
                 </div>
             </div>
-            <div class="card" style="width: 100%;" onclick=drawNITBUS1()>
+            <div class="card" style="width: 100%;" onclick=drawNITBUS()>
                 <img class="card-img-top" src="./templates/nitbus_dark.PNG" alt="">
                 <div class="card-body">
-                    <a onclick=drawNITBUSDilluns() class="btn btn-primary" id="nitbus">Nitbus</a>
+                    <a onclick=drawNITBUS() class="btn btn-primary" id="nitbus">Nitbus</a>
                 </div>
             </div>
 
         </div>
         <button class="collapsible"><i class="fa fa-search" style="color: white; margin-right: 5px;"></i>Cerca</button>
         <div class="content" id="profile">
-            
+
         </div>
 
     </div>
@@ -722,13 +723,21 @@
         })
 
         function openNav() {
-            document.getElementById("mySidebar").style.width = "450px";
-        //    document.getElementById("main").style.marginLeft = "450px";
+            if (window.innerWidth < 450) {
+                document.getElementById("mySidebar").style.width = '100%';
+
+            }
+            else {
+                document.getElementById("mySidebar").style.width = "450px";
+            }
+            //    document.getElementById("main").style.marginLeft = "450px";
         }
+
+        openNav();
 
         function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
-        //    document.getElementById("main").style.marginLeft = "0";
+            //    document.getElementById("main").style.marginLeft = "0";
         }
 
         var coll = document.getElementsByClassName("collapsible");
@@ -748,6 +757,7 @@
 
         $.when(linies, val30, val30_bus).done(function () {
 
+            //mapa base 
             mymap = L.map('mapid', {
                 minZoom: 9,
                 maxBounds: [
@@ -757,10 +767,6 @@
                     [42.88239, 5.06357]
                 ],
             }).setView([41.385243705090105, 2.1402139383833516], 11.5);
-
-
-
-            //mapa base 
 
             var Topo = L.mapboxGL({
                 style: 'mapbox://styles/marcrb3/ckysuwb5e73u214tfpbiuy3l1',
@@ -834,7 +840,7 @@
 
             //Filtratge per operador FMB
 
-            drawTMB1 = function () {
+            drawTMB = function () {
                 selectedOperador = 'FMB';
 
                 document.getElementById('metro').style.background = "rgb(4, 143, 108)";
@@ -846,8 +852,44 @@
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
 
-
                 neteja();
+
+                if (barra.value == 1) { drawTMB1() }
+                else if (barra.value == 2) { drawTMB2() }
+                else if (barra.value == 3) { drawTMB3() }
+                else if (barra.value == 4) { drawTMB4() }
+                else if (barra.value == 5) { drawTMB5() }
+                else if (barra.value == 6) { drawTMB6() }
+                else if (barra.value == 7) { drawTMB7() }
+                else if (barra.value == 8) { drawTMB8() }
+                else if (barra.value == 9) { drawTMB9() }
+                else if (barra.value == 10) { drawTMB10() }
+                else if (barra.value == 11) { drawTMB11() }
+                else if (barra.value == 12) { drawTMB12() }
+                else if (barra.value == 13) { drawTMB13() }
+                else if (barra.value == 14) { drawTMB14() }
+                else if (barra.value == 15) { drawTMB15() }
+                else if (barra.value == 16) { drawTMB16() }
+                else if (barra.value == 17) { drawTMB17() }
+                else if (barra.value == 18) { drawTMB18() }
+                else if (barra.value == 19) { drawTMB19() }
+                else if (barra.value == 20) { drawTMB20() }
+                else if (barra.value == 21) { drawTMB21() }
+                else if (barra.value == 22) { drawTMB22() }
+                else if (barra.value == 23) { drawTMB23() }
+                else if (barra.value == 24) { drawTMB24() }
+                else if (barra.value == 25) { drawTMB25() }
+                else if (barra.value == 26) { drawTMB26() }
+                else if (barra.value == 27) { drawTMB27() }
+                else if (barra.value == 28) { drawTMB28() }
+                else if (barra.value == 29) { drawTMB29() }
+                else if (barra.value == 30) { drawTMB30() }
+
+            }
+
+            drawTMB1 = function () {
+                selectedOperador = 'FMB';
+
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FMB,
                     onEachFeature: onEachFeature2,
@@ -1717,10 +1759,8 @@
             }
 
             //Filtratge per operador FGC
-
-            drawFGC1 = function () {
+            drawFGC = function () {
                 selectedOperador = 'FGC';
-                neteja();
 
                 document.getElementById('metro').style.background = "none";
                 document.getElementById('fgc').style.background = "rgb(4, 143, 108)";
@@ -1730,6 +1770,44 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
+
+                neteja();
+
+                if (barra.value == 1) { drawFGC1() }
+                else if (barra.value == 2) { drawFGC2() }
+                else if (barra.value == 3) { drawFGC3() }
+                else if (barra.value == 4) { drawFGC4() }
+                else if (barra.value == 5) { drawFGC5() }
+                else if (barra.value == 6) { drawFGC6() }
+                else if (barra.value == 7) { drawFGC7() }
+                else if (barra.value == 8) { drawFGC8() }
+                else if (barra.value == 9) { drawFGC9() }
+                else if (barra.value == 10) { drawFGC10() }
+                else if (barra.value == 11) { drawFGC11() }
+                else if (barra.value == 12) { drawFGC12() }
+                else if (barra.value == 13) { drawFGC13() }
+                else if (barra.value == 14) { drawFGC14() }
+                else if (barra.value == 15) { drawFGC15() }
+                else if (barra.value == 16) { drawFGC16() }
+                else if (barra.value == 17) { drawFGC17() }
+                else if (barra.value == 18) { drawFGC18() }
+                else if (barra.value == 19) { drawFGC19() }
+                else if (barra.value == 20) { drawFGC20() }
+                else if (barra.value == 21) { drawFGC21() }
+                else if (barra.value == 22) { drawFGC22() }
+                else if (barra.value == 23) { drawFGC23() }
+                else if (barra.value == 24) { drawFGC24() }
+                else if (barra.value == 25) { drawFGC25() }
+                else if (barra.value == 26) { drawFGC26() }
+                else if (barra.value == 27) { drawFGC27() }
+                else if (barra.value == 28) { drawFGC28() }
+                else if (barra.value == 29) { drawFGC29() }
+                else if (barra.value == 30) { drawFGC30() }
+            }
+
+
+            drawFGC1 = function () {
+                selectedOperador = 'FGC';
 
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_FGC,
@@ -2600,9 +2678,8 @@
 
             //Filtratge per operador ROD
 
-            drawROD1 = function () {
+            drawROD = function () {
                 selectedOperador = 'ROD';
-                neteja();
 
                 document.getElementById('metro').style.background = "none";
                 document.getElementById('fgc').style.background = "none";
@@ -2612,6 +2689,43 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
+
+                neteja();
+
+                if (barra.value == 1) { drawROD1() }
+                else if (barra.value == 2) { drawROD2() }
+                else if (barra.value == 3) { drawROD3() }
+                else if (barra.value == 4) { drawROD4() }
+                else if (barra.value == 5) { drawROD5() }
+                else if (barra.value == 6) { drawROD6() }
+                else if (barra.value == 7) { drawROD7() }
+                else if (barra.value == 8) { drawROD8() }
+                else if (barra.value == 9) { drawROD9() }
+                else if (barra.value == 10) { drawROD10() }
+                else if (barra.value == 11) { drawROD11() }
+                else if (barra.value == 12) { drawROD12() }
+                else if (barra.value == 13) { drawROD13() }
+                else if (barra.value == 14) { drawROD14() }
+                else if (barra.value == 15) { drawROD15() }
+                else if (barra.value == 16) { drawROD16() }
+                else if (barra.value == 17) { drawROD17() }
+                else if (barra.value == 18) { drawROD18() }
+                else if (barra.value == 19) { drawROD19() }
+                else if (barra.value == 20) { drawROD20() }
+                else if (barra.value == 21) { drawROD21() }
+                else if (barra.value == 22) { drawROD22() }
+                else if (barra.value == 23) { drawROD23() }
+                else if (barra.value == 24) { drawROD24() }
+                else if (barra.value == 25) { drawROD25() }
+                else if (barra.value == 26) { drawROD26() }
+                else if (barra.value == 27) { drawROD27() }
+                else if (barra.value == 28) { drawROD28() }
+                else if (barra.value == 29) { drawROD29() }
+                else if (barra.value == 30) { drawROD30() }
+            }
+
+            drawROD1 = function () {
+                selectedOperador = 'ROD';
 
                 kyAMB = L.geoJSON(linies.responseJSON, {
                     style: style_line_ROD,
@@ -3483,9 +3597,8 @@
 
             //Filtratge per operador TB
 
-            drawTB1 = function () {
+            drawTB = function () {
                 selectedOperador = 'TB';
-                neteja();
 
                 document.getElementById('metro').style.background = "none";
                 document.getElementById('fgc').style.background = "none";
@@ -3495,6 +3608,43 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
+
+                neteja();
+
+                if (barra.value == 1) { drawTB1() }
+                else if (barra.value == 2) { drawTB2() }
+                else if (barra.value == 3) { drawTB3() }
+                else if (barra.value == 4) { drawTB4() }
+                else if (barra.value == 5) { drawTB5() }
+                else if (barra.value == 6) { drawTB6() }
+                else if (barra.value == 7) { drawTB7() }
+                else if (barra.value == 8) { drawTB8() }
+                else if (barra.value == 9) { drawTB9() }
+                else if (barra.value == 10) { drawTB10() }
+                else if (barra.value == 11) { drawTB11() }
+                else if (barra.value == 12) { drawTB12() }
+                else if (barra.value == 13) { drawTB13() }
+                else if (barra.value == 14) { drawTB14() }
+                else if (barra.value == 15) { drawTB15() }
+                else if (barra.value == 16) { drawTB16() }
+                else if (barra.value == 17) { drawTB17() }
+                else if (barra.value == 18) { drawTB18() }
+                else if (barra.value == 19) { drawTB19() }
+                else if (barra.value == 20) { drawTB20() }
+                else if (barra.value == 21) { drawTB21() }
+                else if (barra.value == 22) { drawTB22() }
+                else if (barra.value == 23) { drawTB23() }
+                else if (barra.value == 24) { drawTB24() }
+                else if (barra.value == 25) { drawTB25() }
+                else if (barra.value == 26) { drawTB26() }
+                else if (barra.value == 27) { drawTB27() }
+                else if (barra.value == 28) { drawTB28() }
+                else if (barra.value == 29) { drawTB29() }
+                else if (barra.value == 30) { drawTB30() }
+            }
+
+            drawTB1 = function () {
+                selectedOperador = 'TB';
 
                 kyBusDilluns = L.geoJSON(val30_bus.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -4066,10 +4216,8 @@
             }
 
             //Filtratge per operador TRAM
-
-            drawTRAM1 = function () {
+            drawTRAM = function () {
                 selectedOperador = 'TRAM';
-                neteja();
 
                 document.getElementById('metro').style.background = "none";
                 document.getElementById('fgc').style.background = "none";
@@ -4079,6 +4227,43 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
+
+                neteja();
+
+                if (barra.value == 1) { drawTRAM1() }
+                else if (barra.value == 2) { drawTRAM2() }
+                else if (barra.value == 3) { drawTRAM3() }
+                else if (barra.value == 4) { drawTRAM4() }
+                else if (barra.value == 5) { drawTRAM5() }
+                else if (barra.value == 6) { drawTRAM6() }
+                else if (barra.value == 7) { drawTRAM7() }
+                else if (barra.value == 8) { drawTRAM8() }
+                else if (barra.value == 9) { drawTRAM9() }
+                else if (barra.value == 10) { drawTRAM10() }
+                else if (barra.value == 11) { drawTRAM11() }
+                else if (barra.value == 12) { drawTRAM12() }
+                else if (barra.value == 13) { drawTRAM13() }
+                else if (barra.value == 14) { drawTRAM14() }
+                else if (barra.value == 15) { drawTRAM15() }
+                else if (barra.value == 16) { drawTRAM16() }
+                else if (barra.value == 17) { drawTRAM17() }
+                else if (barra.value == 18) { drawTRAM18() }
+                else if (barra.value == 19) { drawTRAM19() }
+                else if (barra.value == 20) { drawTRAM20() }
+                else if (barra.value == 21) { drawTRAM21() }
+                else if (barra.value == 22) { drawTRAM22() }
+                else if (barra.value == 23) { drawTRAM23() }
+                else if (barra.value == 24) { drawTRAM24() }
+                else if (barra.value == 25) { drawTRAM25() }
+                else if (barra.value == 26) { drawTRAM26() }
+                else if (barra.value == 27) { drawTRAM27() }
+                else if (barra.value == 28) { drawTRAM28() }
+                else if (barra.value == 29) { drawTRAM29() }
+                else if (barra.value == 30) { drawTRAM30() }
+            }
+
+            drawTRAM1 = function () {
+                selectedOperador = 'TRAM';
 
                 kyBusDilluns = L.geoJSON(val30_bus.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -5166,9 +5351,8 @@
 
             //Filtratge per operador TUSGSAL
 
-            drawTUSGSAL1 = function () {
+            drawTUSGSAL = function () {
                 selectedOperador = 'TUSGSAL';
-                neteja();
 
                 document.getElementById('metro').style.background = "none";
                 document.getElementById('fgc').style.background = "none";
@@ -5178,6 +5362,43 @@
                 document.getElementById('tusgsal').style.background = "rgb(4, 143, 108)";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "none";
+
+                neteja();
+
+                if (barra.value == 1) { drawTUSGSAL1() }
+                else if (barra.value == 2) { drawTUSGSAL2() }
+                else if (barra.value == 3) { drawTUSGSAL3() }
+                else if (barra.value == 4) { drawTUSGSAL4() }
+                else if (barra.value == 5) { drawTUSGSAL5() }
+                else if (barra.value == 6) { drawTUSGSAL6() }
+                else if (barra.value == 7) { drawTUSGSAL7() }
+                else if (barra.value == 8) { drawTUSGSAL8() }
+                else if (barra.value == 9) { drawTUSGSAL9() }
+                else if (barra.value == 10) { drawTUSGSAL10() }
+                else if (barra.value == 11) { drawTUSGSAL11() }
+                else if (barra.value == 12) { drawTUSGSAL12() }
+                else if (barra.value == 13) { drawTUSGSAL13() }
+                else if (barra.value == 14) { drawTUSGSAL14() }
+                else if (barra.value == 15) { drawTUSGSAL15() }
+                else if (barra.value == 16) { drawTUSGSAL16() }
+                else if (barra.value == 17) { drawTUSGSAL17() }
+                else if (barra.value == 18) { drawTUSGSAL18() }
+                else if (barra.value == 19) { drawTUSGSAL19() }
+                else if (barra.value == 20) { drawTUSGSAL20() }
+                else if (barra.value == 21) { drawTUSGSAL21() }
+                else if (barra.value == 22) { drawTUSGSAL22() }
+                else if (barra.value == 23) { drawTUSGSAL23() }
+                else if (barra.value == 24) { drawTUSGSAL24() }
+                else if (barra.value == 25) { drawTUSGSAL25() }
+                else if (barra.value == 26) { drawTUSGSAL26() }
+                else if (barra.value == 27) { drawTUSGSAL27() }
+                else if (barra.value == 28) { drawTUSGSAL28() }
+                else if (barra.value == 29) { drawTUSGSAL29() }
+                else if (barra.value == 30) { drawTUSGSAL30() }
+            }
+
+            drawTUSGSAL1 = function () {
+                selectedOperador = 'TUSGSAL';
 
                 kyBusDilluns = L.geoJSON(val30_bus.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -5734,11 +5955,10 @@
                     }
                 }).addTo(mymap);
             }
-            //Filtratge per operador BAIXBUS
+            //Filtratge per operador NITBUS
 
-            drawNITBUS1 = function () {
+            drawNITBUS = function () {
                 selectedOperador = 'NITBUS';
-                neteja();
 
                 document.getElementById('metro').style.background = "none";
                 document.getElementById('fgc').style.background = "none";
@@ -5748,6 +5968,43 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "none";
                 document.getElementById('nitbus').style.background = "rgb(4, 143, 108)";
+
+                neteja();
+
+                if (barra.value == 1) { drawNITBUS1() }
+                else if (barra.value == 2) { drawNITBUS2() }
+                else if (barra.value == 3) { drawNITBUS3() }
+                else if (barra.value == 4) { drawNITBUS4() }
+                else if (barra.value == 5) { drawNITBUS5() }
+                else if (barra.value == 6) { drawNITBUS6() }
+                else if (barra.value == 7) { drawNITBUS7() }
+                else if (barra.value == 8) { drawNITBUS8() }
+                else if (barra.value == 9) { drawNITBUS9() }
+                else if (barra.value == 10) { drawNITBUS10() }
+                else if (barra.value == 11) { drawNITBUS11() }
+                else if (barra.value == 12) { drawNITBUS12() }
+                else if (barra.value == 13) { drawNITBUS13() }
+                else if (barra.value == 14) { drawNITBUS14() }
+                else if (barra.value == 15) { drawNITBUS15() }
+                else if (barra.value == 16) { drawNITBUS16() }
+                else if (barra.value == 17) { drawNITBUS17() }
+                else if (barra.value == 18) { drawNITBUS18() }
+                else if (barra.value == 19) { drawNITBUS19() }
+                else if (barra.value == 20) { drawNITBUS20() }
+                else if (barra.value == 21) { drawNITBUS21() }
+                else if (barra.value == 22) { drawNITBUS22() }
+                else if (barra.value == 23) { drawNITBUS23() }
+                else if (barra.value == 24) { drawNITBUS24() }
+                else if (barra.value == 25) { drawNITBUS25() }
+                else if (barra.value == 26) { drawNITBUS26() }
+                else if (barra.value == 27) { drawNITBUS27() }
+                else if (barra.value == 28) { drawNITBUS28() }
+                else if (barra.value == 29) { drawNITBUS29() }
+                else if (barra.value == 30) { drawNITBUS30() }
+            }
+
+            drawNITBUS1 = function () {
+                selectedOperador = 'NITBUS';
 
                 kyBusDilluns = L.geoJSON(val30_bus.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -6307,9 +6564,8 @@
 
             //Filtratge per operador BAIXBUS
 
-            drawBAIXBUS1 = function () {
+            drawBAIXBUS = function () {
                 selectedOperador = 'BAIXBUS';
-                neteja();
 
                 document.getElementById('metro').style.background = "none";
                 document.getElementById('fgc').style.background = "none";
@@ -6319,6 +6575,43 @@
                 document.getElementById('tusgsal').style.background = "none";
                 document.getElementById('baixbus').style.background = "rgb(4, 143, 108)";
                 document.getElementById('nitbus').style.background = "none";
+
+                neteja();
+
+                if (barra.value == 1) { drawBAIXBUS1() }
+                else if (barra.value == 2) { drawBAIXBUS2() }
+                else if (barra.value == 3) { drawBAIXBUS3() }
+                else if (barra.value == 4) { drawBAIXBUS4() }
+                else if (barra.value == 5) { drawBAIXBUS5() }
+                else if (barra.value == 6) { drawBAIXBUS6() }
+                else if (barra.value == 7) { drawBAIXBUS7() }
+                else if (barra.value == 8) { drawBAIXBUS8() }
+                else if (barra.value == 9) { drawBAIXBUS9() }
+                else if (barra.value == 10) { drawBAIXBUS10() }
+                else if (barra.value == 11) { drawBAIXBUS11() }
+                else if (barra.value == 12) { drawBAIXBUS12() }
+                else if (barra.value == 13) { drawBAIXBUS13() }
+                else if (barra.value == 14) { drawBAIXBUS14() }
+                else if (barra.value == 15) { drawBAIXBUS15() }
+                else if (barra.value == 16) { drawBAIXBUS16() }
+                else if (barra.value == 17) { drawBAIXBUS17() }
+                else if (barra.value == 18) { drawBAIXBUS18() }
+                else if (barra.value == 19) { drawBAIXBUS19() }
+                else if (barra.value == 20) { drawBAIXBUS20() }
+                else if (barra.value == 21) { drawBAIXBUS21() }
+                else if (barra.value == 22) { drawBAIXBUS22() }
+                else if (barra.value == 23) { drawBAIXBUS23() }
+                else if (barra.value == 24) { drawBAIXBUS24() }
+                else if (barra.value == 25) { drawBAIXBUS25() }
+                else if (barra.value == 26) { drawBAIXBUS26() }
+                else if (barra.value == 27) { drawBAIXBUS27() }
+                else if (barra.value == 28) { drawBAIXBUS28() }
+                else if (barra.value == 29) { drawBAIXBUS29() }
+                else if (barra.value == 30) { drawBAIXBUS30() }
+            }
+
+            drawBAIXBUS1 = function () {
+                selectedOperador = 'BAIXBUS';
 
                 kyBusDilluns = L.geoJSON(val30_bus.responseJSON, {
                     onEachFeature: onEachFeatureBus,
@@ -6903,15 +7196,15 @@
                     myInterval = setInterval(function () {
 
                         barra.value++;
-
+                        counter++;
                         if (counter > 30) {
                             barra.value = 1;
                             counter = 1;
                         }
 
-                        counter++;
+                        
                         console.log(barra.value);
-
+                        console.log(counter);
                         if (barra.value == 1) {
                             output.innerHTML = '01/01/2022';
                             neteja();
@@ -6923,6 +7216,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                            counter = 1;
                         }
                         else if (barra.value == 2) {
                             output.innerHTML = '02/01/2022';
@@ -6935,6 +7229,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                            counter = 2;
                         }
                         else if (barra.value == 3) {
                             output.innerHTML = '03/01/2022';
@@ -6947,6 +7242,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                            counter = 3;
                         }
                         else if (barra.value == 4) {
                             output.innerHTML = '04/01/2022';
@@ -6959,6 +7255,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                            counter = 4;
                         }
                         else if (barra.value == 5) {
                             output.innerHTML = '05/01/2022';
@@ -6971,6 +7268,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                            counter = 5;
                         }
                         else if (barra.value == 6) {
                             output.innerHTML = '06/01/2022';
@@ -6983,6 +7281,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                            counter = 6;
                         }
                         else if (barra.value == 7) {
                             output.innerHTML = '07/01/2022';
@@ -6995,6 +7294,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                            counter = 7;
                         }
                         else if (barra.value == 8) {
                             output.innerHTML = '08/01/2022';
@@ -7007,6 +7307,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                            counter = 8;
                         }
                         else if (barra.value == 9) {
                             output.innerHTML = '09/01/2022';
@@ -7019,6 +7320,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                            counter = 9;
                         }
                         else if (barra.value == 10) {
                             output.innerHTML = '10/01/2022';
@@ -7031,6 +7333,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                            counter = 10;
                         }
                         else if (barra.value == 11) {
                             output.innerHTML = '11/01/2022';
@@ -7043,6 +7346,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                            counter = 11;
                         }
                         else if (barra.value == 12) {
                             output.innerHTML = '12/01/2022';
@@ -7055,6 +7359,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                            counter = 12;
                         }
                         else if (barra.value == 13) {
                             output.innerHTML = '13/01/2022';
@@ -7067,6 +7372,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                            counter = 13;
                         }
                         else if (barra.value == 14) {
                             output.innerHTML = '14/01/2022';
@@ -7079,6 +7385,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                            counter = 14;
                         }
                         else if (barra.value == 15) {
                             output.innerHTML = '15/01/2022';
@@ -7091,6 +7398,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                            counter = 15;
                         }
                         else if (barra.value == 16) {
                             output.innerHTML = '16/01/2022';
@@ -7103,6 +7411,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                            counter = 16;
                         }
                         else if (barra.value == 17) {
                             output.innerHTML = '17/01/2022';
@@ -7115,6 +7424,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                            counter = 17;
                         }
                         else if (barra.value == 18) {
                             output.innerHTML = '18/01/2022';
@@ -7127,6 +7437,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                            counter = 18;
                         }
                         else if (barra.value == 19) {
                             output.innerHTML = '19/01/2022';
@@ -7139,6 +7450,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                            counter = 19;
                         }
                         else if (barra.value == 20) {
                             output.innerHTML = '20/01/2022';
@@ -7151,6 +7463,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                            counter = 20;
                         }
                         else if (barra.value == 21) {
                             output.innerHTML = '21/01/2022';
@@ -7163,6 +7476,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                            counter = 21;
                         }
                         else if (barra.value == 22) {
                             output.innerHTML = '22/01/2022';
@@ -7175,6 +7489,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                            counter = 22;
                         }
                         else if (barra.value == 23) {
                             output.innerHTML = '23/01/2022';
@@ -7187,6 +7502,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                            counter = 23;
                         }
                         else if (barra.value == 24) {
                             output.innerHTML = '24/01/2022';
@@ -7199,6 +7515,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                            counter = 24;
                         }
                         else if (barra.value == 25) {
                             output.innerHTML = '25/01/2022';
@@ -7211,6 +7528,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                            counter = 25;
                         }
                         else if (barra.value == 26) {
                             output.innerHTML = '26/01/2022';
@@ -7223,6 +7541,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                            counter = 26;
                         }
                         else if (barra.value == 27) {
                             output.innerHTML = '27/01/2022';
@@ -7235,6 +7554,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                            counter = 27;
                         }
                         else if (barra.value == 28) {
                             output.innerHTML = '28/01/2022';
@@ -7247,6 +7567,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                            counter = 28;
                         }
                         else if (barra.value == 29) {
                             output.innerHTML = '29/01/2022';
@@ -7259,6 +7580,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                            counter = 29;
                         }
                         else if (barra.value == 30) {
                             output.innerHTML = '30/01/2022';
@@ -7271,6 +7593,7 @@
                             else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                            counter = 30;
                         }
 
                     }, 750);
@@ -7300,6 +7623,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                    counter = 1;
                 }
                 else if (barra.value == 2) {
                     output.innerHTML = '02/01/2022';
@@ -7312,6 +7636,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                    counter = 2;
                 }
                 else if (barra.value == 3) {
                     output.innerHTML = '03/01/2022';
@@ -7324,6 +7649,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                    counter = 3;
                 }
                 else if (barra.value == 4) {
                     output.innerHTML = '04/01/2022';
@@ -7336,6 +7662,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                    counter = 4;
                 }
                 else if (barra.value == 5) {
                     output.innerHTML = '05/01/2022';
@@ -7348,6 +7675,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                    counter = 5;
                 }
                 else if (barra.value == 6) {
                     output.innerHTML = '06/01/2022';
@@ -7360,6 +7688,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                    counter = 6;
                 }
                 else if (barra.value == 7) {
                     output.innerHTML = '07/01/2022';
@@ -7372,6 +7701,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                    counter = 7;
                 }
                 else if (barra.value == 8) {
                     output.innerHTML = '08/01/2022';
@@ -7384,6 +7714,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                    counter = 8;
                 }
                 else if (barra.value == 9) {
                     output.innerHTML = '09/01/2022';
@@ -7396,6 +7727,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                    counter = 9;
                 }
                 else if (barra.value == 10) {
                     output.innerHTML = '10/01/2022';
@@ -7408,6 +7740,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                    counter = 10;
                 }
                 else if (barra.value == 11) {
                     output.innerHTML = '11/01/2022';
@@ -7420,6 +7753,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                    counter = 11;
                 }
                 else if (barra.value == 12) {
                     output.innerHTML = '12/01/2022';
@@ -7432,6 +7766,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                    counter = 12;
                 }
                 else if (barra.value == 13) {
                     output.innerHTML = '13/01/2022';
@@ -7444,6 +7779,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                    counter = 13;
                 }
                 else if (barra.value == 14) {
                     output.innerHTML = '14/01/2022';
@@ -7456,6 +7792,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                    counter = 14;
                 }
                 else if (barra.value == 15) {
                     output.innerHTML = '15/01/2022';
@@ -7468,6 +7805,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                    counter = 15;
                 }
                 else if (barra.value == 16) {
                     output.innerHTML = '16/01/2022';
@@ -7480,6 +7818,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                    counter = 16;
                 }
                 else if (barra.value == 17) {
                     output.innerHTML = '17/01/2022';
@@ -7492,6 +7831,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                    counter = 17;
                 }
                 else if (barra.value == 18) {
                     output.innerHTML = '18/01/2022';
@@ -7504,6 +7844,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                    counter = 18;
                 }
                 else if (barra.value == 19) {
                     output.innerHTML = '19/01/2022';
@@ -7516,6 +7857,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                    counter = 19;
                 }
                 else if (barra.value == 20) {
                     output.innerHTML = '20/01/2022';
@@ -7528,6 +7870,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                    counter = 20;
                 }
                 else if (barra.value == 21) {
                     output.innerHTML = '21/01/2022';
@@ -7540,6 +7883,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                    counter = 21;
                 }
                 else if (barra.value == 22) {
                     output.innerHTML = '22/01/2022';
@@ -7552,6 +7896,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                    counter = 22;
                 }
                 else if (barra.value == 23) {
                     output.innerHTML = '23/01/2022';
@@ -7564,6 +7909,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                    counter = 23;
                 }
                 else if (barra.value == 24) {
                     output.innerHTML = '24/01/2022';
@@ -7576,6 +7922,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                    counter = 24;
                 }
                 else if (barra.value == 25) {
                     output.innerHTML = '25/01/2022';
@@ -7588,6 +7935,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                    counter = 25;
                 }
                 else if (barra.value == 26) {
                     output.innerHTML = '26/01/2022';
@@ -7600,6 +7948,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                    counter = 26;
                 }
                 else if (barra.value == 27) {
                     output.innerHTML = '27/01/2022';
@@ -7612,6 +7961,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                    counter = 27;
                 }
                 else if (barra.value == 28) {
                     output.innerHTML = '28/01/2022';
@@ -7624,6 +7974,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                    counter = 28;
                 }
                 else if (barra.value == 29) {
                     output.innerHTML = '29/01/2022';
@@ -7636,6 +7987,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                    counter = 29;
                 }
                 else if (barra.value == 30) {
                     output.innerHTML = '30/01/2022';
@@ -7648,7 +8000,9 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                    counter = 30;
                 }
+
             })
 
             $('#forward').on('click', function () {
@@ -7658,7 +8012,7 @@
                     counter = 1;
                 }
 
-                counter++;
+                
                 console.log(barra.value);
 
                 if (barra.value == 1) {
@@ -7672,6 +8026,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                    counter = 1;
                 }
                 else if (barra.value == 2) {
                     output.innerHTML = '02/01/2022';
@@ -7684,6 +8039,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                    counter = 2;
                 }
                 else if (barra.value == 3) {
                     output.innerHTML = '03/01/2022';
@@ -7696,6 +8052,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                    counter = 3;
                 }
                 else if (barra.value == 4) {
                     output.innerHTML = '04/01/2022';
@@ -7708,6 +8065,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                    counter = 4;
                 }
                 else if (barra.value == 5) {
                     output.innerHTML = '05/01/2022';
@@ -7720,6 +8078,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                    counter = 5;
                 }
                 else if (barra.value == 6) {
                     output.innerHTML = '06/01/2022';
@@ -7732,6 +8091,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                    counter = 6;
                 }
                 else if (barra.value == 7) {
                     output.innerHTML = '07/01/2022';
@@ -7744,6 +8104,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                    counter = 7;
                 }
                 else if (barra.value == 8) {
                     output.innerHTML = '08/01/2022';
@@ -7756,6 +8117,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                    counter = 8;
                 }
                 else if (barra.value == 9) {
                     output.innerHTML = '09/01/2022';
@@ -7768,6 +8130,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                    counter = 9;
                 }
                 else if (barra.value == 10) {
                     output.innerHTML = '10/01/2022';
@@ -7780,6 +8143,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                    counter = 10;
                 }
                 else if (barra.value == 11) {
                     output.innerHTML = '11/01/2022';
@@ -7792,6 +8156,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                    counter = 11;
                 }
                 else if (barra.value == 12) {
                     output.innerHTML = '12/01/2022';
@@ -7804,6 +8169,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                    counter = 12;
                 }
                 else if (barra.value == 13) {
                     output.innerHTML = '13/01/2022';
@@ -7816,6 +8182,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                    counter = 13;
                 }
                 else if (barra.value == 14) {
                     output.innerHTML = '14/01/2022';
@@ -7828,6 +8195,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                    counter = 14;
                 }
                 else if (barra.value == 15) {
                     output.innerHTML = '15/01/2022';
@@ -7840,6 +8208,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                    counter = 15;
                 }
                 else if (barra.value == 16) {
                     output.innerHTML = '16/01/2022';
@@ -7852,6 +8221,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                    counter = 16;
                 }
                 else if (barra.value == 17) {
                     output.innerHTML = '17/01/2022';
@@ -7864,6 +8234,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                    counter = 17;
                 }
                 else if (barra.value == 18) {
                     output.innerHTML = '18/01/2022';
@@ -7876,6 +8247,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                    counter = 18;
                 }
                 else if (barra.value == 19) {
                     output.innerHTML = '19/01/2022';
@@ -7888,6 +8260,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                    counter = 19;
                 }
                 else if (barra.value == 20) {
                     output.innerHTML = '20/01/2022';
@@ -7900,6 +8273,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                    counter = 20;
                 }
                 else if (barra.value == 21) {
                     output.innerHTML = '21/01/2022';
@@ -7912,6 +8286,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                    counter = 21;
                 }
                 else if (barra.value == 22) {
                     output.innerHTML = '22/01/2022';
@@ -7924,6 +8299,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                    counter = 22;
                 }
                 else if (barra.value == 23) {
                     output.innerHTML = '23/01/2022';
@@ -7936,6 +8312,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                    counter = 23;
                 }
                 else if (barra.value == 24) {
                     output.innerHTML = '24/01/2022';
@@ -7948,6 +8325,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                    counter = 24;
                 }
                 else if (barra.value == 25) {
                     output.innerHTML = '25/01/2022';
@@ -7960,6 +8338,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                    counter = 25;
                 }
                 else if (barra.value == 26) {
                     output.innerHTML = '26/01/2022';
@@ -7972,6 +8351,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                    counter = 26;
                 }
                 else if (barra.value == 27) {
                     output.innerHTML = '27/01/2022';
@@ -7984,6 +8364,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                    counter = 27;
                 }
                 else if (barra.value == 28) {
                     output.innerHTML = '28/01/2022';
@@ -7996,6 +8377,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                    counter = 28;
                 }
                 else if (barra.value == 29) {
                     output.innerHTML = '29/01/2022';
@@ -8008,6 +8390,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                    counter = 29;
                 }
                 else if (barra.value == 30) {
                     output.innerHTML = '30/01/2022';
@@ -8020,7 +8403,9 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                    counter = 30;
                 }
+
             });
 
             $('#backward').on('click', function () {
@@ -8043,6 +8428,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                    counter = 1;
                 }
                 else if (barra.value == 2) {
                     output.innerHTML = '02/01/2022';
@@ -8055,6 +8441,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                    counter = 2;
                 }
                 else if (barra.value == 3) {
                     output.innerHTML = '03/01/2022';
@@ -8067,6 +8454,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                    counter = 3;
                 }
                 else if (barra.value == 4) {
                     output.innerHTML = '04/01/2022';
@@ -8079,6 +8467,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                    counter = 4;
                 }
                 else if (barra.value == 5) {
                     output.innerHTML = '05/01/2022';
@@ -8091,6 +8480,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                    counter = 5;
                 }
                 else if (barra.value == 6) {
                     output.innerHTML = '06/01/2022';
@@ -8103,6 +8493,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                    counter = 6;
                 }
                 else if (barra.value == 7) {
                     output.innerHTML = '07/01/2022';
@@ -8115,6 +8506,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                    counter = 7;
                 }
                 else if (barra.value == 8) {
                     output.innerHTML = '08/01/2022';
@@ -8127,6 +8519,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                    counter = 8;
                 }
                 else if (barra.value == 9) {
                     output.innerHTML = '09/01/2022';
@@ -8139,6 +8532,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                    counter = 9;
                 }
                 else if (barra.value == 10) {
                     output.innerHTML = '10/01/2022';
@@ -8151,6 +8545,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                    counter = 10;
                 }
                 else if (barra.value == 11) {
                     output.innerHTML = '11/01/2022';
@@ -8163,6 +8558,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                    counter = 11;
                 }
                 else if (barra.value == 12) {
                     output.innerHTML = '12/01/2022';
@@ -8175,6 +8571,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                    counter = 12;
                 }
                 else if (barra.value == 13) {
                     output.innerHTML = '13/01/2022';
@@ -8187,6 +8584,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                    counter = 13;
                 }
                 else if (barra.value == 14) {
                     output.innerHTML = '14/01/2022';
@@ -8199,6 +8597,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                    counter = 14;
                 }
                 else if (barra.value == 15) {
                     output.innerHTML = '15/01/2022';
@@ -8211,6 +8610,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                    counter = 15;
                 }
                 else if (barra.value == 16) {
                     output.innerHTML = '16/01/2022';
@@ -8223,6 +8623,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                    counter = 16;
                 }
                 else if (barra.value == 17) {
                     output.innerHTML = '17/01/2022';
@@ -8235,6 +8636,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                    counter = 17;
                 }
                 else if (barra.value == 18) {
                     output.innerHTML = '18/01/2022';
@@ -8247,6 +8649,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                    counter = 18;
                 }
                 else if (barra.value == 19) {
                     output.innerHTML = '19/01/2022';
@@ -8259,6 +8662,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                    counter = 19;
                 }
                 else if (barra.value == 20) {
                     output.innerHTML = '20/01/2022';
@@ -8271,6 +8675,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                    counter = 20;
                 }
                 else if (barra.value == 21) {
                     output.innerHTML = '21/01/2022';
@@ -8283,6 +8688,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                    counter = 21;
                 }
                 else if (barra.value == 22) {
                     output.innerHTML = '22/01/2022';
@@ -8295,6 +8701,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                    counter = 22;
                 }
                 else if (barra.value == 23) {
                     output.innerHTML = '23/01/2022';
@@ -8307,6 +8714,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                    counter = 23;
                 }
                 else if (barra.value == 24) {
                     output.innerHTML = '24/01/2022';
@@ -8319,6 +8727,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                    counter = 24;
                 }
                 else if (barra.value == 25) {
                     output.innerHTML = '25/01/2022';
@@ -8331,6 +8740,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                    counter = 25;
                 }
                 else if (barra.value == 26) {
                     output.innerHTML = '26/01/2022';
@@ -8343,6 +8753,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                    counter = 26;
                 }
                 else if (barra.value == 27) {
                     output.innerHTML = '27/01/2022';
@@ -8355,6 +8766,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                    counter = 27;
                 }
                 else if (barra.value == 28) {
                     output.innerHTML = '28/01/2022';
@@ -8367,6 +8779,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                    counter = 28;
                 }
                 else if (barra.value == 29) {
                     output.innerHTML = '29/01/2022';
@@ -8379,6 +8792,7 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                    counter = 29;
                 }
                 else if (barra.value == 30) {
                     output.innerHTML = '30/01/2022';
@@ -8391,7 +8805,9 @@
                     else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
                     else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
                     else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                    counter = 30;
                 }
+
             });
 
 
@@ -8483,7 +8899,7 @@
                                             d > 5 ? '0.3' :
                                                 d > 2 ? '0.25' :
                                                     d > 1 ? '0.15' :
-                                                        '0.1';
+                                                        '0.05';
             }
 
             //Amplada de la linia
@@ -8509,7 +8925,6 @@
                     color: 'white',
                     dashArray: '',
                     fillOpacity: 0
-
                 };
             }
 
@@ -8520,7 +8935,6 @@
                     color: getColorFMB(feature.properties.routes_rou),
                     dashArray: '',
                     fillOpacity: 1,
-
                 };
             }
 
@@ -8531,7 +8945,6 @@
                     color: getColorFGC(feature.properties.routes_rou),
                     dashArray: '',
                     fillOpacity: 1,
-
                 };
             }
 
@@ -8542,7 +8955,6 @@
                     color: getColorROD(feature.properties.routes_rou),
                     dashArray: '',
                     fillOpacity: 1,
-
                 };
             }
 
@@ -8884,8 +9296,9 @@
             }
 
             //Capa de metro TMB al iniciar el mapa
-            drawTMB1();
-            openNav();
+            drawTMB();
+            //obrim sidebar al iniciar el mapa
+            
 
         });
     </script>
