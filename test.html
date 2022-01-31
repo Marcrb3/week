@@ -525,7 +525,7 @@
                             </div>
                             <div class="item">
                                 <p class="carrusseltitol"> <strong>Com funciona?</strong></p> <br>
-                                <p>
+
                                 <ul class="llista">
                                     <li>Per carregar les validacions d'un operador, cal seleccionar-lo de la barra
                                         lateral.</li><br>
@@ -534,7 +534,6 @@
                                     <li> A través del botó " <i class="fa fa-play"></i>" es pot visualitzar la seqüència
                                         de tots els dies automàticament.</li>
                                 </ul>
-                                </p>
 
 
                             </div>
@@ -552,8 +551,6 @@
                                                     style="margin-bottom: 0.3em; color:black"></i></a>
                                             <p>+ 34 93 001 70 77</p>
                                         </li>
-
-
                                     </ul>
                                 </div>
                             </div>
@@ -7202,7 +7199,7 @@
                             counter = 1;
                         }
 
-                        
+
                         console.log(barra.value);
                         console.log(counter);
                         if (barra.value == 1) {
@@ -8012,7 +8009,7 @@
                     counter = 1;
                 }
 
-                
+
                 console.log(barra.value);
 
                 if (barra.value == 1) {
@@ -8810,7 +8807,6 @@
 
             });
 
-
             //Paletes de colors
 
             //Metro
@@ -8873,32 +8869,37 @@
 
             //Tamany del Radi
             function getRadius(d) {
-                return d > 450 ? '18' :
-                    d > 250 ? '16' :
-                        d > 150 ? '14' :
-                            d > 100 ? '12' :
-                                d > 50 ? '10' :
-                                    d > 20 ? '8' :
-                                        d > 10 ? '6' :
-                                            d > 5 ? '5' :
-                                                d > 3 ? '4' :
-                                                    d > 2 ? '3' :
-                                                        d > 1 ? '2' :
-                                                            '1';
+                return d > 2500 ? '22' :
+                    d > 2000 ? '20' :
+                        d > 1500 ? '18' :
+                            d > 1000 ? '16' :
+                                d > 750 ? '14' :
+                                    d > 500 ? '12' :
+                                        d > 400 ? '11' :
+                                            d > 300 ? '10' :
+                                                d > 250 ? '9' :
+                                                    d > 200 ? '8' :
+                                                        d > 150 ? '7' :
+                                                            d > 100 ? '6' :
+                                                                d > 50 ? '5' :
+                                                                    d > 20 ? '4' :
+                                                                        d > 10 ? '3' :
+                                                                            d > 5 ? '2' :
+                                                                                '1';
             }
 
             //Opacitat
             function getOpacity(d) {
-                return d > 450 ? '1' :
-                    d > 300 ? '0.9' :
-                        d > 200 ? '0.8' :
-                            d > 100 ? '0.7' :
-                                d > 50 ? '0.6' :
-                                    d > 20 ? '0.5' :
-                                        d > 10 ? '0.4' :
-                                            d > 5 ? '0.3' :
-                                                d > 2 ? '0.25' :
-                                                    d > 1 ? '0.15' :
+                return d > 1000 ? '1' :
+                    d > 500 ? '0.9' :
+                        d > 250 ? '0.8' :
+                            d > 200 ? '0.7' :
+                                d > 150 ? '0.6' :
+                                    d > 100 ? '0.5' :
+                                        d > 50 ? '0.4' :
+                                            d > 20 ? '0.3' :
+                                                d > 10 ? '0.25' :
+                                                    d > 5 ? '0.15' :
                                                         '0.05';
             }
 
@@ -9221,10 +9222,10 @@
                 else if (barra.value == 28) {
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v28 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 29) {                   
+                else if (barra.value == 29) {
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v29 + "</h5>", { sticky: true });
                 }
-                else if (barra.value == 30) {                    
+                else if (barra.value == 30) {
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v30 + "</h5>", { sticky: true });
                 }
 
@@ -9235,9 +9236,10 @@
             }
 
             //Capa de metro TMB al iniciar el mapa
+
             drawTMB();
-            //obrim sidebar al iniciar el mapa
-            
+
+
 
         });
     </script>
