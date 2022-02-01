@@ -804,9 +804,9 @@
 
             //Filtratge per operador FMB
 
-           //Filtratge per operador FMB
+            //Filtratge per operador FMB
 
-           drawTMB = function () {
+            drawTMB = function () {
                 selectedOperador = 'FMB';
 
                 document.getElementById('metro').style.background = "rgb(4, 143, 108)";
@@ -7341,9 +7341,9 @@
             }
 
 
-           //animem slider al fer play
+            //animem slider al fer play
 
-           var myInterval;
+            var myInterval;
             var counter = 1;
             var playing = 0;
 
@@ -7793,1248 +7793,1248 @@
 
 
 
-           
+
             //Filtrem els dies de la setmana a l'slider
 
 
             $('#myRange').on('change', function () {
 
-if (barra.value == 1) {
-    output.innerHTML = '01/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB1(); }
-    else if (selectedOperador == 'FGC') { drawFGC1(); }
-    else if (selectedOperador == 'ROD') { drawROD1(); }
-    else if (selectedOperador == 'TB') { drawTB1(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
-    counter = 1;
-}
-else if (barra.value == 2) {
-    output.innerHTML = '02/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB2(); }
-    else if (selectedOperador == 'FGC') { drawFGC2(); }
-    else if (selectedOperador == 'ROD') { drawROD2(); }
-    else if (selectedOperador == 'TB') { drawTB2(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
-    counter = 2;
-}
-else if (barra.value == 3) {
-    output.innerHTML = '03/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB3(); }
-    else if (selectedOperador == 'FGC') { drawFGC3(); }
-    else if (selectedOperador == 'ROD') { drawROD3(); }
-    else if (selectedOperador == 'TB') { drawTB3(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
-    counter = 3;
-}
-else if (barra.value == 4) {
-    output.innerHTML = '04/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB4(); }
-    else if (selectedOperador == 'FGC') { drawFGC4(); }
-    else if (selectedOperador == 'ROD') { drawROD4(); }
-    else if (selectedOperador == 'TB') { drawTB4(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
-    counter = 4;
-}
-else if (barra.value == 5) {
-    output.innerHTML = '05/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB5(); }
-    else if (selectedOperador == 'FGC') { drawFGC5(); }
-    else if (selectedOperador == 'ROD') { drawROD5(); }
-    else if (selectedOperador == 'TB') { drawTB5(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
-    counter = 5;
-}
-else if (barra.value == 6) {
-    output.innerHTML = '06/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB6(); }
-    else if (selectedOperador == 'FGC') { drawFGC6(); }
-    else if (selectedOperador == 'ROD') { drawROD6(); }
-    else if (selectedOperador == 'TB') { drawTB6(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
-    counter = 6;
-}
-else if (barra.value == 7) {
-    output.innerHTML = '07/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB7(); }
-    else if (selectedOperador == 'FGC') { drawFGC7(); }
-    else if (selectedOperador == 'ROD') { drawROD7(); }
-    else if (selectedOperador == 'TB') { drawTB7(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
-    counter = 7;
-}
-else if (barra.value == 8) {
-    output.innerHTML = '08/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB8(); }
-    else if (selectedOperador == 'FGC') { drawFGC8(); }
-    else if (selectedOperador == 'ROD') { drawROD8(); }
-    else if (selectedOperador == 'TB') { drawTB8(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
-    counter = 8;
-}
-else if (barra.value == 9) {
-    output.innerHTML = '09/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB9(); }
-    else if (selectedOperador == 'FGC') { drawFGC9(); }
-    else if (selectedOperador == 'ROD') { drawROD9(); }
-    else if (selectedOperador == 'TB') { drawTB9(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
-    counter = 9;
-}
-else if (barra.value == 10) {
-    output.innerHTML = '10/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB10(); }
-    else if (selectedOperador == 'FGC') { drawFGC10(); }
-    else if (selectedOperador == 'ROD') { drawROD10(); }
-    else if (selectedOperador == 'TB') { drawTB10(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
-    counter = 10;
-}
-else if (barra.value == 11) {
-    output.innerHTML = '11/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB11(); }
-    else if (selectedOperador == 'FGC') { drawFGC11(); }
-    else if (selectedOperador == 'ROD') { drawROD11(); }
-    else if (selectedOperador == 'TB') { drawTB11(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
-    counter = 11;
-}
-else if (barra.value == 12) {
-    output.innerHTML = '12/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB12(); }
-    else if (selectedOperador == 'FGC') { drawFGC12(); }
-    else if (selectedOperador == 'ROD') { drawROD12(); }
-    else if (selectedOperador == 'TB') { drawTB12(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
-    counter = 12;
-}
-else if (barra.value == 13) {
-    output.innerHTML = '13/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB13(); }
-    else if (selectedOperador == 'FGC') { drawFGC13(); }
-    else if (selectedOperador == 'ROD') { drawROD7(); }
-    else if (selectedOperador == 'TB') { drawTB13(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
-    counter = 13;
-}
-else if (barra.value == 14) {
-    output.innerHTML = '14/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB14(); }
-    else if (selectedOperador == 'FGC') { drawFGC14(); }
-    else if (selectedOperador == 'ROD') { drawROD14(); }
-    else if (selectedOperador == 'TB') { drawTB14(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
-    counter = 14;
-}
-else if (barra.value == 15) {
-    output.innerHTML = '15/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB15(); }
-    else if (selectedOperador == 'FGC') { drawFGC15(); }
-    else if (selectedOperador == 'ROD') { drawROD15(); }
-    else if (selectedOperador == 'TB') { drawTB15(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
-    counter = 15;
-}
-else if (barra.value == 16) {
-    output.innerHTML = '16/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB16(); }
-    else if (selectedOperador == 'FGC') { drawFGC16(); }
-    else if (selectedOperador == 'ROD') { drawROD16(); }
-    else if (selectedOperador == 'TB') { drawTB16(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
-    counter = 16;
-}
-else if (barra.value == 17) {
-    output.innerHTML = '17/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB17(); }
-    else if (selectedOperador == 'FGC') { drawFGC17(); }
-    else if (selectedOperador == 'ROD') { drawROD17(); }
-    else if (selectedOperador == 'TB') { drawTB17(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
-    counter = 17;
-}
-else if (barra.value == 18) {
-    output.innerHTML = '18/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB18(); }
-    else if (selectedOperador == 'FGC') { drawFGC18(); }
-    else if (selectedOperador == 'ROD') { drawROD18(); }
-    else if (selectedOperador == 'TB') { drawTB18(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
-    counter = 18;
-}
-else if (barra.value == 19) {
-    output.innerHTML = '19/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB19(); }
-    else if (selectedOperador == 'FGC') { drawFGC19(); }
-    else if (selectedOperador == 'ROD') { drawROD19(); }
-    else if (selectedOperador == 'TB') { drawTB19(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
-    counter = 19;
-}
-else if (barra.value == 20) {
-    output.innerHTML = '20/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB20(); }
-    else if (selectedOperador == 'FGC') { drawFGC20(); }
-    else if (selectedOperador == 'ROD') { drawROD20(); }
-    else if (selectedOperador == 'TB') { drawTB20(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
-    counter = 20;
-}
-else if (barra.value == 21) {
-    output.innerHTML = '21/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB21(); }
-    else if (selectedOperador == 'FGC') { drawFGC21(); }
-    else if (selectedOperador == 'ROD') { drawROD21(); }
-    else if (selectedOperador == 'TB') { drawTB21(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
-    counter = 21;
-}
-else if (barra.value == 22) {
-    output.innerHTML = '22/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB22(); }
-    else if (selectedOperador == 'FGC') { drawFGC22(); }
-    else if (selectedOperador == 'ROD') { drawROD22(); }
-    else if (selectedOperador == 'TB') { drawTB22(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
-    counter = 22;
-}
-else if (barra.value == 23) {
-    output.innerHTML = '23/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB23(); }
-    else if (selectedOperador == 'FGC') { drawFGC23(); }
-    else if (selectedOperador == 'ROD') { drawROD23(); }
-    else if (selectedOperador == 'TB') { drawTB23(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
-    counter = 23;
-}
-else if (barra.value == 24) {
-    output.innerHTML = '24/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB24(); }
-    else if (selectedOperador == 'FGC') { drawFGC24(); }
-    else if (selectedOperador == 'ROD') { drawROD24(); }
-    else if (selectedOperador == 'TB') { drawTB24(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
-    counter = 24;
-}
-else if (barra.value == 25) {
-    output.innerHTML = '25/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB25(); }
-    else if (selectedOperador == 'FGC') { drawFGC25(); }
-    else if (selectedOperador == 'ROD') { drawROD25(); }
-    else if (selectedOperador == 'TB') { drawTB25(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
-    counter = 25;
-}
-else if (barra.value == 26) {
-    output.innerHTML = '26/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB26(); }
-    else if (selectedOperador == 'FGC') { drawFGC26(); }
-    else if (selectedOperador == 'ROD') { drawROD26(); }
-    else if (selectedOperador == 'TB') { drawTB26(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
-    counter = 26;
-}
-else if (barra.value == 27) {
-    output.innerHTML = '27/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB27(); }
-    else if (selectedOperador == 'FGC') { drawFGC27(); }
-    else if (selectedOperador == 'ROD') { drawROD27(); }
-    else if (selectedOperador == 'TB') { drawTB27(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
-    counter = 27;
-}
-else if (barra.value == 28) {
-    output.innerHTML = '28/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB28(); }
-    else if (selectedOperador == 'FGC') { drawFGC28(); }
-    else if (selectedOperador == 'ROD') { drawROD28(); }
-    else if (selectedOperador == 'TB') { drawTB28(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
-    counter = 28;
-}
-else if (barra.value == 29) {
-    output.innerHTML = '29/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB29(); }
-    else if (selectedOperador == 'FGC') { drawFGC29(); }
-    else if (selectedOperador == 'ROD') { drawROD29(); }
-    else if (selectedOperador == 'TB') { drawTB29(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
-    counter = 29;
-}
-else if (barra.value == 30) {
-    output.innerHTML = '30/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB30(); }
-    else if (selectedOperador == 'FGC') { drawFGC30(); }
-    else if (selectedOperador == 'ROD') { drawROD30(); }
-    else if (selectedOperador == 'TB') { drawTB30(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
-    counter = 30;
-}
-else if (barra.value == 31) {
-            output.innerHTML = '31/01/2022';
-            neteja();
-            if (selectedOperador == 'FMB') { drawTMB31(); }
-            else if (selectedOperador == 'FGC') { drawFGC31(); }
-            else if (selectedOperador == 'ROD') { drawROD31(); }
-            else if (selectedOperador == 'TB') { drawTB31(); }
-            else if (selectedOperador == 'TRAM') { drawTRAM31(); }
-            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
-            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
-            else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
-            counter = 31;
-        }
+                if (barra.value == 1) {
+                    output.innerHTML = '01/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB1(); }
+                    else if (selectedOperador == 'FGC') { drawFGC1(); }
+                    else if (selectedOperador == 'ROD') { drawROD1(); }
+                    else if (selectedOperador == 'TB') { drawTB1(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                    counter = 1;
+                }
+                else if (barra.value == 2) {
+                    output.innerHTML = '02/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB2(); }
+                    else if (selectedOperador == 'FGC') { drawFGC2(); }
+                    else if (selectedOperador == 'ROD') { drawROD2(); }
+                    else if (selectedOperador == 'TB') { drawTB2(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                    counter = 2;
+                }
+                else if (barra.value == 3) {
+                    output.innerHTML = '03/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB3(); }
+                    else if (selectedOperador == 'FGC') { drawFGC3(); }
+                    else if (selectedOperador == 'ROD') { drawROD3(); }
+                    else if (selectedOperador == 'TB') { drawTB3(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                    counter = 3;
+                }
+                else if (barra.value == 4) {
+                    output.innerHTML = '04/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB4(); }
+                    else if (selectedOperador == 'FGC') { drawFGC4(); }
+                    else if (selectedOperador == 'ROD') { drawROD4(); }
+                    else if (selectedOperador == 'TB') { drawTB4(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                    counter = 4;
+                }
+                else if (barra.value == 5) {
+                    output.innerHTML = '05/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB5(); }
+                    else if (selectedOperador == 'FGC') { drawFGC5(); }
+                    else if (selectedOperador == 'ROD') { drawROD5(); }
+                    else if (selectedOperador == 'TB') { drawTB5(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                    counter = 5;
+                }
+                else if (barra.value == 6) {
+                    output.innerHTML = '06/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB6(); }
+                    else if (selectedOperador == 'FGC') { drawFGC6(); }
+                    else if (selectedOperador == 'ROD') { drawROD6(); }
+                    else if (selectedOperador == 'TB') { drawTB6(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                    counter = 6;
+                }
+                else if (barra.value == 7) {
+                    output.innerHTML = '07/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB7(); }
+                    else if (selectedOperador == 'FGC') { drawFGC7(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB7(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                    counter = 7;
+                }
+                else if (barra.value == 8) {
+                    output.innerHTML = '08/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB8(); }
+                    else if (selectedOperador == 'FGC') { drawFGC8(); }
+                    else if (selectedOperador == 'ROD') { drawROD8(); }
+                    else if (selectedOperador == 'TB') { drawTB8(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                    counter = 8;
+                }
+                else if (barra.value == 9) {
+                    output.innerHTML = '09/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB9(); }
+                    else if (selectedOperador == 'FGC') { drawFGC9(); }
+                    else if (selectedOperador == 'ROD') { drawROD9(); }
+                    else if (selectedOperador == 'TB') { drawTB9(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                    counter = 9;
+                }
+                else if (barra.value == 10) {
+                    output.innerHTML = '10/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB10(); }
+                    else if (selectedOperador == 'FGC') { drawFGC10(); }
+                    else if (selectedOperador == 'ROD') { drawROD10(); }
+                    else if (selectedOperador == 'TB') { drawTB10(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                    counter = 10;
+                }
+                else if (barra.value == 11) {
+                    output.innerHTML = '11/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB11(); }
+                    else if (selectedOperador == 'FGC') { drawFGC11(); }
+                    else if (selectedOperador == 'ROD') { drawROD11(); }
+                    else if (selectedOperador == 'TB') { drawTB11(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                    counter = 11;
+                }
+                else if (barra.value == 12) {
+                    output.innerHTML = '12/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB12(); }
+                    else if (selectedOperador == 'FGC') { drawFGC12(); }
+                    else if (selectedOperador == 'ROD') { drawROD12(); }
+                    else if (selectedOperador == 'TB') { drawTB12(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                    counter = 12;
+                }
+                else if (barra.value == 13) {
+                    output.innerHTML = '13/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB13(); }
+                    else if (selectedOperador == 'FGC') { drawFGC13(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB13(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                    counter = 13;
+                }
+                else if (barra.value == 14) {
+                    output.innerHTML = '14/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB14(); }
+                    else if (selectedOperador == 'FGC') { drawFGC14(); }
+                    else if (selectedOperador == 'ROD') { drawROD14(); }
+                    else if (selectedOperador == 'TB') { drawTB14(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                    counter = 14;
+                }
+                else if (barra.value == 15) {
+                    output.innerHTML = '15/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB15(); }
+                    else if (selectedOperador == 'FGC') { drawFGC15(); }
+                    else if (selectedOperador == 'ROD') { drawROD15(); }
+                    else if (selectedOperador == 'TB') { drawTB15(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                    counter = 15;
+                }
+                else if (barra.value == 16) {
+                    output.innerHTML = '16/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB16(); }
+                    else if (selectedOperador == 'FGC') { drawFGC16(); }
+                    else if (selectedOperador == 'ROD') { drawROD16(); }
+                    else if (selectedOperador == 'TB') { drawTB16(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                    counter = 16;
+                }
+                else if (barra.value == 17) {
+                    output.innerHTML = '17/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB17(); }
+                    else if (selectedOperador == 'FGC') { drawFGC17(); }
+                    else if (selectedOperador == 'ROD') { drawROD17(); }
+                    else if (selectedOperador == 'TB') { drawTB17(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                    counter = 17;
+                }
+                else if (barra.value == 18) {
+                    output.innerHTML = '18/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB18(); }
+                    else if (selectedOperador == 'FGC') { drawFGC18(); }
+                    else if (selectedOperador == 'ROD') { drawROD18(); }
+                    else if (selectedOperador == 'TB') { drawTB18(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                    counter = 18;
+                }
+                else if (barra.value == 19) {
+                    output.innerHTML = '19/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB19(); }
+                    else if (selectedOperador == 'FGC') { drawFGC19(); }
+                    else if (selectedOperador == 'ROD') { drawROD19(); }
+                    else if (selectedOperador == 'TB') { drawTB19(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                    counter = 19;
+                }
+                else if (barra.value == 20) {
+                    output.innerHTML = '20/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB20(); }
+                    else if (selectedOperador == 'FGC') { drawFGC20(); }
+                    else if (selectedOperador == 'ROD') { drawROD20(); }
+                    else if (selectedOperador == 'TB') { drawTB20(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                    counter = 20;
+                }
+                else if (barra.value == 21) {
+                    output.innerHTML = '21/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB21(); }
+                    else if (selectedOperador == 'FGC') { drawFGC21(); }
+                    else if (selectedOperador == 'ROD') { drawROD21(); }
+                    else if (selectedOperador == 'TB') { drawTB21(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                    counter = 21;
+                }
+                else if (barra.value == 22) {
+                    output.innerHTML = '22/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB22(); }
+                    else if (selectedOperador == 'FGC') { drawFGC22(); }
+                    else if (selectedOperador == 'ROD') { drawROD22(); }
+                    else if (selectedOperador == 'TB') { drawTB22(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                    counter = 22;
+                }
+                else if (barra.value == 23) {
+                    output.innerHTML = '23/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB23(); }
+                    else if (selectedOperador == 'FGC') { drawFGC23(); }
+                    else if (selectedOperador == 'ROD') { drawROD23(); }
+                    else if (selectedOperador == 'TB') { drawTB23(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                    counter = 23;
+                }
+                else if (barra.value == 24) {
+                    output.innerHTML = '24/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB24(); }
+                    else if (selectedOperador == 'FGC') { drawFGC24(); }
+                    else if (selectedOperador == 'ROD') { drawROD24(); }
+                    else if (selectedOperador == 'TB') { drawTB24(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                    counter = 24;
+                }
+                else if (barra.value == 25) {
+                    output.innerHTML = '25/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB25(); }
+                    else if (selectedOperador == 'FGC') { drawFGC25(); }
+                    else if (selectedOperador == 'ROD') { drawROD25(); }
+                    else if (selectedOperador == 'TB') { drawTB25(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                    counter = 25;
+                }
+                else if (barra.value == 26) {
+                    output.innerHTML = '26/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB26(); }
+                    else if (selectedOperador == 'FGC') { drawFGC26(); }
+                    else if (selectedOperador == 'ROD') { drawROD26(); }
+                    else if (selectedOperador == 'TB') { drawTB26(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                    counter = 26;
+                }
+                else if (barra.value == 27) {
+                    output.innerHTML = '27/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB27(); }
+                    else if (selectedOperador == 'FGC') { drawFGC27(); }
+                    else if (selectedOperador == 'ROD') { drawROD27(); }
+                    else if (selectedOperador == 'TB') { drawTB27(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                    counter = 27;
+                }
+                else if (barra.value == 28) {
+                    output.innerHTML = '28/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB28(); }
+                    else if (selectedOperador == 'FGC') { drawFGC28(); }
+                    else if (selectedOperador == 'ROD') { drawROD28(); }
+                    else if (selectedOperador == 'TB') { drawTB28(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                    counter = 28;
+                }
+                else if (barra.value == 29) {
+                    output.innerHTML = '29/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB29(); }
+                    else if (selectedOperador == 'FGC') { drawFGC29(); }
+                    else if (selectedOperador == 'ROD') { drawROD29(); }
+                    else if (selectedOperador == 'TB') { drawTB29(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                    counter = 29;
+                }
+                else if (barra.value == 30) {
+                    output.innerHTML = '30/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB30(); }
+                    else if (selectedOperador == 'FGC') { drawFGC30(); }
+                    else if (selectedOperador == 'ROD') { drawROD30(); }
+                    else if (selectedOperador == 'TB') { drawTB30(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                    counter = 30;
+                }
+                else if (barra.value == 31) {
+                    output.innerHTML = '31/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB31(); }
+                    else if (selectedOperador == 'FGC') { drawFGC31(); }
+                    else if (selectedOperador == 'ROD') { drawROD31(); }
+                    else if (selectedOperador == 'TB') { drawTB31(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM31(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
+                    counter = 31;
+                }
 
-})
+            })
 
-$('#forward').on('click', function () {
-barra.value++;
-if (counter > 31) {
-    barra.value = 1;
-    counter = 1;
-}
+            $('#forward').on('click', function () {
+                barra.value++;
+                if (counter > 31) {
+                    barra.value = 1;
+                    counter = 1;
+                }
 
 
-console.log(barra.value);
+                console.log(barra.value);
 
-if (barra.value == 1) {
-    output.innerHTML = '01/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB1(); }
-    else if (selectedOperador == 'FGC') { drawFGC1(); }
-    else if (selectedOperador == 'ROD') { drawROD1(); }
-    else if (selectedOperador == 'TB') { drawTB1(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
-    counter = 1;
-}
-else if (barra.value == 2) {
-    output.innerHTML = '02/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB2(); }
-    else if (selectedOperador == 'FGC') { drawFGC2(); }
-    else if (selectedOperador == 'ROD') { drawROD2(); }
-    else if (selectedOperador == 'TB') { drawTB2(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
-    counter = 2;
-}
-else if (barra.value == 3) {
-    output.innerHTML = '03/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB3(); }
-    else if (selectedOperador == 'FGC') { drawFGC3(); }
-    else if (selectedOperador == 'ROD') { drawROD3(); }
-    else if (selectedOperador == 'TB') { drawTB3(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
-    counter = 3;
-}
-else if (barra.value == 4) {
-    output.innerHTML = '04/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB4(); }
-    else if (selectedOperador == 'FGC') { drawFGC4(); }
-    else if (selectedOperador == 'ROD') { drawROD4(); }
-    else if (selectedOperador == 'TB') { drawTB4(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
-    counter = 4;
-}
-else if (barra.value == 5) {
-    output.innerHTML = '05/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB5(); }
-    else if (selectedOperador == 'FGC') { drawFGC5(); }
-    else if (selectedOperador == 'ROD') { drawROD5(); }
-    else if (selectedOperador == 'TB') { drawTB5(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
-    counter = 5;
-}
-else if (barra.value == 6) {
-    output.innerHTML = '06/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB6(); }
-    else if (selectedOperador == 'FGC') { drawFGC6(); }
-    else if (selectedOperador == 'ROD') { drawROD6(); }
-    else if (selectedOperador == 'TB') { drawTB6(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
-    counter = 6;
-}
-else if (barra.value == 7) {
-    output.innerHTML = '07/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB7(); }
-    else if (selectedOperador == 'FGC') { drawFGC7(); }
-    else if (selectedOperador == 'ROD') { drawROD7(); }
-    else if (selectedOperador == 'TB') { drawTB7(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
-    counter = 7;
-}
-else if (barra.value == 8) {
-    output.innerHTML = '08/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB8(); }
-    else if (selectedOperador == 'FGC') { drawFGC8(); }
-    else if (selectedOperador == 'ROD') { drawROD8(); }
-    else if (selectedOperador == 'TB') { drawTB8(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
-    counter = 8;
-}
-else if (barra.value == 9) {
-    output.innerHTML = '09/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB9(); }
-    else if (selectedOperador == 'FGC') { drawFGC9(); }
-    else if (selectedOperador == 'ROD') { drawROD9(); }
-    else if (selectedOperador == 'TB') { drawTB9(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
-    counter = 9;
-}
-else if (barra.value == 10) {
-    output.innerHTML = '10/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB10(); }
-    else if (selectedOperador == 'FGC') { drawFGC10(); }
-    else if (selectedOperador == 'ROD') { drawROD10(); }
-    else if (selectedOperador == 'TB') { drawTB10(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
-    counter = 10;
-}
-else if (barra.value == 11) {
-    output.innerHTML = '11/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB11(); }
-    else if (selectedOperador == 'FGC') { drawFGC11(); }
-    else if (selectedOperador == 'ROD') { drawROD11(); }
-    else if (selectedOperador == 'TB') { drawTB11(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
-    counter = 11;
-}
-else if (barra.value == 12) {
-    output.innerHTML = '12/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB12(); }
-    else if (selectedOperador == 'FGC') { drawFGC12(); }
-    else if (selectedOperador == 'ROD') { drawROD12(); }
-    else if (selectedOperador == 'TB') { drawTB12(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
-    counter = 12;
-}
-else if (barra.value == 13) {
-    output.innerHTML = '13/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB13(); }
-    else if (selectedOperador == 'FGC') { drawFGC13(); }
-    else if (selectedOperador == 'ROD') { drawROD7(); }
-    else if (selectedOperador == 'TB') { drawTB13(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
-    counter = 13;
-}
-else if (barra.value == 14) {
-    output.innerHTML = '14/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB14(); }
-    else if (selectedOperador == 'FGC') { drawFGC14(); }
-    else if (selectedOperador == 'ROD') { drawROD14(); }
-    else if (selectedOperador == 'TB') { drawTB14(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
-    counter = 14;
-}
-else if (barra.value == 15) {
-    output.innerHTML = '15/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB15(); }
-    else if (selectedOperador == 'FGC') { drawFGC15(); }
-    else if (selectedOperador == 'ROD') { drawROD15(); }
-    else if (selectedOperador == 'TB') { drawTB15(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
-    counter = 15;
-}
-else if (barra.value == 16) {
-    output.innerHTML = '16/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB16(); }
-    else if (selectedOperador == 'FGC') { drawFGC16(); }
-    else if (selectedOperador == 'ROD') { drawROD16(); }
-    else if (selectedOperador == 'TB') { drawTB16(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
-    counter = 16;
-}
-else if (barra.value == 17) {
-    output.innerHTML = '17/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB17(); }
-    else if (selectedOperador == 'FGC') { drawFGC17(); }
-    else if (selectedOperador == 'ROD') { drawROD17(); }
-    else if (selectedOperador == 'TB') { drawTB17(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
-    counter = 17;
-}
-else if (barra.value == 18) {
-    output.innerHTML = '18/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB18(); }
-    else if (selectedOperador == 'FGC') { drawFGC18(); }
-    else if (selectedOperador == 'ROD') { drawROD18(); }
-    else if (selectedOperador == 'TB') { drawTB18(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
-    counter = 18;
-}
-else if (barra.value == 19) {
-    output.innerHTML = '19/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB19(); }
-    else if (selectedOperador == 'FGC') { drawFGC19(); }
-    else if (selectedOperador == 'ROD') { drawROD19(); }
-    else if (selectedOperador == 'TB') { drawTB19(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
-    counter = 19;
-}
-else if (barra.value == 20) {
-    output.innerHTML = '20/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB20(); }
-    else if (selectedOperador == 'FGC') { drawFGC20(); }
-    else if (selectedOperador == 'ROD') { drawROD20(); }
-    else if (selectedOperador == 'TB') { drawTB20(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
-    counter = 20;
-}
-else if (barra.value == 21) {
-    output.innerHTML = '21/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB21(); }
-    else if (selectedOperador == 'FGC') { drawFGC21(); }
-    else if (selectedOperador == 'ROD') { drawROD21(); }
-    else if (selectedOperador == 'TB') { drawTB21(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
-    counter = 21;
-}
-else if (barra.value == 22) {
-    output.innerHTML = '22/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB22(); }
-    else if (selectedOperador == 'FGC') { drawFGC22(); }
-    else if (selectedOperador == 'ROD') { drawROD22(); }
-    else if (selectedOperador == 'TB') { drawTB22(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
-    counter = 22;
-}
-else if (barra.value == 23) {
-    output.innerHTML = '23/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB23(); }
-    else if (selectedOperador == 'FGC') { drawFGC23(); }
-    else if (selectedOperador == 'ROD') { drawROD23(); }
-    else if (selectedOperador == 'TB') { drawTB23(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
-    counter = 23;
-}
-else if (barra.value == 24) {
-    output.innerHTML = '24/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB24(); }
-    else if (selectedOperador == 'FGC') { drawFGC24(); }
-    else if (selectedOperador == 'ROD') { drawROD24(); }
-    else if (selectedOperador == 'TB') { drawTB24(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
-    counter = 24;
-}
-else if (barra.value == 25) {
-    output.innerHTML = '25/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB25(); }
-    else if (selectedOperador == 'FGC') { drawFGC25(); }
-    else if (selectedOperador == 'ROD') { drawROD25(); }
-    else if (selectedOperador == 'TB') { drawTB25(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
-    counter = 25;
-}
-else if (barra.value == 26) {
-    output.innerHTML = '26/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB26(); }
-    else if (selectedOperador == 'FGC') { drawFGC26(); }
-    else if (selectedOperador == 'ROD') { drawROD26(); }
-    else if (selectedOperador == 'TB') { drawTB26(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
-    counter = 26;
-}
-else if (barra.value == 27) {
-    output.innerHTML = '27/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB27(); }
-    else if (selectedOperador == 'FGC') { drawFGC27(); }
-    else if (selectedOperador == 'ROD') { drawROD27(); }
-    else if (selectedOperador == 'TB') { drawTB27(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
-    counter = 27;
-}
-else if (barra.value == 28) {
-    output.innerHTML = '28/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB28(); }
-    else if (selectedOperador == 'FGC') { drawFGC28(); }
-    else if (selectedOperador == 'ROD') { drawROD28(); }
-    else if (selectedOperador == 'TB') { drawTB28(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
-    counter = 28;
-}
-else if (barra.value == 29) {
-    output.innerHTML = '29/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB29(); }
-    else if (selectedOperador == 'FGC') { drawFGC29(); }
-    else if (selectedOperador == 'ROD') { drawROD29(); }
-    else if (selectedOperador == 'TB') { drawTB29(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
-    counter = 29;
-}
-else if (barra.value == 30) {
-    output.innerHTML = '30/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB30(); }
-    else if (selectedOperador == 'FGC') { drawFGC30(); }
-    else if (selectedOperador == 'ROD') { drawROD30(); }
-    else if (selectedOperador == 'TB') { drawTB30(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
-    counter = 30;
-}
-else if (barra.value == 31) {
-            output.innerHTML = '31/01/2022';
-            neteja();
-            if (selectedOperador == 'FMB') { drawTMB31(); }
-            else if (selectedOperador == 'FGC') { drawFGC31(); }
-            else if (selectedOperador == 'ROD') { drawROD31(); }
-            else if (selectedOperador == 'TB') { drawTB31(); }
-            else if (selectedOperador == 'TRAM') { drawTRAM31(); }
-            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
-            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
-            else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
-            counter = 31;
-        }
+                if (barra.value == 1) {
+                    output.innerHTML = '01/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB1(); }
+                    else if (selectedOperador == 'FGC') { drawFGC1(); }
+                    else if (selectedOperador == 'ROD') { drawROD1(); }
+                    else if (selectedOperador == 'TB') { drawTB1(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                    counter = 1;
+                }
+                else if (barra.value == 2) {
+                    output.innerHTML = '02/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB2(); }
+                    else if (selectedOperador == 'FGC') { drawFGC2(); }
+                    else if (selectedOperador == 'ROD') { drawROD2(); }
+                    else if (selectedOperador == 'TB') { drawTB2(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                    counter = 2;
+                }
+                else if (barra.value == 3) {
+                    output.innerHTML = '03/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB3(); }
+                    else if (selectedOperador == 'FGC') { drawFGC3(); }
+                    else if (selectedOperador == 'ROD') { drawROD3(); }
+                    else if (selectedOperador == 'TB') { drawTB3(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                    counter = 3;
+                }
+                else if (barra.value == 4) {
+                    output.innerHTML = '04/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB4(); }
+                    else if (selectedOperador == 'FGC') { drawFGC4(); }
+                    else if (selectedOperador == 'ROD') { drawROD4(); }
+                    else if (selectedOperador == 'TB') { drawTB4(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                    counter = 4;
+                }
+                else if (barra.value == 5) {
+                    output.innerHTML = '05/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB5(); }
+                    else if (selectedOperador == 'FGC') { drawFGC5(); }
+                    else if (selectedOperador == 'ROD') { drawROD5(); }
+                    else if (selectedOperador == 'TB') { drawTB5(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                    counter = 5;
+                }
+                else if (barra.value == 6) {
+                    output.innerHTML = '06/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB6(); }
+                    else if (selectedOperador == 'FGC') { drawFGC6(); }
+                    else if (selectedOperador == 'ROD') { drawROD6(); }
+                    else if (selectedOperador == 'TB') { drawTB6(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                    counter = 6;
+                }
+                else if (barra.value == 7) {
+                    output.innerHTML = '07/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB7(); }
+                    else if (selectedOperador == 'FGC') { drawFGC7(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB7(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                    counter = 7;
+                }
+                else if (barra.value == 8) {
+                    output.innerHTML = '08/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB8(); }
+                    else if (selectedOperador == 'FGC') { drawFGC8(); }
+                    else if (selectedOperador == 'ROD') { drawROD8(); }
+                    else if (selectedOperador == 'TB') { drawTB8(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                    counter = 8;
+                }
+                else if (barra.value == 9) {
+                    output.innerHTML = '09/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB9(); }
+                    else if (selectedOperador == 'FGC') { drawFGC9(); }
+                    else if (selectedOperador == 'ROD') { drawROD9(); }
+                    else if (selectedOperador == 'TB') { drawTB9(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                    counter = 9;
+                }
+                else if (barra.value == 10) {
+                    output.innerHTML = '10/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB10(); }
+                    else if (selectedOperador == 'FGC') { drawFGC10(); }
+                    else if (selectedOperador == 'ROD') { drawROD10(); }
+                    else if (selectedOperador == 'TB') { drawTB10(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                    counter = 10;
+                }
+                else if (barra.value == 11) {
+                    output.innerHTML = '11/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB11(); }
+                    else if (selectedOperador == 'FGC') { drawFGC11(); }
+                    else if (selectedOperador == 'ROD') { drawROD11(); }
+                    else if (selectedOperador == 'TB') { drawTB11(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                    counter = 11;
+                }
+                else if (barra.value == 12) {
+                    output.innerHTML = '12/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB12(); }
+                    else if (selectedOperador == 'FGC') { drawFGC12(); }
+                    else if (selectedOperador == 'ROD') { drawROD12(); }
+                    else if (selectedOperador == 'TB') { drawTB12(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                    counter = 12;
+                }
+                else if (barra.value == 13) {
+                    output.innerHTML = '13/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB13(); }
+                    else if (selectedOperador == 'FGC') { drawFGC13(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB13(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                    counter = 13;
+                }
+                else if (barra.value == 14) {
+                    output.innerHTML = '14/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB14(); }
+                    else if (selectedOperador == 'FGC') { drawFGC14(); }
+                    else if (selectedOperador == 'ROD') { drawROD14(); }
+                    else if (selectedOperador == 'TB') { drawTB14(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                    counter = 14;
+                }
+                else if (barra.value == 15) {
+                    output.innerHTML = '15/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB15(); }
+                    else if (selectedOperador == 'FGC') { drawFGC15(); }
+                    else if (selectedOperador == 'ROD') { drawROD15(); }
+                    else if (selectedOperador == 'TB') { drawTB15(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                    counter = 15;
+                }
+                else if (barra.value == 16) {
+                    output.innerHTML = '16/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB16(); }
+                    else if (selectedOperador == 'FGC') { drawFGC16(); }
+                    else if (selectedOperador == 'ROD') { drawROD16(); }
+                    else if (selectedOperador == 'TB') { drawTB16(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                    counter = 16;
+                }
+                else if (barra.value == 17) {
+                    output.innerHTML = '17/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB17(); }
+                    else if (selectedOperador == 'FGC') { drawFGC17(); }
+                    else if (selectedOperador == 'ROD') { drawROD17(); }
+                    else if (selectedOperador == 'TB') { drawTB17(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                    counter = 17;
+                }
+                else if (barra.value == 18) {
+                    output.innerHTML = '18/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB18(); }
+                    else if (selectedOperador == 'FGC') { drawFGC18(); }
+                    else if (selectedOperador == 'ROD') { drawROD18(); }
+                    else if (selectedOperador == 'TB') { drawTB18(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                    counter = 18;
+                }
+                else if (barra.value == 19) {
+                    output.innerHTML = '19/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB19(); }
+                    else if (selectedOperador == 'FGC') { drawFGC19(); }
+                    else if (selectedOperador == 'ROD') { drawROD19(); }
+                    else if (selectedOperador == 'TB') { drawTB19(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                    counter = 19;
+                }
+                else if (barra.value == 20) {
+                    output.innerHTML = '20/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB20(); }
+                    else if (selectedOperador == 'FGC') { drawFGC20(); }
+                    else if (selectedOperador == 'ROD') { drawROD20(); }
+                    else if (selectedOperador == 'TB') { drawTB20(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                    counter = 20;
+                }
+                else if (barra.value == 21) {
+                    output.innerHTML = '21/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB21(); }
+                    else if (selectedOperador == 'FGC') { drawFGC21(); }
+                    else if (selectedOperador == 'ROD') { drawROD21(); }
+                    else if (selectedOperador == 'TB') { drawTB21(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                    counter = 21;
+                }
+                else if (barra.value == 22) {
+                    output.innerHTML = '22/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB22(); }
+                    else if (selectedOperador == 'FGC') { drawFGC22(); }
+                    else if (selectedOperador == 'ROD') { drawROD22(); }
+                    else if (selectedOperador == 'TB') { drawTB22(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                    counter = 22;
+                }
+                else if (barra.value == 23) {
+                    output.innerHTML = '23/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB23(); }
+                    else if (selectedOperador == 'FGC') { drawFGC23(); }
+                    else if (selectedOperador == 'ROD') { drawROD23(); }
+                    else if (selectedOperador == 'TB') { drawTB23(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                    counter = 23;
+                }
+                else if (barra.value == 24) {
+                    output.innerHTML = '24/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB24(); }
+                    else if (selectedOperador == 'FGC') { drawFGC24(); }
+                    else if (selectedOperador == 'ROD') { drawROD24(); }
+                    else if (selectedOperador == 'TB') { drawTB24(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                    counter = 24;
+                }
+                else if (barra.value == 25) {
+                    output.innerHTML = '25/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB25(); }
+                    else if (selectedOperador == 'FGC') { drawFGC25(); }
+                    else if (selectedOperador == 'ROD') { drawROD25(); }
+                    else if (selectedOperador == 'TB') { drawTB25(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                    counter = 25;
+                }
+                else if (barra.value == 26) {
+                    output.innerHTML = '26/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB26(); }
+                    else if (selectedOperador == 'FGC') { drawFGC26(); }
+                    else if (selectedOperador == 'ROD') { drawROD26(); }
+                    else if (selectedOperador == 'TB') { drawTB26(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                    counter = 26;
+                }
+                else if (barra.value == 27) {
+                    output.innerHTML = '27/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB27(); }
+                    else if (selectedOperador == 'FGC') { drawFGC27(); }
+                    else if (selectedOperador == 'ROD') { drawROD27(); }
+                    else if (selectedOperador == 'TB') { drawTB27(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                    counter = 27;
+                }
+                else if (barra.value == 28) {
+                    output.innerHTML = '28/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB28(); }
+                    else if (selectedOperador == 'FGC') { drawFGC28(); }
+                    else if (selectedOperador == 'ROD') { drawROD28(); }
+                    else if (selectedOperador == 'TB') { drawTB28(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                    counter = 28;
+                }
+                else if (barra.value == 29) {
+                    output.innerHTML = '29/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB29(); }
+                    else if (selectedOperador == 'FGC') { drawFGC29(); }
+                    else if (selectedOperador == 'ROD') { drawROD29(); }
+                    else if (selectedOperador == 'TB') { drawTB29(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                    counter = 29;
+                }
+                else if (barra.value == 30) {
+                    output.innerHTML = '30/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB30(); }
+                    else if (selectedOperador == 'FGC') { drawFGC30(); }
+                    else if (selectedOperador == 'ROD') { drawROD30(); }
+                    else if (selectedOperador == 'TB') { drawTB30(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                    counter = 30;
+                }
+                else if (barra.value == 31) {
+                    output.innerHTML = '31/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB31(); }
+                    else if (selectedOperador == 'FGC') { drawFGC31(); }
+                    else if (selectedOperador == 'ROD') { drawROD31(); }
+                    else if (selectedOperador == 'TB') { drawTB31(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM31(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
+                    counter = 31;
+                }
 
-});
+            });
 
-$('#backward').on('click', function () {
-barra.value--;
-if (counter > 31) {
-    barra.value = 1;
-    counter = 1;
-}
+            $('#backward').on('click', function () {
+                barra.value--;
+                if (counter > 31) {
+                    barra.value = 1;
+                    counter = 1;
+                }
 
-console.log(barra.value);
+                console.log(barra.value);
 
-if (barra.value == 1) {
-    output.innerHTML = '01/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB1(); }
-    else if (selectedOperador == 'FGC') { drawFGC1(); }
-    else if (selectedOperador == 'ROD') { drawROD1(); }
-    else if (selectedOperador == 'TB') { drawTB1(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
-    counter = 1;
-}
-else if (barra.value == 2) {
-    output.innerHTML = '02/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB2(); }
-    else if (selectedOperador == 'FGC') { drawFGC2(); }
-    else if (selectedOperador == 'ROD') { drawROD2(); }
-    else if (selectedOperador == 'TB') { drawTB2(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
-    counter = 2;
-}
-else if (barra.value == 3) {
-    output.innerHTML = '03/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB3(); }
-    else if (selectedOperador == 'FGC') { drawFGC3(); }
-    else if (selectedOperador == 'ROD') { drawROD3(); }
-    else if (selectedOperador == 'TB') { drawTB3(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
-    counter = 3;
-}
-else if (barra.value == 4) {
-    output.innerHTML = '04/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB4(); }
-    else if (selectedOperador == 'FGC') { drawFGC4(); }
-    else if (selectedOperador == 'ROD') { drawROD4(); }
-    else if (selectedOperador == 'TB') { drawTB4(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
-    counter = 4;
-}
-else if (barra.value == 5) {
-    output.innerHTML = '05/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB5(); }
-    else if (selectedOperador == 'FGC') { drawFGC5(); }
-    else if (selectedOperador == 'ROD') { drawROD5(); }
-    else if (selectedOperador == 'TB') { drawTB5(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
-    counter = 5;
-}
-else if (barra.value == 6) {
-    output.innerHTML = '06/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB6(); }
-    else if (selectedOperador == 'FGC') { drawFGC6(); }
-    else if (selectedOperador == 'ROD') { drawROD6(); }
-    else if (selectedOperador == 'TB') { drawTB6(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
-    counter = 6;
-}
-else if (barra.value == 7) {
-    output.innerHTML = '07/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB7(); }
-    else if (selectedOperador == 'FGC') { drawFGC7(); }
-    else if (selectedOperador == 'ROD') { drawROD7(); }
-    else if (selectedOperador == 'TB') { drawTB7(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
-    counter = 7;
-}
-else if (barra.value == 8) {
-    output.innerHTML = '08/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB8(); }
-    else if (selectedOperador == 'FGC') { drawFGC8(); }
-    else if (selectedOperador == 'ROD') { drawROD8(); }
-    else if (selectedOperador == 'TB') { drawTB8(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
-    counter = 8;
-}
-else if (barra.value == 9) {
-    output.innerHTML = '09/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB9(); }
-    else if (selectedOperador == 'FGC') { drawFGC9(); }
-    else if (selectedOperador == 'ROD') { drawROD9(); }
-    else if (selectedOperador == 'TB') { drawTB9(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
-    counter = 9;
-}
-else if (barra.value == 10) {
-    output.innerHTML = '10/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB10(); }
-    else if (selectedOperador == 'FGC') { drawFGC10(); }
-    else if (selectedOperador == 'ROD') { drawROD10(); }
-    else if (selectedOperador == 'TB') { drawTB10(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
-    counter = 10;
-}
-else if (barra.value == 11) {
-    output.innerHTML = '11/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB11(); }
-    else if (selectedOperador == 'FGC') { drawFGC11(); }
-    else if (selectedOperador == 'ROD') { drawROD11(); }
-    else if (selectedOperador == 'TB') { drawTB11(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
-    counter = 11;
-}
-else if (barra.value == 12) {
-    output.innerHTML = '12/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB12(); }
-    else if (selectedOperador == 'FGC') { drawFGC12(); }
-    else if (selectedOperador == 'ROD') { drawROD12(); }
-    else if (selectedOperador == 'TB') { drawTB12(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
-    counter = 12;
-}
-else if (barra.value == 13) {
-    output.innerHTML = '13/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB13(); }
-    else if (selectedOperador == 'FGC') { drawFGC13(); }
-    else if (selectedOperador == 'ROD') { drawROD7(); }
-    else if (selectedOperador == 'TB') { drawTB13(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
-    counter = 13;
-}
-else if (barra.value == 14) {
-    output.innerHTML = '14/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB14(); }
-    else if (selectedOperador == 'FGC') { drawFGC14(); }
-    else if (selectedOperador == 'ROD') { drawROD14(); }
-    else if (selectedOperador == 'TB') { drawTB14(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
-    counter = 14;
-}
-else if (barra.value == 15) {
-    output.innerHTML = '15/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB15(); }
-    else if (selectedOperador == 'FGC') { drawFGC15(); }
-    else if (selectedOperador == 'ROD') { drawROD15(); }
-    else if (selectedOperador == 'TB') { drawTB15(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
-    counter = 15;
-}
-else if (barra.value == 16) {
-    output.innerHTML = '16/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB16(); }
-    else if (selectedOperador == 'FGC') { drawFGC16(); }
-    else if (selectedOperador == 'ROD') { drawROD16(); }
-    else if (selectedOperador == 'TB') { drawTB16(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
-    counter = 16;
-}
-else if (barra.value == 17) {
-    output.innerHTML = '17/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB17(); }
-    else if (selectedOperador == 'FGC') { drawFGC17(); }
-    else if (selectedOperador == 'ROD') { drawROD17(); }
-    else if (selectedOperador == 'TB') { drawTB17(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
-    counter = 17;
-}
-else if (barra.value == 18) {
-    output.innerHTML = '18/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB18(); }
-    else if (selectedOperador == 'FGC') { drawFGC18(); }
-    else if (selectedOperador == 'ROD') { drawROD18(); }
-    else if (selectedOperador == 'TB') { drawTB18(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
-    counter = 18;
-}
-else if (barra.value == 19) {
-    output.innerHTML = '19/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB19(); }
-    else if (selectedOperador == 'FGC') { drawFGC19(); }
-    else if (selectedOperador == 'ROD') { drawROD19(); }
-    else if (selectedOperador == 'TB') { drawTB19(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
-    counter = 19;
-}
-else if (barra.value == 20) {
-    output.innerHTML = '20/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB20(); }
-    else if (selectedOperador == 'FGC') { drawFGC20(); }
-    else if (selectedOperador == 'ROD') { drawROD20(); }
-    else if (selectedOperador == 'TB') { drawTB20(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
-    counter = 20;
-}
-else if (barra.value == 21) {
-    output.innerHTML = '21/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB21(); }
-    else if (selectedOperador == 'FGC') { drawFGC21(); }
-    else if (selectedOperador == 'ROD') { drawROD21(); }
-    else if (selectedOperador == 'TB') { drawTB21(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
-    counter = 21;
-}
-else if (barra.value == 22) {
-    output.innerHTML = '22/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB22(); }
-    else if (selectedOperador == 'FGC') { drawFGC22(); }
-    else if (selectedOperador == 'ROD') { drawROD22(); }
-    else if (selectedOperador == 'TB') { drawTB22(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
-    counter = 22;
-}
-else if (barra.value == 23) {
-    output.innerHTML = '23/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB23(); }
-    else if (selectedOperador == 'FGC') { drawFGC23(); }
-    else if (selectedOperador == 'ROD') { drawROD23(); }
-    else if (selectedOperador == 'TB') { drawTB23(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
-    counter = 23;
-}
-else if (barra.value == 24) {
-    output.innerHTML = '24/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB24(); }
-    else if (selectedOperador == 'FGC') { drawFGC24(); }
-    else if (selectedOperador == 'ROD') { drawROD24(); }
-    else if (selectedOperador == 'TB') { drawTB24(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
-    counter = 24;
-}
-else if (barra.value == 25) {
-    output.innerHTML = '25/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB25(); }
-    else if (selectedOperador == 'FGC') { drawFGC25(); }
-    else if (selectedOperador == 'ROD') { drawROD25(); }
-    else if (selectedOperador == 'TB') { drawTB25(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
-    counter = 25;
-}
-else if (barra.value == 26) {
-    output.innerHTML = '26/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB26(); }
-    else if (selectedOperador == 'FGC') { drawFGC26(); }
-    else if (selectedOperador == 'ROD') { drawROD26(); }
-    else if (selectedOperador == 'TB') { drawTB26(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
-    counter = 26;
-}
-else if (barra.value == 27) {
-    output.innerHTML = '27/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB27(); }
-    else if (selectedOperador == 'FGC') { drawFGC27(); }
-    else if (selectedOperador == 'ROD') { drawROD27(); }
-    else if (selectedOperador == 'TB') { drawTB27(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
-    counter = 27;
-}
-else if (barra.value == 28) {
-    output.innerHTML = '28/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB28(); }
-    else if (selectedOperador == 'FGC') { drawFGC28(); }
-    else if (selectedOperador == 'ROD') { drawROD28(); }
-    else if (selectedOperador == 'TB') { drawTB28(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
-    counter = 28;
-}
-else if (barra.value == 29) {
-    output.innerHTML = '29/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB29(); }
-    else if (selectedOperador == 'FGC') { drawFGC29(); }
-    else if (selectedOperador == 'ROD') { drawROD29(); }
-    else if (selectedOperador == 'TB') { drawTB29(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
-    counter = 29;
-}
-else if (barra.value == 30) {
-    output.innerHTML = '30/01/2022';
-    neteja();
-    if (selectedOperador == 'FMB') { drawTMB30(); }
-    else if (selectedOperador == 'FGC') { drawFGC30(); }
-    else if (selectedOperador == 'ROD') { drawROD30(); }
-    else if (selectedOperador == 'TB') { drawTB30(); }
-    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
-    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
-    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
-    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
-    counter = 30;
-}
-else if (barra.value == 31) {
-            output.innerHTML = '31/01/2022';
-            neteja();
-            if (selectedOperador == 'FMB') { drawTMB31(); }
-            else if (selectedOperador == 'FGC') { drawFGC31(); }
-            else if (selectedOperador == 'ROD') { drawROD31(); }
-            else if (selectedOperador == 'TB') { drawTB31(); }
-            else if (selectedOperador == 'TRAM') { drawTRAM31(); }
-            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
-            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
-            else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
-            counter = 31;
-        }
+                if (barra.value == 1) {
+                    output.innerHTML = '01/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB1(); }
+                    else if (selectedOperador == 'FGC') { drawFGC1(); }
+                    else if (selectedOperador == 'ROD') { drawROD1(); }
+                    else if (selectedOperador == 'TB') { drawTB1(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM1(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL1(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS1(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS1(); }
+                    counter = 1;
+                }
+                else if (barra.value == 2) {
+                    output.innerHTML = '02/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB2(); }
+                    else if (selectedOperador == 'FGC') { drawFGC2(); }
+                    else if (selectedOperador == 'ROD') { drawROD2(); }
+                    else if (selectedOperador == 'TB') { drawTB2(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM2(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL2(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS2(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS2(); }
+                    counter = 2;
+                }
+                else if (barra.value == 3) {
+                    output.innerHTML = '03/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB3(); }
+                    else if (selectedOperador == 'FGC') { drawFGC3(); }
+                    else if (selectedOperador == 'ROD') { drawROD3(); }
+                    else if (selectedOperador == 'TB') { drawTB3(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM3(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL3(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS3(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS3(); }
+                    counter = 3;
+                }
+                else if (barra.value == 4) {
+                    output.innerHTML = '04/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB4(); }
+                    else if (selectedOperador == 'FGC') { drawFGC4(); }
+                    else if (selectedOperador == 'ROD') { drawROD4(); }
+                    else if (selectedOperador == 'TB') { drawTB4(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM4(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL4(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS4(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS4(); }
+                    counter = 4;
+                }
+                else if (barra.value == 5) {
+                    output.innerHTML = '05/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB5(); }
+                    else if (selectedOperador == 'FGC') { drawFGC5(); }
+                    else if (selectedOperador == 'ROD') { drawROD5(); }
+                    else if (selectedOperador == 'TB') { drawTB5(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM5(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL5(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS5(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS5(); }
+                    counter = 5;
+                }
+                else if (barra.value == 6) {
+                    output.innerHTML = '06/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB6(); }
+                    else if (selectedOperador == 'FGC') { drawFGC6(); }
+                    else if (selectedOperador == 'ROD') { drawROD6(); }
+                    else if (selectedOperador == 'TB') { drawTB6(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM6(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL6(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS6(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS6(); }
+                    counter = 6;
+                }
+                else if (barra.value == 7) {
+                    output.innerHTML = '07/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB7(); }
+                    else if (selectedOperador == 'FGC') { drawFGC7(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB7(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM7(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL7(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS7(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS7(); }
+                    counter = 7;
+                }
+                else if (barra.value == 8) {
+                    output.innerHTML = '08/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB8(); }
+                    else if (selectedOperador == 'FGC') { drawFGC8(); }
+                    else if (selectedOperador == 'ROD') { drawROD8(); }
+                    else if (selectedOperador == 'TB') { drawTB8(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM8(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL8(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS8(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS8(); }
+                    counter = 8;
+                }
+                else if (barra.value == 9) {
+                    output.innerHTML = '09/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB9(); }
+                    else if (selectedOperador == 'FGC') { drawFGC9(); }
+                    else if (selectedOperador == 'ROD') { drawROD9(); }
+                    else if (selectedOperador == 'TB') { drawTB9(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM9(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL9(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS9(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS9(); }
+                    counter = 9;
+                }
+                else if (barra.value == 10) {
+                    output.innerHTML = '10/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB10(); }
+                    else if (selectedOperador == 'FGC') { drawFGC10(); }
+                    else if (selectedOperador == 'ROD') { drawROD10(); }
+                    else if (selectedOperador == 'TB') { drawTB10(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM10(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL10(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS10(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS10(); }
+                    counter = 10;
+                }
+                else if (barra.value == 11) {
+                    output.innerHTML = '11/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB11(); }
+                    else if (selectedOperador == 'FGC') { drawFGC11(); }
+                    else if (selectedOperador == 'ROD') { drawROD11(); }
+                    else if (selectedOperador == 'TB') { drawTB11(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM11(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL11(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS11(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS11(); }
+                    counter = 11;
+                }
+                else if (barra.value == 12) {
+                    output.innerHTML = '12/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB12(); }
+                    else if (selectedOperador == 'FGC') { drawFGC12(); }
+                    else if (selectedOperador == 'ROD') { drawROD12(); }
+                    else if (selectedOperador == 'TB') { drawTB12(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM12(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL12(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS12(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS12(); }
+                    counter = 12;
+                }
+                else if (barra.value == 13) {
+                    output.innerHTML = '13/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB13(); }
+                    else if (selectedOperador == 'FGC') { drawFGC13(); }
+                    else if (selectedOperador == 'ROD') { drawROD7(); }
+                    else if (selectedOperador == 'TB') { drawTB13(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM13(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL13(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS13(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS13(); }
+                    counter = 13;
+                }
+                else if (barra.value == 14) {
+                    output.innerHTML = '14/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB14(); }
+                    else if (selectedOperador == 'FGC') { drawFGC14(); }
+                    else if (selectedOperador == 'ROD') { drawROD14(); }
+                    else if (selectedOperador == 'TB') { drawTB14(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM14(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL14(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS14(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS14(); }
+                    counter = 14;
+                }
+                else if (barra.value == 15) {
+                    output.innerHTML = '15/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB15(); }
+                    else if (selectedOperador == 'FGC') { drawFGC15(); }
+                    else if (selectedOperador == 'ROD') { drawROD15(); }
+                    else if (selectedOperador == 'TB') { drawTB15(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM15(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL15(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS15(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS15(); }
+                    counter = 15;
+                }
+                else if (barra.value == 16) {
+                    output.innerHTML = '16/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB16(); }
+                    else if (selectedOperador == 'FGC') { drawFGC16(); }
+                    else if (selectedOperador == 'ROD') { drawROD16(); }
+                    else if (selectedOperador == 'TB') { drawTB16(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM16(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL16(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS16(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS16(); }
+                    counter = 16;
+                }
+                else if (barra.value == 17) {
+                    output.innerHTML = '17/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB17(); }
+                    else if (selectedOperador == 'FGC') { drawFGC17(); }
+                    else if (selectedOperador == 'ROD') { drawROD17(); }
+                    else if (selectedOperador == 'TB') { drawTB17(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM17(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL17(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS17(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS17(); }
+                    counter = 17;
+                }
+                else if (barra.value == 18) {
+                    output.innerHTML = '18/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB18(); }
+                    else if (selectedOperador == 'FGC') { drawFGC18(); }
+                    else if (selectedOperador == 'ROD') { drawROD18(); }
+                    else if (selectedOperador == 'TB') { drawTB18(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM18(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL18(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS18(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS18(); }
+                    counter = 18;
+                }
+                else if (barra.value == 19) {
+                    output.innerHTML = '19/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB19(); }
+                    else if (selectedOperador == 'FGC') { drawFGC19(); }
+                    else if (selectedOperador == 'ROD') { drawROD19(); }
+                    else if (selectedOperador == 'TB') { drawTB19(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM19(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL19(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS19(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS19(); }
+                    counter = 19;
+                }
+                else if (barra.value == 20) {
+                    output.innerHTML = '20/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB20(); }
+                    else if (selectedOperador == 'FGC') { drawFGC20(); }
+                    else if (selectedOperador == 'ROD') { drawROD20(); }
+                    else if (selectedOperador == 'TB') { drawTB20(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM20(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL20(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS20(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS20(); }
+                    counter = 20;
+                }
+                else if (barra.value == 21) {
+                    output.innerHTML = '21/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB21(); }
+                    else if (selectedOperador == 'FGC') { drawFGC21(); }
+                    else if (selectedOperador == 'ROD') { drawROD21(); }
+                    else if (selectedOperador == 'TB') { drawTB21(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM21(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL21(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS21(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS21(); }
+                    counter = 21;
+                }
+                else if (barra.value == 22) {
+                    output.innerHTML = '22/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB22(); }
+                    else if (selectedOperador == 'FGC') { drawFGC22(); }
+                    else if (selectedOperador == 'ROD') { drawROD22(); }
+                    else if (selectedOperador == 'TB') { drawTB22(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM22(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL22(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS22(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS22(); }
+                    counter = 22;
+                }
+                else if (barra.value == 23) {
+                    output.innerHTML = '23/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB23(); }
+                    else if (selectedOperador == 'FGC') { drawFGC23(); }
+                    else if (selectedOperador == 'ROD') { drawROD23(); }
+                    else if (selectedOperador == 'TB') { drawTB23(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM23(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL23(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS23(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS23(); }
+                    counter = 23;
+                }
+                else if (barra.value == 24) {
+                    output.innerHTML = '24/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB24(); }
+                    else if (selectedOperador == 'FGC') { drawFGC24(); }
+                    else if (selectedOperador == 'ROD') { drawROD24(); }
+                    else if (selectedOperador == 'TB') { drawTB24(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM24(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL24(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS24(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS24(); }
+                    counter = 24;
+                }
+                else if (barra.value == 25) {
+                    output.innerHTML = '25/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB25(); }
+                    else if (selectedOperador == 'FGC') { drawFGC25(); }
+                    else if (selectedOperador == 'ROD') { drawROD25(); }
+                    else if (selectedOperador == 'TB') { drawTB25(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM25(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL25(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS25(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS25(); }
+                    counter = 25;
+                }
+                else if (barra.value == 26) {
+                    output.innerHTML = '26/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB26(); }
+                    else if (selectedOperador == 'FGC') { drawFGC26(); }
+                    else if (selectedOperador == 'ROD') { drawROD26(); }
+                    else if (selectedOperador == 'TB') { drawTB26(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM26(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL26(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS26(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS26(); }
+                    counter = 26;
+                }
+                else if (barra.value == 27) {
+                    output.innerHTML = '27/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB27(); }
+                    else if (selectedOperador == 'FGC') { drawFGC27(); }
+                    else if (selectedOperador == 'ROD') { drawROD27(); }
+                    else if (selectedOperador == 'TB') { drawTB27(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM27(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL27(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS27(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS27(); }
+                    counter = 27;
+                }
+                else if (barra.value == 28) {
+                    output.innerHTML = '28/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB28(); }
+                    else if (selectedOperador == 'FGC') { drawFGC28(); }
+                    else if (selectedOperador == 'ROD') { drawROD28(); }
+                    else if (selectedOperador == 'TB') { drawTB28(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM28(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL28(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS28(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS28(); }
+                    counter = 28;
+                }
+                else if (barra.value == 29) {
+                    output.innerHTML = '29/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB29(); }
+                    else if (selectedOperador == 'FGC') { drawFGC29(); }
+                    else if (selectedOperador == 'ROD') { drawROD29(); }
+                    else if (selectedOperador == 'TB') { drawTB29(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM29(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL29(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS29(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS29(); }
+                    counter = 29;
+                }
+                else if (barra.value == 30) {
+                    output.innerHTML = '30/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB30(); }
+                    else if (selectedOperador == 'FGC') { drawFGC30(); }
+                    else if (selectedOperador == 'ROD') { drawROD30(); }
+                    else if (selectedOperador == 'TB') { drawTB30(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM30(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL30(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
+                    counter = 30;
+                }
+                else if (barra.value == 31) {
+                    output.innerHTML = '31/01/2022';
+                    neteja();
+                    if (selectedOperador == 'FMB') { drawTMB31(); }
+                    else if (selectedOperador == 'FGC') { drawFGC31(); }
+                    else if (selectedOperador == 'ROD') { drawROD31(); }
+                    else if (selectedOperador == 'TB') { drawTB31(); }
+                    else if (selectedOperador == 'TRAM') { drawTRAM31(); }
+                    else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
+                    else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
+                    else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
+                    counter = 31;
+                }
 
-});
+            });
 
             //Paletes de colors
 
@@ -9259,213 +9259,213 @@ else if (barra.value == 31) {
 
             function onEachFeature(feature, layer) {
 
-if (barra.value == 1) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v1 + "</h5>");
-}
-else if (barra.value == 2) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v2 + "</h5>");
-}
-else if (barra.value == 3) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v3 + "</h5>");
-}
-else if (barra.value == 4) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v4 + "</h5>");
-}
-else if (barra.value == 5) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v5 + "</h5>");
-}
-else if (barra.value == 6) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v6 + "</h5>");
-}
-else if (barra.value == 7) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v7 + "</h5>");
-}
-else if (barra.value == 8) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v8 + "</h5>");
-}
-else if (barra.value == 9) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v9 + "</h5>");
-}
-else if (barra.value == 10) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v10 + "</h5>");
-}
-else if (barra.value == 11) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v11 + "</h5>");
-}
-else if (barra.value == 12) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v12 + "</h5>");
-}
-else if (barra.value == 13) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v13 + "</h5>");
-}
-else if (barra.value == 14) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v14 + "</h5>");
-}
-else if (barra.value == 15) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v15 + "</h5>");
-}
-else if (barra.value == 16) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v16 + "</h5>");
-}
-else if (barra.value == 17) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v17 + "</h5>");
-}
-else if (barra.value == 18) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v18 + "</h5>");
-}
-else if (barra.value == 19) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v19 + "</h5>");
-}
-else if (barra.value == 20) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v20 + "</h5>");
-}
-else if (barra.value == 21) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v21 + "</h5>");
-}
-else if (barra.value == 22) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v22 + "</h5>");
-}
-else if (barra.value == 23) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v23 + "</h5>");
-}
-else if (barra.value == 24) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v24 + "</h5>");
-}
-else if (barra.value == 25) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v25 + "</h5>");
-}
-else if (barra.value == 26) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v26 + "</h5>");
-}
-else if (barra.value == 27) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v27 + "</h5>");
-}
-else if (barra.value == 28) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v28 + "</h5>");
-}
-else if (barra.value == 29) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v29 + "</h5>");
-}
-else if (barra.value == 30) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v30 + "</h5>");
-}
-else if (barra.value == 31) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v31 + "</h5>");
-}
+                if (barra.value == 1) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>" + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v1 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 2) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v2 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 3) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v3 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 4) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v4 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 5) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v5 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 6) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v6 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 7) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v7 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 8) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v8 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 9) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v9 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 10) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v10 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 11) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v11 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 12) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v12 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 13) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v13 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 14) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v14 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 15) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v15 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 16) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v16 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 17) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v17 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 18) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v18 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 19) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v19 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 20) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v20 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 21) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v21 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 22) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v22 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 23) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v23 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 24) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v24 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 25) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v25 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 26) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v26 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 27) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v27 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 28) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v28 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 29) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v29 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 30) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v30 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
+                else if (barra.value == 31) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v31 + "<br><br><img class='line' src='" + feature.properties.logo + "'>&nbsp<img class='line' src='" + feature.properties.logo2 + "'>&nbsp<img class='line' src='" + feature.properties.logo3 + "'>&nbsp<img class='line' src='" + feature.properties.logo4 + "'></h5>");
+                }
 
-layer.on({
-    mouseover: highlightFeature,
-    mouseout: resetHighlight,
-    click: zoomToFeature2
-});
+                layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
+                    click: zoomToFeature2
+                });
 
-}
+            }
 
-function onEachFeature2(feature, layer) {
-layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>", { sticky: true });
-layer.on({
-    mouseover: highlightFeatureL,
-    mouseout: resetHighlightL,
-    click: zoomToFeature
-});
-}
+            function onEachFeature2(feature, layer) {
+                layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>", { sticky: true });
+                layer.on({
+                    mouseover: highlightFeatureL,
+                    mouseout: resetHighlightL,
+                    click: zoomToFeature
+                });
+            }
 
-function onEachFeatureBus(feature, layer) {
-if (barra.value == 1) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v1 + "</h5>", { sticky: true });
-}
-else if (barra.value == 2) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v2 + "</h5>", { sticky: true });
-}
-else if (barra.value == 3) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v3 + "</h5>", { sticky: true });
-}
-else if (barra.value == 4) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v4 + "</h5>", { sticky: true });
-}
-else if (barra.value == 5) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v5 + "</h5>", { sticky: true });
-}
-else if (barra.value == 6) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v6 + "</h5>", { sticky: true });
-}
-else if (barra.value == 7) {
-    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v7 + "</h5>", { sticky: true });
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v7 + "</h5>", { sticky: true });
-}
-else if (barra.value == 8) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v8 + "</h5>", { sticky: true });
-}
-else if (barra.value == 9) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v9 + "</h5>", { sticky: true });
-}
-else if (barra.value == 10) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v10 + "</h5>", { sticky: true });
-}
-else if (barra.value == 11) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v11 + "</h5>", { sticky: true });
-}
-else if (barra.value == 12) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v12 + "</h5>", { sticky: true });
-}
-else if (barra.value == 13) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v13 + "</h5>", { sticky: true });
-}
-else if (barra.value == 14) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v14 + "</h5>", { sticky: true });
-}
-else if (barra.value == 15) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v15 + "</h5>", { sticky: true });
-}
-else if (barra.value == 16) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v16 + "</h5>", { sticky: true });
-}
-else if (barra.value == 17) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v17 + "</h5>", { sticky: true });
-}
-else if (barra.value == 18) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v18 + "</h5>", { sticky: true });
-}
-else if (barra.value == 19) {
+            function onEachFeatureBus(feature, layer) {
+                if (barra.value == 1) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v1 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 2) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v2 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 3) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v3 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 4) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v4 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 5) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v5 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 6) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v6 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 7) {
+                    layer.bindPopup("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v7 + "</h5>", { sticky: true });
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v7 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 8) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v8 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 9) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v9 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 10) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v10 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 11) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v11 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 12) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v12 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 13) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v13 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 14) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v14 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 15) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v15 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 16) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v16 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 17) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v17 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 18) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v18 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 19) {
 
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v19 + "</h5>", { sticky: true });
-}
-else if (barra.value == 20) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v20 + "</h5>", { sticky: true });
-}
-else if (barra.value == 21) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v21 + "</h5>", { sticky: true });
-}
-else if (barra.value == 22) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v22 + "</h5>", { sticky: true });
-}
-else if (barra.value == 23) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v23 + "</h5>", { sticky: true });
-}
-else if (barra.value == 24) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v24 + "</h5>", { sticky: true });
-}
-else if (barra.value == 25) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v25 + "</h5>", { sticky: true });
-}
-else if (barra.value == 26) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v26 + "</h5>", { sticky: true });
-}
-else if (barra.value == 27) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v27 + "</h5>", { sticky: true });
-}
-else if (barra.value == 28) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v28 + "</h5>", { sticky: true });
-}
-else if (barra.value == 29) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v29 + "</h5>", { sticky: true });
-}
-else if (barra.value == 30) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v30 + "</h5>", { sticky: true });
-}
-else if (barra.value == 31) {
-    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v31 + "</h5>", { sticky: true });
-}
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v19 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 20) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v20 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 21) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v21 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 22) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v22 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 23) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v23 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 24) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v24 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 25) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v25 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 26) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v26 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 27) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v27 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 28) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v28 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 29) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v29 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 30) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v30 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 31) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v31 + "</h5>", { sticky: true });
+                }
 
 
                 layer.on({
