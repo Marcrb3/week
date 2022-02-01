@@ -488,6 +488,18 @@
             transition: max-height 0.2s ease-out;
             background-color: black;
         }
+        .tanca{
+            font-size: 1.2em;
+            background: none;
+            border: none;
+            color: white !important;
+            float: right;
+            
+        }
+        .tanca:active, 
+        .tanca:hover{
+            color:black !important;
+        }
     </style>
 
 
@@ -503,9 +515,9 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: rgb(4, 143, 108);">
                     <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center; color: white;">
-                        Informació
+                        Informació <button type="button" class="tanca" data-dismiss="modal">×</button>
                     </h5>
-
+                    
                 </div>
                 <div class="modal-body">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
@@ -531,8 +543,9 @@
                                         lateral.</li><br>
                                     <li> Per visualitzar les validacions dels diferents dies, s'ha de moure el cursor de
                                         la barra inferior.</li><br>
-                                    <li> A través del botó " <i class="fa fa-play"></i>" es pot visualitzar la seqüència
-                                        de tots els dies automàticament.</li>
+                                    <li> A través del botó  <i class="fa fa-play"></i>es pot visualitzar la seqüència
+                                        de tots els dies automàticament.</li><br>
+                                        <li> A través dels botons <i class="fa fa-step-backward"></i>i  &nbsp;<i class="fa fa-step-forward"></i>es pot avançar o retrocedir en el temps.</li>    
                                 </ul>
 
 
@@ -568,10 +581,7 @@
                     </div>
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tanca</button>
-
-                </div>
+               
             </div>
         </div>
     </div>
@@ -602,7 +612,7 @@
 
 
             </div>
-            <input type="range" min="1" max="30" value="1" step='1' class="slider" id="myRange"><br>
+            <input type="range" min="1" max="31" value="1" step='1' class="slider" id="myRange"><br>
         </div>
     </div>
     <!--Sidebar-->
@@ -881,6 +891,7 @@
                 else if (barra.value == 28) { drawTMB28() }
                 else if (barra.value == 29) { drawTMB29() }
                 else if (barra.value == 30) { drawTMB30() }
+                else if (barra.value == 31) { drawTMB31() }
 
             }
 
@@ -1755,6 +1766,35 @@
 
             }
 
+            drawTMB31 = function () {
+                selectedOperador = 'FMB';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FMB,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v31),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FMB");
+                    }
+                }).addTo(mymap);
+
+            }
+
             //Filtratge per operador FGC
             drawFGC = function () {
                 selectedOperador = 'FGC';
@@ -1800,6 +1840,7 @@
                 else if (barra.value == 28) { drawFGC28() }
                 else if (barra.value == 29) { drawFGC29() }
                 else if (barra.value == 30) { drawFGC30() }
+                else if (barra.value == 31) { drawFGC31() }
             }
 
 
@@ -2673,6 +2714,35 @@
 
             }
 
+            drawFGC31 = function () {
+                selectedOperador = 'FGC';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_FGC,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v31),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "FGC");
+                    }
+                }).addTo(mymap);
+
+            }
+
             //Filtratge per operador ROD
 
             drawROD = function () {
@@ -2719,6 +2789,7 @@
                 else if (barra.value == 28) { drawROD28() }
                 else if (barra.value == 29) { drawROD29() }
                 else if (barra.value == 30) { drawROD30() }
+                else if (barra.value == 31) { drawROD31() }
             }
 
             drawROD1 = function () {
@@ -3592,6 +3663,35 @@
 
             }
 
+            drawROD31 = function () {
+                selectedOperador = 'ROD';
+                kyAMB = L.geoJSON(linies.responseJSON, {
+                    style: style_line_ROD,
+                    onEachFeature: onEachFeature2,
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: getRadius(feature.properties.v31),
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "ROD");
+                    }
+                }).addTo(mymap);
+
+            }
+
             //Filtratge per operador TB
 
             drawTB = function () {
@@ -3638,6 +3738,7 @@
                 else if (barra.value == 28) { drawTB28() }
                 else if (barra.value == 29) { drawTB29() }
                 else if (barra.value == 30) { drawTB30() }
+                else if (barra.value == 31) { drawTB31() }
             }
 
             drawTB1 = function () {
@@ -4212,6 +4313,25 @@
                 }).addTo(mymap);
             }
 
+            drawTB31 = function () {
+                selectedOperador = 'TB';
+                kyBusDiumenge = L.geoJSON(val30_bus.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: function (feature, layer) {
+                        return {
+                            weight: 2,
+                            opacity: getOpacity(feature.properties.v31),
+                            color: 'red',
+                            dashArray: '',
+                            fillOpacity: 1,
+                        }
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TMB");
+                    }
+                }).addTo(mymap);
+            }
+
             //Filtratge per operador TRAM
             drawTRAM = function () {
                 selectedOperador = 'TRAM';
@@ -4257,6 +4377,7 @@
                 else if (barra.value == 28) { drawTRAM28() }
                 else if (barra.value == 29) { drawTRAM29() }
                 else if (barra.value == 30) { drawTRAM30() }
+                else if (barra.value == 31) { drawTRAM31() }
             }
 
             drawTRAM1 = function () {
@@ -5346,6 +5467,42 @@
                 }).addTo(mymap);
             }
 
+            drawTRAM31 = function () {
+                selectedOperador = 'TRAM';
+                kyBusDiumenge = L.geoJSON(val30_bus.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: function (feature, layer) {
+                        return {
+                            weight: 2,
+                            opacity: getOpacity(feature.properties.v31),
+                            color: 'rgb(4, 143, 108)',
+                            dashArray: '',
+                            fillOpacity: 1,
+                        };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+                ky30 = L.geoJSON(val30.responseJSON, {
+                    onEachFeature: onEachFeature,
+                    style: style,
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 2,
+                            fillColor: "white",
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.5
+                        });
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TRAM");
+                    }
+                }).addTo(mymap);
+            }
+
             //Filtratge per operador TUSGSAL
 
             drawTUSGSAL = function () {
@@ -5392,6 +5549,7 @@
                 else if (barra.value == 28) { drawTUSGSAL28() }
                 else if (barra.value == 29) { drawTUSGSAL29() }
                 else if (barra.value == 30) { drawTUSGSAL30() }
+                else if (barra.value == 31) { drawTUSGSAL31() }
             }
 
             drawTUSGSAL1 = function () {
@@ -5952,6 +6110,25 @@
                     }
                 }).addTo(mymap);
             }
+
+            drawTUSGSAL31 = function () {
+                selectedOperador = 'TUSGSAL';
+                kyBusDiumenge = L.geoJSON(val30_bus.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: function (feature, layer) {
+                        return {
+                            weight: 2,
+                            opacity: getOpacity(feature.properties.v31),
+                            color: '#FFCC00',
+                            dashArray: '',
+                            fillOpacity: 1,
+                        };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "TUSGSAL");
+                    }
+                }).addTo(mymap);
+            }
             //Filtratge per operador NITBUS
 
             drawNITBUS = function () {
@@ -5998,6 +6175,7 @@
                 else if (barra.value == 28) { drawNITBUS28() }
                 else if (barra.value == 29) { drawNITBUS29() }
                 else if (barra.value == 30) { drawNITBUS30() }
+                else if (barra.value == 31) { drawNITBUS31() }
             }
 
             drawNITBUS1 = function () {
@@ -6558,6 +6736,24 @@
                     }
                 }).addTo(mymap);
             }
+            drawNITBUS31 = function () {
+                selectedOperador = 'NITBUS';
+                kyBusDiumenge = L.geoJSON(val30_bus.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: function (feature, layer) {
+                        return {
+                            weight: 2,
+                            opacity: getOpacity(feature.properties.v31),
+                            color: '#004dca',
+                            dashArray: '',
+                            fillOpacity: 1,
+                        };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "NITBUS");
+                    }
+                }).addTo(mymap);
+            }
 
             //Filtratge per operador BAIXBUS
 
@@ -6605,6 +6801,7 @@
                 else if (barra.value == 28) { drawBAIXBUS28() }
                 else if (barra.value == 29) { drawBAIXBUS29() }
                 else if (barra.value == 30) { drawBAIXBUS30() }
+                else if (barra.value == 31) { drawBAIXBUS31() }
             }
 
             drawBAIXBUS1 = function () {
@@ -7165,6 +7362,24 @@
                     }
                 }).addTo(mymap);
             }
+            drawBAIXBUS31 = function () {
+                selectedOperador = 'BAIXBUS';
+                kyBusDiumenge = L.geoJSON(val30_bus.responseJSON, {
+                    onEachFeature: onEachFeatureBus,
+                    style: function (feature, layer) {
+                        return {
+                            weight: 2,
+                            opacity: getOpacity(feature.properties.v31),
+                            color: '#FFCC00',
+                            dashArray: '',
+                            fillOpacity: 1,
+                        };
+                    },
+                    filter: function (feature, layer) {
+                        return (feature.properties.operador == "BAIXBUS");
+                    }
+                }).addTo(mymap);
+            }
 
 
             //animem slider al fer play
@@ -7194,7 +7409,7 @@
 
                         barra.value++;
                         counter++;
-                        if (counter > 30) {
+                        if (counter > 31) {
                             barra.value = 1;
                             counter = 1;
                         }
@@ -7591,6 +7806,19 @@
                             else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS30(); }
                             else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
                             counter = 30;
+                        }
+                        else if (barra.value == 31) {
+                            output.innerHTML = '31/01/2022';
+                            neteja();
+                            if (selectedOperador == 'FMB') { drawTMB31(); }
+                            else if (selectedOperador == 'FGC') { drawFGC31(); }
+                            else if (selectedOperador == 'ROD') { drawROD31(); }
+                            else if (selectedOperador == 'TB') { drawTB31(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM31(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
+                            counter = 31;
                         }
 
                     }, 750);
@@ -7999,12 +8227,25 @@
                     else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
                     counter = 30;
                 }
+                else if (barra.value == 31) {
+                            output.innerHTML = '31/01/2022';
+                            neteja();
+                            if (selectedOperador == 'FMB') { drawTMB31(); }
+                            else if (selectedOperador == 'FGC') { drawFGC31(); }
+                            else if (selectedOperador == 'ROD') { drawROD31(); }
+                            else if (selectedOperador == 'TB') { drawTB31(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM31(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
+                            counter = 31;
+                        }
 
             })
 
             $('#forward').on('click', function () {
                 barra.value++;
-                if (counter > 30) {
+                if (counter > 31) {
                     barra.value = 1;
                     counter = 1;
                 }
@@ -8402,12 +8643,25 @@
                     else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
                     counter = 30;
                 }
+                else if (barra.value == 31) {
+                            output.innerHTML = '31/01/2022';
+                            neteja();
+                            if (selectedOperador == 'FMB') { drawTMB31(); }
+                            else if (selectedOperador == 'FGC') { drawFGC31(); }
+                            else if (selectedOperador == 'ROD') { drawROD31(); }
+                            else if (selectedOperador == 'TB') { drawTB31(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM31(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
+                            counter = 31;
+                        }
 
             });
 
             $('#backward').on('click', function () {
                 barra.value--;
-                if (counter > 30) {
+                if (counter > 31) {
                     barra.value = 1;
                     counter = 1;
                 }
@@ -8804,6 +9058,19 @@
                     else if (selectedOperador == 'NITBUS') { drawNITBUS30(); }
                     counter = 30;
                 }
+                else if (barra.value == 31) {
+                            output.innerHTML = '31/01/2022';
+                            neteja();
+                            if (selectedOperador == 'FMB') { drawTMB31(); }
+                            else if (selectedOperador == 'FGC') { drawFGC31(); }
+                            else if (selectedOperador == 'ROD') { drawROD31(); }
+                            else if (selectedOperador == 'TB') { drawTB31(); }
+                            else if (selectedOperador == 'TRAM') { drawTRAM31(); }
+                            else if (selectedOperador == 'TUSGSAL') { drawTUSGSAL31(); }
+                            else if (selectedOperador == 'BAIXBUS') { drawBAIXBUS31(); }
+                            else if (selectedOperador == 'NITBUS') { drawNITBUS31(); }
+                            counter = 31;
+                        }
 
             });
 
@@ -9117,6 +9384,9 @@
                 else if (barra.value == 30) {
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v30 + "</h5>");
                 }
+                else if (barra.value == 31) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Parada: " + feature.properties.stop_name + "<br><br> Validacions: " + feature.properties.v31 + "</h5>");
+                }
 
                 layer.on({
                     mouseover: highlightFeature,
@@ -9227,6 +9497,9 @@
                 }
                 else if (barra.value == 30) {
                     layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v30 + "</h5>", { sticky: true });
+                }
+                else if (barra.value == 31) {
+                    layer.bindTooltip("<h5 class='infoHeader'><strong>Linia: " + feature.properties.routes_rou + "<br><br> Validacions: " + feature.properties.v31 + "</h5>", { sticky: true });
                 }
 
 
