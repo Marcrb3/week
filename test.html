@@ -9402,7 +9402,7 @@
             }
 
             function onEachFeature2(feature, layer) {
-                layer.bindTooltip("<h5 class='infoHeader'><strong>Línia: " + feature.properties.routes_rou + "<br><br>" + feature.properties.routes_r_1 + "</h5>", { sticky: true });
+                layer.bindTooltip("<h5 class='infoHeader'><strong>Línia:&nbsp<img class='line' src='" + feature.properties.logo + "'><br><br>" + feature.properties.routes_r_1 + "</h5>", { sticky: true });
                 layer.on({
                     mouseover: highlightFeatureL,
                     mouseout: resetHighlightL,
