@@ -38,7 +38,8 @@
     <script src="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.js"></script>
     <link rel="stylesheet"
         href="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.css" />
-
+       
+      
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
@@ -502,6 +503,7 @@
         .tanca:hover {
             color: black !important;
         }
+        
     </style>
 
 
@@ -796,12 +798,25 @@
             capes.addTo(mymap);
             capes._container.remove();
             L.control.scale().addTo(mymap);
-            grup = L.layerGroup(kxIncidents, kyIncidents, Topo, kyAMB, kyBus);
-            var control = L.Control.geocoder({ placeholder: "Cerca..." });
+           // grup = L.layerGroup(kxIncidents, kyIncidents, Topo, kyAMB, kyBus);
+           //var control = L.Control.geocoder({ placeholder: "Cerca..." });
+           
+           var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,   
+            text: '',
+            placeholder: 'Introdueix parada o direcció...',
+            bounds: 
+                    //sud-oest
+                    [40.33825, -1.0391]
+                    //nord-est
+                    [42.88239, 5.06357],
+                
+			});
+       
 
-            document.getElementById('profile').appendChild(
-                control.onAdd(mymap)
-            );
+           document.getElementById('profile').appendChild(
+               osmGeocoder.onAdd(mymap)
+           );
 
             mymap.zoomControl.remove();
 
